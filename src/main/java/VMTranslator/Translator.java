@@ -9,7 +9,6 @@ public class Translator {
         System.out.println(p.hasMoreCommands());
 
 
-        p.closeFile();
     }
 
 }
