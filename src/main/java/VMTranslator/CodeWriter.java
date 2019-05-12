@@ -2,12 +2,15 @@ package VMTranslator;
 
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 public class CodeWriter {
 
     private FileWriter FW;
 
     private int jumpCounter = 0;
+    private Map<String, Integer> Segments = new HashMap<>();
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -22,12 +25,32 @@ public class CodeWriter {
         }
     }
 
+    private void setPointer(String segment, int pointer, int address) {
+        Segments.put(segment, address);
+
+        this.write("@" + address);
+        this.write("D=A");
+        this.write("@" + pointer);
+        this.write("M=D");
+    }
+
     private void initialise() {
         this.write("// INITIALISE");
+
+        this.setPointer("SP", 0, 256);
+        this.setPointer("local",1, 300);
+        this.setPointer("argument",2, 400);
+        this.setPointer("this",3, 3000);
+        this.setPointer("that",4, 3010);
+
+        Segments.put("constant", 0);
+        Segments.put("temp", 5);
+
         this.write("@256");
         this.write("D=A");
         this.write("@0");
         this.write("M=D");
+
         this.write("A=M");
         this.write("M=0");
         for(int i = 0; i < 20; i++) {
@@ -37,12 +60,28 @@ public class CodeWriter {
         this.write("@0");
     }
 
-    private void write(String stringToWrite) {
+    private String repVariables(String line) {
+        for (Map.Entry<String, Integer> segment : Segments.entrySet()) {
+            line = line.replace(segment.getKey(), Integer.toString(segment.getValue()));
+        }
+        return line;
+    }
+
+    private void appendToFile(String line) {
         try {
-            FW.write(stringToWrite + "\n");
+            FW.write(line + "\n");
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    private void write(String stringToWrite) {
+        stringToWrite = this.repVariables(stringToWrite);
+        this.appendToFile(stringToWrite);
+    }
+
+    private void writeComment(String comment) {
+        this.appendToFile(comment);
     }
 
     private void PCMin2Min1InD() {
@@ -135,7 +174,7 @@ public class CodeWriter {
                 break;
 
             default:
-                System.out.println("writeArithmetic: ar1 not found.");
+                System.out.println("writeArithmetic: arg1 not found.");
         }
 
         this.jumpCounter++;
@@ -143,9 +182,11 @@ public class CodeWriter {
 
     public void writePushPop(String commandType, String arg1, int arg2) {
         if(commandType == "C_PUSH") {
-            this.write("// push " + arg1 + " " + arg2);
+            this.writeComment("// push " + arg1 + " " + arg2);
 
-            this.write("@" + arg2);
+            int addressPush = Segments.get(arg1) + arg2;
+
+            this.write("@" + addressPush);
             this.write("D=A");
             this.write("@0");
             this.write("A=M");
@@ -154,7 +195,7 @@ public class CodeWriter {
             this.write("M=M+1");
         }
         else if(commandType == "C_POP") {
-            this.write("// pop " + arg1 + " " + arg2);
+            this.writeComment("// pop " + arg1 + " " + arg2);
         }
         else {
             System.out.println("commandType not found.");
