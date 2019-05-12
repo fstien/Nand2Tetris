@@ -174,33 +174,6 @@ public class TestJUnit {
 
 
 
-
-
-        p.advance();
-
-        Assertions.assertEquals("C_PUSH", p.commandType);
-        Assertions.assertEquals("constant", p.arg1);
-        Assertions.assertEquals(891, p.arg2);
-        Assertions.assertTrue(p.hasMoreCommands());
-
-        p.advance();
-
-        Assertions.assertEquals("C_PUSH", p.commandType);
-        Assertions.assertEquals("constant", p.arg1);
-        Assertions.assertEquals(891, p.arg2);
-        Assertions.assertTrue(p.hasMoreCommands());
-
-        p.advance();
-
-        Assertions.assertEquals("C_ARITHMETIC", p.commandType);
-        Assertions.assertEquals("lt", p.arg1);
-        Assertions.assertEquals(null, p.arg2);
-        Assertions.assertTrue(p.hasMoreCommands());
-
-
-
-
-
         p.advance();
 
         Assertions.assertEquals("C_PUSH", p.commandType);

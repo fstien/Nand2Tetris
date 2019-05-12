@@ -8,17 +8,18 @@ import java.util.Scanner;
 
 public class Parser {
 
-    private List<String> commands = new ArrayList<String>();
+    private List<String> commands = new ArrayList<>();
 
     private int commandIndex = 0;
 
+    private int commandLength;
     public String commandType;
     public String arg1;
     public Integer arg2;
 
     public Parser(String fileName) {
         try {
-            String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/";
+            String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/bytecode/";
             Scanner file = new Scanner(new File(baseDir + fileName));
             this.PopulateList(file);
             file.close();
@@ -71,26 +72,14 @@ public class Parser {
         String command = this.commands.get(commandIndex);
 
         String[] cSplit = command.split(" ");
-        if (cSplit.length == 1) {
-            switch (cSplit[0]) {
-                case "add":
-                    this.commandType = "C_ARITHMETIC";
-                    this.arg1 = cSplit[0];
-                    this.arg2 = null;
-                    break;
-                case "eq":
-                    this.commandType = "C_ARITHMETIC";
-                    this.arg1 = cSplit[0];
-                    this.arg2 = null;
-                case "lt":
-                    this.commandType = "C_ARITHMETIC";
-                    this.arg1 = cSplit[0];
-                    this.arg2 = null;
-                default:
-                    System.out.println("Swich case not handled.");
-            }
+        this.commandLength = cSplit.length;
+
+        if (this.commandLength == 1) {
+            this.commandType = "C_ARITHMETIC";
+            this.arg1 = cSplit[0];
+            this.arg2 = null;
         }
-        else if(cSplit.length == 3) {
+        else if(this.commandLength == 3) {
             switch (cSplit[0]) {
                 case "push":
                     this.commandType = "C_PUSH";
@@ -109,5 +98,37 @@ public class Parser {
         else {
             System.out.println("Invalid command line.");
         }
+    }
+
+    private String currentCommandString() {
+        if (this.commandLength == 3) {
+            return this.commandType + " " + this.arg1 + " " + this.arg2.toString();
+        }
+        else if(this.commandLength == 1) {
+            return this.commandType + " " + this.arg1;
+        }
+        else {
+            System.out.println("Error in generating string.");
+            return "";
+        }
+    }
+
+    public String toString() {
+
+        int index = this.commandIndex;
+
+        this.commandIndex = 0;
+
+        StringBuilder allCommands = new StringBuilder(this.currentCommandString()).append("\n");
+
+        while(this.hasMoreCommands()) {
+            this.advance();
+            allCommands.append(this.currentCommandString()).append("\n");
+        }
+
+        this.commandIndex = index;
+        this.parseCommand();
+
+        return allCommands.toString();
     }
 }
