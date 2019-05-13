@@ -10,7 +10,9 @@ public class CodeWriter {
     private FileWriter FW;
 
     private int jumpCounter = 0;
+    private Map<String, Integer> Pointers = new HashMap<>();
     private Map<String, Integer> Segments = new HashMap<>();
+    private int lastPush;
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -26,6 +28,7 @@ public class CodeWriter {
     }
 
     private void setPointer(String segment, int pointer, int address) {
+        Pointers.put(segment, pointer);
         Segments.put(segment, address);
 
         this.write("@" + address);
@@ -45,10 +48,11 @@ public class CodeWriter {
 
         Segments.put("constant", 0);
         Segments.put("temp", 5);
+        Segments.put("pointer", 3);
 
         this.write("@256");
         this.write("D=A");
-        this.write("@0");
+        this.write("@SP");
         this.write("M=D");
 
         this.write("A=M");
@@ -57,11 +61,11 @@ public class CodeWriter {
             this.write("A=A+1");
             this.write("M=0");
         }
-        this.write("@0");
+        this.write("@SP");
     }
 
     private String repVariables(String line) {
-        for (Map.Entry<String, Integer> segment : Segments.entrySet()) {
+        for (Map.Entry<String, Integer> segment : Pointers.entrySet()) {
             line = line.replace(segment.getKey(), Integer.toString(segment.getValue()));
         }
         return line;
@@ -85,7 +89,7 @@ public class CodeWriter {
     }
 
     private void PCMin2Min1InD() {
-        this.write("@0");
+        this.write("@SP");
         this.write("D=M");
         this.write("D=D-1");
         this.write("A=D");
@@ -94,7 +98,7 @@ public class CodeWriter {
     }
 
     private void PcDecrement() {
-        this.write("@0");
+        this.write("@SP");
         this.write("M=M-1");
     }
 
@@ -105,7 +109,7 @@ public class CodeWriter {
         this.write("M=0");
         this.write("@DI" + jumpCounter);
         this.write("D;" + Jump);
-        this.write("@0");
+        this.write("@SP");
         this.write("D=M");
         this.write("D=D-1");
         this.write("D=D-1");
@@ -116,7 +120,7 @@ public class CodeWriter {
     }
 
     private void NegNotSetup() {
-        this.write("@0");
+        this.write("@SP");
         this.write("D=M");
         this.write("D=D-1");
         this.write("A=D");
@@ -181,21 +185,49 @@ public class CodeWriter {
     }
 
     public void writePushPop(String commandType, String arg1, int arg2) {
-        if(commandType == "C_PUSH") {
+
+        int address = Segments.get(arg1) + arg2;
+
+        if(commandType.equals("C_PUSH")) {
             this.writeComment("// push " + arg1 + " " + arg2);
 
-            int addressPush = Segments.get(arg1) + arg2;
+            this.write("@" + address);
 
-            this.write("@" + addressPush);
-            this.write("D=A");
-            this.write("@0");
+            if (arg1.equals("constant")) {
+                this.write("D=A");
+            }
+            else {
+                this.write("D=M");
+            }
+
+            this.write("@SP");
             this.write("A=M");
             this.write("M=D");
-            this.write("@0");
+            this.write("@SP");
             this.write("M=M+1");
+
+            this.lastPush = arg2;
         }
-        else if(commandType == "C_POP") {
+        else if(commandType.equals("C_POP")) {
             this.writeComment("// pop " + arg1 + " " + arg2);
+
+            this.write("@SP");
+            this.write("A=M");
+            this.write("A=A-1");
+            this.write("D=M");
+            this.write("@" + address);
+            this.write("M=D");
+            this.write("@SP");
+            this.write("M=M-1");
+
+            if(arg1.equals("pointer") && arg2 == 0) {
+                Segments.put("this", this.lastPush);
+            }
+
+            if(arg1.equals("pointer") && arg2 == 1) {
+                Segments.put("that", this.lastPush);
+            }
+
         }
         else {
             System.out.println("commandType not found.");
