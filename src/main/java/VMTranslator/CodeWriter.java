@@ -27,6 +27,10 @@ public class CodeWriter {
         }
     }
 
+    public void writeInit() {
+        // Write the bootstrap code
+    }
+
     private void setPointer(String segment, int pointer, int address) {
         Pointers.put(segment, pointer);
         Segments.put(segment, address);
@@ -49,6 +53,7 @@ public class CodeWriter {
         Segments.put("constant", 0);
         Segments.put("temp", 5);
         Segments.put("pointer", 3);
+        Segments.put("static", 16);
 
         this.write("@256");
         this.write("D=A");
@@ -232,6 +237,18 @@ public class CodeWriter {
         else {
             System.out.println("commandType not found.");
         }
+    }
+
+    public void writeLabel(String label) {
+
+    }
+
+    public void writeGoto(String label) {
+
+    }
+
+    public void writeIf(String label) {
+
     }
 
     private void writeInfLoop() {
