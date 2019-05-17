@@ -33,7 +33,8 @@ public class CodeWriter {
 
     private void setPointer(String segment, int pointer, int address) {
         Pointers.put(segment, pointer);
-        Segments.put(segment, address);
+
+        //Segments.put(segment, address);
 
         this.write("@" + address);
         this.write("D=A");
@@ -45,6 +46,12 @@ public class CodeWriter {
 
         this.write("// INITIALISE");
 
+        Pointers.put("SP", 0);
+        Pointers.put("local", 1);
+        Pointers.put("argument", 2);
+        Pointers.put("pointer", 3);
+
+        /*
         this.setPointer("SP", 0, 256);
         this.setPointer("local",1, 300);
         this.setPointer("argument",2, 400);
@@ -55,6 +62,7 @@ public class CodeWriter {
         Segments.put("temp", 5);
         Segments.put("pointer", 3);
         Segments.put("static", 16);
+        */
     }
 
     private String repVariables(String line) {
@@ -179,17 +187,25 @@ public class CodeWriter {
 
     public void writePushPop(String commandType, String arg1, int arg2) {
 
-        int address = Segments.get(arg1) + arg2;
+        // int address = Segments.get(arg1) + arg2;
 
         if(commandType.equals("C_PUSH")) {
             this.writeComment("// push " + arg1 + " " + arg2);
 
-            this.write("@" + address);
+            // this.write("@" + address);
 
-            if (arg1.equals("constant")) {
+            if(arg1.equals("constant")) {
+                this.write("@" + arg2);
+
                 this.write("D=A");
             }
             else {
+                this.write("@" + Pointers.get(arg1));
+                this.write("D=M");
+                this.write("@" + arg2);
+                this.write("D=D+A");
+                this.write("A=D");
+
                 this.write("D=M");
             }
 
@@ -200,14 +216,6 @@ public class CodeWriter {
             this.write("M=M+1");
 
             this.lastPush = arg2;
-
-            if(arg1.equals("constant")) {
-                this.lastPush = arg2;
-            }
-            else {
-
-            }
-
         }
         else if(commandType.equals("C_POP")) {
             this.writeComment("// pop " + arg1 + " " + arg2);
@@ -216,9 +224,25 @@ public class CodeWriter {
             this.write("M=M-1");
             this.write("A=M");
             this.write("D=M");
-            this.write("@" + address);
-            this.write("M=D");
 
+            // this.write("@" + address);
+
+            if(arg1.equals("constant")) {
+                this.write("@" + arg2);
+            }
+            else {
+                // USE A TEMP VARIABLE TO NOW OVERWRITE D
+
+                this.write("@" + Pointers.get(arg1));
+                this.write("D=M");
+                this.write("@" + arg2);
+                this.write("D=D+A");
+                this.write("A=D");
+            }
+
+            // this.write("M=D");
+
+            /*
             if(arg1.equals("pointer") && arg2 == 0) {
                 Segments.put("this", this.lastPush);
             }
@@ -226,6 +250,7 @@ public class CodeWriter {
             if(arg1.equals("pointer") && arg2 == 1) {
                 Segments.put("that", this.lastPush);
             }
+            */
 
         }
         else {
