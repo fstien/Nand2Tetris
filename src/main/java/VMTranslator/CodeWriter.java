@@ -42,31 +42,19 @@ public class CodeWriter {
     }
 
     private void initialise() {
+
         this.write("// INITIALISE");
 
         this.setPointer("SP", 0, 256);
         this.setPointer("local",1, 300);
         this.setPointer("argument",2, 400);
-        this.setPointer("this",3, 3000);
-        this.setPointer("that",4, 3010);
+        // this.setPointer("this",3, 3000);
+        // this.setPointer("that",4, 3010);
 
         Segments.put("constant", 0);
         Segments.put("temp", 5);
         Segments.put("pointer", 3);
         Segments.put("static", 16);
-
-        this.write("@256");
-        this.write("D=A");
-        this.write("@SP");
-        this.write("M=D");
-
-        this.write("A=M");
-        this.write("M=0");
-        for(int i = 0; i < 20; i++) {
-            this.write("A=A+1");
-            this.write("M=0");
-        }
-        this.write("@SP");
     }
 
     private String repVariables(String line) {
@@ -212,18 +200,24 @@ public class CodeWriter {
             this.write("M=M+1");
 
             this.lastPush = arg2;
+
+            if(arg1.equals("constant")) {
+                this.lastPush = arg2;
+            }
+            else {
+
+            }
+
         }
         else if(commandType.equals("C_POP")) {
             this.writeComment("// pop " + arg1 + " " + arg2);
 
             this.write("@SP");
+            this.write("M=M-1");
             this.write("A=M");
-            this.write("A=A-1");
             this.write("D=M");
             this.write("@" + address);
             this.write("M=D");
-            this.write("@SP");
-            this.write("M=M-1");
 
             if(arg1.equals("pointer") && arg2 == 0) {
                 Segments.put("this", this.lastPush);
@@ -240,14 +234,35 @@ public class CodeWriter {
     }
 
     public void writeLabel(String label) {
-
+        this.writeComment("// label " + label);
+        this.write("(" + label + ")");
     }
 
     public void writeGoto(String label) {
-
+        this.writeComment("// goto " + label);
+        this.write("@" + label);
+        this.write("0;JMP");
     }
 
     public void writeIf(String label) {
+        this.writeComment("// if-goto " + label);
+        this.write("@SP");
+        this.write("M=M-1");
+        this.write("A=M");
+        this.write("D=M");
+        this.write("@" + label);
+        this.write("D;JGT");
+    }
+
+    public void writeFunction(String functionName, int numVars) {
+
+    }
+
+    public void writeCall(String functionName, int numArgs) {
+
+    }
+
+    public void writeReturn() {
 
     }
 

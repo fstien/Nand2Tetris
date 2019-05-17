@@ -39,13 +39,32 @@ public class Parser {
         return false;
     }
 
+    private String replace(String str) {
+        return str.replace("\t", "");
+    }
+
+    private String cleanCommand(String line) {
+        String[] commentSplit = line.split("//");
+        String noComment = commentSplit[0];
+
+        String[] eSplit = noComment.split(" ");
+        String retString = eSplit[0] + " ";
+
+        for(int i = 1; i < eSplit.length; i++) {
+            retString = retString + replace(eSplit[i]) + " ";
+        }
+
+        String substring = retString.substring(0, retString.length() - 1);
+        return substring;
+    }
+
     private void PopulateList(Scanner file)
     {
         String currentLine;
         while (file.hasNextLine()) {
             currentLine = file.nextLine();
             if (this.lineIncludesCommand(currentLine)) {
-                commands.add(currentLine);
+                commands.add(cleanCommand(currentLine));
             }
         }
 
@@ -79,6 +98,23 @@ public class Parser {
             this.arg1 = cSplit[0];
             this.arg2 = null;
         }
+        else if(this.commandLength == 2) {
+            switch (cSplit[0]) {
+                case "label":
+                    this.commandType = "C_LABEL";
+                    break;
+                case "goto":
+                    this.commandType = "C_GOTO";
+                    break;
+                case "if-goto":
+                    this.commandType = "C_IFGOTO";
+                    break;
+                default:
+                    System.out.println("CommandType not found");
+            }
+            this.arg1 = cSplit[1];
+            this.arg2 = null;
+        }
         else if(this.commandLength == 3) {
             switch (cSplit[0]) {
                 case "push":
@@ -103,6 +139,9 @@ public class Parser {
     private String currentCommandString() {
         if (this.commandLength == 3) {
             return this.commandType + " " + this.arg1 + " " + this.arg2.toString();
+        }
+        else if(this.commandLength == 2) {
+            return this.commandType + " " + this.arg1;
         }
         else if(this.commandLength == 1) {
             return this.commandType + " " + this.arg1;

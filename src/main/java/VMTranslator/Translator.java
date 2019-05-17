@@ -2,6 +2,11 @@ package VMTranslator;
 
 
 public class Translator {
+
+    private static void writeCommand() {
+
+    }
+
     public static void main(String[] args) {
 
         Parser p = new Parser(args[0]);
@@ -10,25 +15,34 @@ public class Translator {
 
         CodeWriter cw = new CodeWriter(args[0]);
 
-        if(p.commandType == "C_ARITHMETIC") {
-            cw.writeArithmetic(p.arg1);
-        }
-        else {
-            cw.writePushPop(p.commandType, p.arg1, p.arg2);
-        }
+        writeCommand(p, cw);
 
         while(p.hasMoreCommands()) {
             p.advance();
-
-            if(p.commandType == "C_ARITHMETIC") {
-                cw.writeArithmetic(p.arg1);
-            }
-            else {
-                cw.writePushPop(p.commandType, p.arg1, p.arg2);
-            }
+            writeCommand(p, cw);
         }
 
         cw.closeFile();
+    }
 
+    private static void writeCommand(Parser p, CodeWriter cw) {
+        if(p.commandType.equals("C_ARITHMETIC")) {
+            cw.writeArithmetic(p.arg1);
+        }
+        else if(p.commandType.equals("C_LABEL")) {
+            cw.writeLabel(p.arg1);
+        }
+        else if(p.commandType.equals("C_GOTO")) {
+            cw.writeGoto(p.arg1);
+        }
+        else if(p.commandType.equals("C_IFGOTO")) {
+            cw.writeIf(p.arg1);
+        }
+        else if(p.commandType.equals("C_PUSH") || p.commandType.equals("C_POP")) {
+            cw.writePushPop(p.commandType, p.arg1, p.arg2);
+        }
+        else {
+            System.out.println("Command type not found.");
+        }
     }
 }
