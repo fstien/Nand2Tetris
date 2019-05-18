@@ -11,7 +11,6 @@ public class CodeWriter {
 
     private int jumpCounter = 0;
     private Map<String, Integer> Pointers = new HashMap<>();
-    private Map<String, Integer> Segments = new HashMap<>();
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -20,7 +19,7 @@ public class CodeWriter {
 
         try {
             FW = new FileWriter(baseDir + extensionRemoved + ".asm");
-            this.initialise();
+            this.writeInit();
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -28,43 +27,16 @@ public class CodeWriter {
 
     public void writeInit() {
         // Write the bootstrap code
-    }
-
-    private void setPointer(String segment, int pointer, int address) {
-        Pointers.put(segment, pointer);
-
-        //Segments.put(segment, address);
-
-        this.write("@" + address);
-        this.write("D=A");
-        this.write("@" + pointer);
-        this.write("M=D");
-    }
-
-    private void initialise() {
-
         this.write("// INITIALISE");
+        this.write("@0");
+
 
         Pointers.put("SP", 0);
         Pointers.put("local", 1);
         Pointers.put("argument", 2);
         Pointers.put("pointer", 3);
-
         Pointers.put("this", 3);
         Pointers.put("that", 4);
-
-        /*
-        this.setPointer("SP", 0, 256);
-        this.setPointer("local",1, 300);
-        this.setPointer("argument",2, 400);
-        // this.setPointer("this",3, 3000);
-        // this.setPointer("that",4, 3010);
-
-        Segments.put("constant", 0);
-        Segments.put("temp", 5);
-        Segments.put("pointer", 3);
-        Segments.put("static", 16);
-        */
     }
 
     private String repVariables(String line) {
@@ -280,15 +252,15 @@ public class CodeWriter {
     }
 
     public void writeFunction(String functionName, int numVars) {
-
+        this.writeComment("// function " + functionName + " " + numVars);
     }
 
     public void writeCall(String functionName, int numArgs) {
-
+        this.writeComment("// call " + functionName + " " + numArgs);
     }
 
     public void writeReturn() {
-
+        this.writeComment("// return");
     }
 
     private void writeInfLoop() {

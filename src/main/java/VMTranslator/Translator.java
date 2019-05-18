@@ -41,6 +41,15 @@ public class Translator {
         else if(p.commandType.equals("C_PUSH") || p.commandType.equals("C_POP")) {
             cw.writePushPop(p.commandType, p.arg1, p.arg2);
         }
+        else if(p.commandType.equals("C_FUNCTION")) {
+            cw.writeFunction(p.arg1, p.arg2);
+        }
+        else if(p.commandType.equals("C_RETURN")) {
+            cw.writeReturn();
+        }
+        else if(p.commandType.equals("C_CALL")) {
+            cw.writeCall(p.arg1, p.arg2);
+        }
         else {
             System.out.println("Command type not found.");
         }

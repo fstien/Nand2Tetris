@@ -31,6 +31,7 @@ public class Parser {
     private boolean lineIncludesCommand(String line) {
         if (line.length() > 0) {
             if (line.contains("//")) {
+                if(line.equals("//")) return false;
                 String[] split = line.split("//");
                 return split[0].length() > 0;
             }
@@ -94,9 +95,15 @@ public class Parser {
         this.commandLength = cSplit.length;
 
         if (this.commandLength == 1) {
-            this.commandType = "C_ARITHMETIC";
-            this.arg1 = cSplit[0];
-            this.arg2 = null;
+            if (cSplit[0].equals("return")) {
+                this.commandType = "C_RETURN";
+                this.arg1 = cSplit[0];
+                this.arg2 = null;
+            } else {
+                this.commandType = "C_ARITHMETIC";
+                this.arg1 = cSplit[0];
+                this.arg2 = null;
+            }
         }
         else if(this.commandLength == 2) {
             switch (cSplit[0]) {
@@ -124,6 +131,16 @@ public class Parser {
                     break;
                 case "pop":
                     this.commandType = "C_POP";
+                    this.arg1 = cSplit[1];
+                    this.arg2 = Integer.parseInt(cSplit[2]);
+                    break;
+                case "function":
+                    this.commandType = "C_FUNCTION";
+                    this.arg1 = cSplit[1];
+                    this.arg2 = Integer.parseInt(cSplit[2]);
+                    break;
+                case "call":
+                    this.commandType = "C_CALL";
                     this.arg1 = cSplit[1];
                     this.arg2 = Integer.parseInt(cSplit[2]);
                     break;
