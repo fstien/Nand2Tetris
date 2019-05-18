@@ -12,11 +12,18 @@ M=M+1
 M=M-1
 A=M
 D=M
+@R14
+M=D
 @3
-D=M
+D=A
 @0
 D=D+A
-A=D
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push constant 3040
 @3040
@@ -31,11 +38,18 @@ M=M+1
 M=M-1
 A=M
 D=M
+@R14
+M=D
 @3
-D=M
+D=A
 @1
 D=D+A
-A=D
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push constant 32
 @32
@@ -50,11 +64,18 @@ M=M+1
 M=M-1
 A=M
 D=M
-@null
+@R14
+M=D
+@3
 D=M
 @2
 D=D+A
-A=D
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push constant 46
 @46
@@ -69,15 +90,22 @@ M=M+1
 M=M-1
 A=M
 D=M
-@null
+@R14
+M=D
+@4
 D=M
 @6
 D=D+A
-A=D
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push pointer 0
 @3
-D=M
+D=A
 @0
 D=D+A
 A=D
@@ -89,7 +117,7 @@ M=D
 M=M+1
 // push pointer 1
 @3
-D=M
+D=A
 @1
 D=D+A
 A=D
@@ -110,7 +138,7 @@ M=D+M
 @0
 M=M-1
 // push this 2
-@null
+@3
 D=M
 @2
 D=D+A
@@ -132,7 +160,7 @@ M=M-D
 @0
 M=M-1
 // push that 6
-@null
+@4
 D=M
 @6
 D=D+A

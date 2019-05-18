@@ -1,18 +1,10 @@
 // INITIALISE
-@256
-D=A
-@0
-M=D
-@300
-D=A
-@1
-M=D
-@400
-D=A
-@2
-M=D
 // push argument 1
-@401
+@2
+D=M
+@1
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -24,7 +16,18 @@ M=M+1
 M=M-1
 A=M
 D=M
-@4
+@R14
+M=D
+@3
+D=A
+@1
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push constant 0
 @0
@@ -39,7 +42,18 @@ M=M+1
 M=M-1
 A=M
 D=M
-@1
+@R14
+M=D
+@4
+D=M
+@0
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push constant 1
 @1
@@ -54,10 +68,25 @@ M=M+1
 M=M-1
 A=M
 D=M
-@2
+@R14
+M=D
+@4
+D=M
+@1
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push argument 0
-@400
+@2
+D=M
+@0
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -87,12 +116,27 @@ M=M-1
 M=M-1
 A=M
 D=M
-@400
+@R14
+M=D
+@2
+D=M
+@0
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // label MAIN_LOOP_START
 (MAIN_LOOP_START)
 // push argument 0
-@400
+@2
+D=M
+@0
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -112,7 +156,11 @@ D;JGT
 // label COMPUTE_ELEMENT
 (COMPUTE_ELEMENT)
 // push that 0
-@1
+@4
+D=M
+@0
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -120,7 +168,11 @@ M=D
 @0
 M=M+1
 // push that 1
-@2
+@4
+D=M
+@1
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -142,10 +194,25 @@ M=M-1
 M=M-1
 A=M
 D=M
-@3
+@R14
+M=D
+@4
+D=M
+@2
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push pointer 1
-@4
+@3
+D=A
+@1
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -175,10 +242,25 @@ M=M-1
 M=M-1
 A=M
 D=M
-@4
+@R14
+M=D
+@3
+D=A
+@1
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // push argument 0
-@400
+@2
+D=M
+@0
+D=D+A
+A=D
 D=M
 @0
 A=M
@@ -208,7 +290,18 @@ M=M-1
 M=M-1
 A=M
 D=M
-@400
+@R14
+M=D
+@2
+D=M
+@0
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
 M=D
 // goto MAIN_LOOP_START
 @MAIN_LOOP_START

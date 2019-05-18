@@ -12,7 +12,6 @@ public class CodeWriter {
     private int jumpCounter = 0;
     private Map<String, Integer> Pointers = new HashMap<>();
     private Map<String, Integer> Segments = new HashMap<>();
-    private int lastPush;
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -50,6 +49,9 @@ public class CodeWriter {
         Pointers.put("local", 1);
         Pointers.put("argument", 2);
         Pointers.put("pointer", 3);
+
+        Pointers.put("this", 3);
+        Pointers.put("that", 4);
 
         /*
         this.setPointer("SP", 0, 256);
@@ -187,12 +189,8 @@ public class CodeWriter {
 
     public void writePushPop(String commandType, String arg1, int arg2) {
 
-        // int address = Segments.get(arg1) + arg2;
-
         if(commandType.equals("C_PUSH")) {
             this.writeComment("// push " + arg1 + " " + arg2);
-
-            // this.write("@" + address);
 
             if(arg1.equals("constant")) {
                 this.write("@" + arg2);
@@ -201,7 +199,12 @@ public class CodeWriter {
             }
             else {
                 this.write("@" + Pointers.get(arg1));
-                this.write("D=M");
+                if(arg1.equals("pointer")) {
+                    this.write("D=A");
+                }
+                else {
+                    this.write("D=M");
+                }
                 this.write("@" + arg2);
                 this.write("D=D+A");
                 this.write("A=D");
@@ -214,44 +217,41 @@ public class CodeWriter {
             this.write("M=D");
             this.write("@SP");
             this.write("M=M+1");
-
-            this.lastPush = arg2;
         }
         else if(commandType.equals("C_POP")) {
             this.writeComment("// pop " + arg1 + " " + arg2);
 
+            // Pop the value from the stack
             this.write("@SP");
             this.write("M=M-1");
             this.write("A=M");
             this.write("D=M");
 
-            // this.write("@" + address);
+            // store it in R14
+            this.write("@R14");
+            this.write("M=D");
 
-            if(arg1.equals("constant")) {
-                this.write("@" + arg2);
+            // Get the address in which to pop
+            this.write("@" + Pointers.get(arg1));
+            if(arg1.equals("pointer")) {
+                this.write("D=A");
             }
             else {
-                // USE A TEMP VARIABLE TO NOW OVERWRITE D
-
-                this.write("@" + Pointers.get(arg1));
                 this.write("D=M");
-                this.write("@" + arg2);
-                this.write("D=D+A");
-                this.write("A=D");
             }
+            this.write("@" + arg2);
+            this.write("D=D+A");
 
-            // this.write("M=D");
+            // Store it in R15
+            this.write("@R15");
+            this.write("M=D");
 
-            /*
-            if(arg1.equals("pointer") && arg2 == 0) {
-                Segments.put("this", this.lastPush);
-            }
-
-            if(arg1.equals("pointer") && arg2 == 1) {
-                Segments.put("that", this.lastPush);
-            }
-            */
-
+            // Move the content of R14 into the address pointed by R15
+            this.write("@R14");
+            this.write("D=M");
+            this.write("@R15");
+            this.write("A=M");
+            this.write("M=D");
         }
         else {
             System.out.println("commandType not found.");
