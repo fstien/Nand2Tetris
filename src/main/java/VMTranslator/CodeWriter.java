@@ -11,6 +11,7 @@ public class CodeWriter {
 
     private int jumpCounter = 0;
     private Map<String, Integer> Pointers = new HashMap<>();
+    private int lineNum = 0;
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -27,9 +28,14 @@ public class CodeWriter {
 
     public void writeInit() {
         // Write the bootstrap code
-        this.write("// INITIALISE");
-        this.write("@0");
 
+        /*
+        this.write("// INITIALISE");
+        this.write("@256");
+        this.write("D=A");
+        this.write("@0");
+        this.write("M=D");
+        */
 
         Pointers.put("SP", 0);
         Pointers.put("local", 1);
@@ -57,6 +63,7 @@ public class CodeWriter {
     private void write(String stringToWrite) {
         stringToWrite = this.repVariables(stringToWrite);
         this.appendToFile(stringToWrite);
+        this.lineNum++;
     }
 
     private void writeComment(String comment) {
@@ -253,6 +260,10 @@ public class CodeWriter {
 
     public void writeFunction(String functionName, int numVars) {
         this.writeComment("// function " + functionName + " " + numVars);
+        this.write("(" + functionName + ")");
+        for(int i = 0; i < numVars; i++) {
+            this.writePushPop("C_PUSH", "constant", 0);
+        }
     }
 
     public void writeCall(String functionName, int numArgs) {
@@ -261,6 +272,82 @@ public class CodeWriter {
 
     public void writeReturn() {
         this.writeComment("// return");
+
+        // pop the returned value into R12
+        this.write("@SP");
+        this.write("A=M");
+        this.write("A=A-1");
+        this.write("D=M");
+        this.write("@R12");
+        this.write("M=D");
+
+        // Save frame pointer to temp R15
+        this.write("@local");
+        this.write("D=M");
+        this.write("@R15");
+        this.write("M=D");
+
+        // Save return address to R14
+        this.movePointer(-5);
+        this.write("D=M");
+        this.write("@R14");
+        this.write("M=D");
+
+        // Push the returned value R12 into arg[0]
+        this.write("@R12");
+        this.write("D=M");
+        this.write("@argument");
+        this.write("A=M");
+        this.write("M=D");
+
+        // SP = ARG+1
+        this.write("@argument");
+        this.write("D=M");
+        this.write("D=D+1");
+        this.write("@SP");
+        this.write("M=D");
+
+        // Restore that, this, argument and local to caller
+        this.write("@R15");
+        this.write("A=M");
+        this.write("A=A-1");
+        // this.write("pop pointer 1");
+        this.writePushPop("C_POP", "pointer", 1);
+
+        this.write("A=A-1");
+        // this.write("pop pointer 0");
+        this.writePushPop("C_POP", "pointer", 0);
+
+        this.write("A=A-1");
+        this.write("D=M");
+        this.write("@argument");
+        this.write("M=D");
+
+        this.write("@R15");
+        this.write("A=M");
+        this.movePointer(-4);
+        this.write("D=M");
+        this.write("@local");
+        this.write("M=D");
+
+        // goto return address
+        // this.write("@9");
+        // this.write("0;JMP");
+    }
+
+    private void movePointer(int pos) {
+        this.writeComment("// Moving: " + pos + " pos");
+
+        if(pos > 0) {
+            for(int i = 0; i < pos; i++) {
+                this.write("M=M+1");
+            }
+        }
+        else if(pos < 0){
+            for(int i = 0; i < -pos; i++) {
+                this.write("M=M-1");
+            }
+        }
     }
 
     private void writeInfLoop() {

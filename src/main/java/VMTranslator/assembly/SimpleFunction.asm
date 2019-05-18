@@ -1,4 +1,21 @@
-// INITIALISE
+// function SimpleFunction.test 2
+(SimpleFunction.test)
+// push constant 0
+@0
+D=A
+@0
+A=M
+M=D
+@0
+M=M+1
+// push constant 0
+@0
+D=A
+@0
+A=M
+M=D
+@0
+M=M+1
 // push local 0
 @1
 D=M
@@ -83,6 +100,90 @@ A=A-1
 M=M-D
 @0
 M=M-1
+// return
+@0
+A=M
+A=A-1
+D=M
+@R12
+M=D
+@1
+D=M
+@R15
+M=D
+// Moving: -5 pos
+M=M-1
+M=M-1
+M=M-1
+M=M-1
+M=M-1
+D=M
+@R14
+M=D
+@R12
+D=M
+@2
+A=M
+M=D
+@2
+D=M
+D=D+1
+@0
+M=D
+@R15
+A=M
+A=A-1
+// pop pointer 1
+@0
+M=M-1
+A=M
+D=M
+@R14
+M=D
+@3
+D=A
+@1
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
+M=D
+A=A-1
+// pop pointer 0
+@0
+M=M-1
+A=M
+D=M
+@R14
+M=D
+@3
+D=A
+@0
+D=D+A
+@R15
+M=D
+@R14
+D=M
+@R15
+A=M
+M=D
+A=A-1
+D=M
+@2
+M=D
+@R15
+A=M
+// Moving: -4 pos
+M=M-1
+M=M-1
+M=M-1
+M=M-1
+D=M
+@1
+M=D
 (END)
 @END
 0;JMP
