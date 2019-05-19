@@ -14,14 +14,14 @@
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5763732">
+    <splitter split-orientation="horizontal" split-proportion="0.6630336">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="587">
-                  <caret line="295" column="12" lean-forward="true" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
+                <state relative-caret-position="500">
+                  <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1841#1842#0" expanded="true" />
@@ -89,7 +89,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/SimpleFunction.vm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="289">
+                <state relative-caret-position="323">
                   <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
                 </state>
               </provider>
@@ -98,8 +98,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1303">
-                  <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+                <state relative-caret-position="631">
+                  <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
                 </state>
               </provider>
             </entry>
@@ -117,9 +117,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>add</find>
-      <find>sub</find>
-      <find>SP</find>
       <find>==</find>
       <find>push</find>
       <find>510</find>
@@ -147,6 +144,9 @@
       <find>@0</find>
       <find>this</find>
       <find>@12</find>
+      <find>not</find>
+      <find>15</find>
+      <find>NegNotSetup</find>
     </findStrings>
     <replaceStrings>
       <replace>@SP</replace>
@@ -431,7 +431,7 @@
       <updated>1557435784205</updated>
       <workItem from="1557435785418" duration="50837000" />
       <workItem from="1557849172442" duration="675000" />
-      <workItem from="1557999455503" duration="32618000" />
+      <workItem from="1557999455503" duration="36813000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1557516691294</created>
@@ -497,7 +497,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="84130000" />
+    <option name="totallyTimeSpent" value="88325000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -837,13 +837,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/SimpleFunction.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/BasicLoop.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -858,17 +851,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/SimpleFunction.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1303">
-          <caret line="105" column="5" lean-forward="true" selection-start-line="105" selection-start-column="5" selection-end-line="105" selection-end-column="5" />
+        <state relative-caret-position="631">
+          <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="587">
-          <caret line="295" column="12" lean-forward="true" selection-start-line="295" selection-start-column="12" selection-end-line="295" selection-end-column="12" />
+        <state relative-caret-position="500">
+          <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1841#1842#0" expanded="true" />

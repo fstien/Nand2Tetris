@@ -111,12 +111,14 @@ M=D
 D=M
 @R15
 M=D
+@1
+A=M
 // Moving: -5 pos
-M=M-1
-M=M-1
-M=M-1
-M=M-1
-M=M-1
+A=A-1
+A=A-1
+A=A-1
+A=A-1
+A=A-1
 D=M
 @R14
 M=D
@@ -132,44 +134,24 @@ D=D+1
 M=D
 @R15
 A=M
+// Moving: -1 pos
 A=A-1
-// pop pointer 1
-@0
-M=M-1
-A=M
 D=M
-@R14
+@4
 M=D
-@3
-D=A
-@1
-D=D+A
-@R15
-M=D
-@R14
-D=M
 @R15
 A=M
-M=D
+// Moving: -2 pos
 A=A-1
-// pop pointer 0
-@0
-M=M-1
-A=M
+A=A-1
 D=M
-@R14
-M=D
 @3
-D=A
-@0
-D=D+A
-@R15
 M=D
-@R14
-D=M
 @R15
 A=M
-M=D
+// Moving: -3 pos
+A=A-1
+A=A-1
 A=A-1
 D=M
 @2
@@ -177,10 +159,10 @@ M=D
 @R15
 A=M
 // Moving: -4 pos
-M=M-1
-M=M-1
-M=M-1
-M=M-1
+A=A-1
+A=A-1
+A=A-1
+A=A-1
 D=M
 @1
 M=D

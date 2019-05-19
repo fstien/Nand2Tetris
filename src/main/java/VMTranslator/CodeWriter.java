@@ -288,6 +288,8 @@ public class CodeWriter {
         this.write("M=D");
 
         // Save return address to R14
+        this.write("@local");
+        this.write("A=M");
         this.movePointer(-5);
         this.write("D=M");
         this.write("@R14");
@@ -307,18 +309,25 @@ public class CodeWriter {
         this.write("@SP");
         this.write("M=D");
 
+
         // Restore that, this, argument and local to caller
         this.write("@R15");
         this.write("A=M");
-        this.write("A=A-1");
-        // this.write("pop pointer 1");
-        this.writePushPop("C_POP", "pointer", 1);
+        this.movePointer(-1);
+        this.write("D=M");
+        this.write("@that");
+        this.write("M=D");
 
-        this.write("A=A-1");
-        // this.write("pop pointer 0");
-        this.writePushPop("C_POP", "pointer", 0);
+        this.write("@R15");
+        this.write("A=M");
+        this.movePointer(-2);
+        this.write("D=M");
+        this.write("@this");
+        this.write("M=D");
 
-        this.write("A=A-1");
+        this.write("@R15");
+        this.write("A=M");
+        this.movePointer(-3);
         this.write("D=M");
         this.write("@argument");
         this.write("M=D");
@@ -340,12 +349,12 @@ public class CodeWriter {
 
         if(pos > 0) {
             for(int i = 0; i < pos; i++) {
-                this.write("M=M+1");
+                this.write("A=A+1");
             }
         }
         else if(pos < 0){
             for(int i = 0; i < -pos; i++) {
-                this.write("M=M-1");
+                this.write("A=A-1");
             }
         }
     }
