@@ -268,6 +268,53 @@ public class CodeWriter {
 
     public void writeCall(String functionName, int numArgs) {
         this.writeComment("// call " + functionName + " " + numArgs);
+
+        // push return-address (10 is placeholder)
+        this.write("@" + (this.lineNum + 10));
+        this.write("D=A");
+        this.write("@SP");
+        this.write("A=M");
+        this.write("M=D");
+        this.write("@SP");
+        this.write("M=M+1");
+
+        // push local
+        this.write("@local");
+        this.write("D=M");
+        this.write("@SP");
+        this.write("A=M");
+        this.write("M=D");
+        this.write("@SP");
+        this.write("M=M+1");
+
+        // push argument
+        this.write("@argument");
+        this.write("D=M");
+        this.write("@SP");
+        this.write("A=M");
+        this.write("M=D");
+        this.write("@SP");
+        this.write("M=M+1");
+
+        // push this
+        this.write("@this");
+        this.write("D=M");
+        this.write("@SP");
+        this.write("A=M");
+        this.write("M=D");
+        this.write("@SP");
+        this.write("M=M+1");
+
+        // push that
+        this.write("@that");
+        this.write("D=M");
+        this.write("@SP");
+        this.write("A=M");
+        this.write("M=D");
+        this.write("@SP");
+        this.write("M=M+1");
+
+
     }
 
     public void writeReturn() {

@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bca7c78a-4d04-4816-b757-cc53ea74ccec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -13,15 +13,18 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FavoritesManager">
+    <favorites_list name="VMTranslator" />
+  </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6630336">
+    <splitter split-orientation="horizontal" split-proportion="0.5702403">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="500">
-                  <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
+                <state relative-caret-position="467">
+                  <caret line="272" column="44" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1841#1842#0" expanded="true" />
@@ -32,28 +35,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/BasicLoop.vm">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="22" lean-forward="true" selection-start-line="22" selection-end-line="22" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/FibonacciSeries.vm">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="27" column="26" lean-forward="true" selection-start-line="27" selection-start-column="26" selection-end-line="27" selection-end-column="26" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="595">
-                  <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
+                <state relative-caret-position="1010">
+                  <caret line="147" column="61" lean-forward="true" selection-start-line="147" selection-start-column="61" selection-end-line="147" selection-end-column="61" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1146#1147#0" expanded="true" />
@@ -80,27 +65,21 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="187">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                <state relative-caret-position="527">
+                  <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/SimpleFunction.vm">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="323">
-                  <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
-                </state>
-              </provider>
+            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/NestedCall.vm">
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
           <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm">
+            <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="631">
-                  <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
-                </state>
+                <state relative-caret-position="-551" />
               </provider>
             </entry>
           </file>
@@ -117,7 +96,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>==</find>
       <find>push</find>
       <find>510</find>
       <find>C_ARITHMETIC</find>
@@ -147,6 +125,7 @@
       <find>not</find>
       <find>15</find>
       <find>NegNotSetup</find>
+      <find>case</find>
     </findStrings>
     <replaceStrings>
       <replace>@SP</replace>
@@ -318,7 +297,7 @@
     <configuration name="Translator" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="VMTranslator.Translator" />
       <module name="VMTranslator" />
-      <option name="PROGRAM_PARAMETERS" value="SimpleFunction.vm" />
+      <option name="PROGRAM_PARAMETERS" value="NestedCall.vm" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="VMTranslator.*" />
@@ -431,7 +410,7 @@
       <updated>1557435784205</updated>
       <workItem from="1557435785418" duration="50837000" />
       <workItem from="1557849172442" duration="675000" />
-      <workItem from="1557999455503" duration="36813000" />
+      <workItem from="1557999455503" duration="39883000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1557516691294</created>
@@ -497,7 +476,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="88325000" />
+    <option name="totallyTimeSpent" value="91395000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -512,11 +491,11 @@
     <frame x="861" y="23" width="1699" height="1370" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15932408" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.15932408" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
-      <window_info id="Favorites" order="4" side_tool="true" />
+      <window_info id="Favorites" order="4" sideWeight="0.5007825" side_tool="true" weight="0.15932408" />
       <window_info anchor="bottom" id="Duplicate detector" weight="0.32942098" />
       <window_info anchor="bottom" id="Docker" order="0" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="1" />
@@ -536,8 +515,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-      <window_info anchor="right" id="Debug" order="7" weight="0.28009367" />
-      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.17622209" />
+      <window_info anchor="right" id="Debug" order="7" weight="0.28002414" />
+      <window_info anchor="right" id="Run" order="8" visible="true" weight="0.16958359" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -561,12 +540,6 @@
           <line>172</line>
           <properties />
           <option name="timeStamp" value="20" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java</url>
-          <line>11</line>
-          <properties />
-          <option name="timeStamp" value="47" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -803,40 +776,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="33" column="51" selection-start-line="33" selection-start-column="51" selection-end-line="33" selection-end-column="51" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1146#1147#0" expanded="true" />
-            <element signature="e#1185#1186#0" expanded="true" />
-            <element signature="e#2433#2434#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2912">
-          <caret line="185" column="3" lean-forward="true" selection-start-line="185" selection-start-column="3" selection-end-line="185" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/Sys.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/BasicLoop.vm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="374">
@@ -851,24 +790,66 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="121">
+          <caret line="69" column="5" lean-forward="true" selection-start-line="69" selection-start-column="5" selection-end-line="69" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/SimpleFunction.vm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="323">
+        <state relative-caret-position="306">
           <caret line="16" lean-forward="true" selection-start-line="16" selection-end-line="16" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/SimpleFunction.asm">
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="631">
-          <caret line="99" column="5" lean-forward="true" selection-start-line="99" selection-start-column="5" selection-end-line="99" selection-end-column="5" />
+        <state relative-caret-position="1010">
+          <caret line="147" column="61" lean-forward="true" selection-start-line="147" selection-start-column="61" selection-end-line="147" selection-end-column="61" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1146#1147#0" expanded="true" />
+            <element signature="e#1185#1186#0" expanded="true" />
+            <element signature="e#2433#2434#0" expanded="true" />
+          </folding>
         </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-9">
+          <caret line="33" column="3" lean-forward="true" selection-start-line="33" selection-start-column="3" selection-end-line="33" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/Sys.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="833">
+          <caret line="43" column="12" lean-forward="true" selection-start-line="43" selection-start-column="12" selection-end-line="43" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/NestedCall.vm">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-551" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="500">
-          <caret line="340" lean-forward="true" selection-start-line="340" selection-end-line="340" />
+        <state relative-caret-position="467">
+          <caret line="272" column="44" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1841#1842#0" expanded="true" />
