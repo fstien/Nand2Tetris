@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="bca7c78a-4d04-4816-b757-cc53ea74ccec" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/Sys.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,8 +23,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="467">
-                  <caret line="272" column="44" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
+                <state relative-caret-position="530">
+                  <caret line="272" column="43" selection-start-line="272" selection-start-column="43" selection-end-line="272" selection-end-column="43" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1841#1842#0" expanded="true" />
@@ -65,8 +65,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="527">
-                  <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
+                <state relative-caret-position="136">
+                  <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
                 </state>
               </provider>
             </entry>
@@ -79,7 +79,9 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-551" />
+                <state relative-caret-position="3003">
+                  <caret line="692" column="1" selection-start-line="692" selection-end-line="692" selection-end-column="1" />
+                </state>
               </provider>
             </entry>
           </file>
@@ -96,14 +98,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>push</find>
-      <find>510</find>
-      <find>C_ARITHMETIC</find>
-      <find>writeArithmetic</find>
-      <find>&gt;=</find>
-      <find>replace</find>
-      <find>LOOP_START</find>
-      <find>JMP</find>
       <find>initialise</find>
       <find>jumpCounter</find>
       <find>COMPUTE_ELEMENT</find>
@@ -126,6 +120,14 @@
       <find>15</find>
       <find>NegNotSetup</find>
       <find>case</find>
+      <find>numArgs</find>
+      <find>123</find>
+      <find>write(&quot;(</find>
+      <find>(</find>
+      <find>writeLabel</find>
+      <find>&quot;(&quot;</find>
+      <find>&quot;(</find>
+      <find>write</find>
     </findStrings>
     <replaceStrings>
       <replace>@SP</replace>
@@ -410,7 +412,7 @@
       <updated>1557435784205</updated>
       <workItem from="1557435785418" duration="50837000" />
       <workItem from="1557849172442" duration="675000" />
-      <workItem from="1557999455503" duration="39883000" />
+      <workItem from="1557999455503" duration="45756000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1557516691294</created>
@@ -476,7 +478,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="91395000" />
+    <option name="totallyTimeSpent" value="97268000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -491,7 +493,7 @@
     <frame x="861" y="23" width="1699" height="1370" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.15932408" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49921754" visible="true" weight="0.15932408" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -516,7 +518,7 @@
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="right" id="Debug" order="7" weight="0.28002414" />
-      <window_info anchor="right" id="Run" order="8" visible="true" weight="0.16958359" />
+      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.16958359" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -540,6 +542,12 @@
           <line>172</line>
           <properties />
           <option name="timeStamp" value="20" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java</url>
+          <line>269</line>
+          <properties />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -831,25 +839,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="30" column="9" lean-forward="true" selection-start-line="30" selection-start-column="9" selection-end-line="30" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/NestedCall.vm">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/src.zip!/java/lang/System.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-12741">
+          <caret line="58" column="19" selection-start-line="58" selection-start-column="19" selection-end-line="58" selection-end-column="19" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" lean-forward="true" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-551" />
+        <state relative-caret-position="3003">
+          <caret line="692" column="1" selection-start-line="692" selection-end-line="692" selection-end-column="1" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="272" column="44" selection-start-line="272" selection-start-column="44" selection-end-line="272" selection-end-column="44" />
+        <state relative-caret-position="530">
+          <caret line="272" column="43" selection-start-line="272" selection-start-column="43" selection-end-line="272" selection-end-column="43" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1841#1842#0" expanded="true" />

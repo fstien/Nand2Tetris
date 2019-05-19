@@ -53,7 +53,7 @@ D=M
 A=M
 M=D
 // call Sys.main 0
-@59
+@95
 D=A
 @0
 A=M
@@ -88,6 +88,18 @@ A=M
 M=D
 @0
 M=M+1
+@0
+D=M
+@5
+D=D-A
+@2
+M=D
+@0
+D=M
+@1
+M=D
+@Sys.main
+0;JMP
 // pop temp 1
 @0
 M=M-1
@@ -106,7 +118,6 @@ D=M
 @R15
 A=M
 M=D
-// label LOOP
 (LOOP)
 // goto LOOP
 @LOOP
@@ -292,7 +303,7 @@ M=D
 @0
 M=M+1
 // call Sys.add12 1
-@277
+@323
 D=A
 @0
 A=M
@@ -327,6 +338,18 @@ A=M
 M=D
 @0
 M=M+1
+@0
+D=M
+@6
+D=D-A
+@2
+M=D
+@0
+D=M
+@1
+M=D
+@Sys.add12
+0;JMP
 // pop temp 0
 @0
 M=M-1
@@ -511,6 +534,9 @@ A=A-1
 D=M
 @1
 M=D
+@R14
+A=M
+0;JMP
 // function Sys.add12 0
 (Sys.add12)
 // push constant 4002
@@ -661,6 +687,9 @@ A=A-1
 D=M
 @1
 M=D
+@R14
+A=M
+0;JMP
 (END)
 @END
 0;JMP

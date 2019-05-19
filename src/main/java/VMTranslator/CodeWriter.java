@@ -61,9 +61,9 @@ public class CodeWriter {
     }
 
     private void write(String stringToWrite) {
+        this.lineNum++;
         stringToWrite = this.repVariables(stringToWrite);
         this.appendToFile(stringToWrite);
-        this.lineNum++;
     }
 
     private void writeComment(String comment) {
@@ -97,7 +97,7 @@ public class CodeWriter {
         this.write("D=D-1");
         this.write("A=D");
         this.write("M=M-1");
-        this.write("(DI" + jumpCounter + ")");
+        this.writeLabel("DI" + jumpCounter);
         this.PcDecrement();
     }
 
@@ -238,8 +238,8 @@ public class CodeWriter {
     }
 
     public void writeLabel(String label) {
-        this.writeComment("// label " + label);
         this.write("(" + label + ")");
+        this.lineNum--;
     }
 
     public void writeGoto(String label) {
@@ -260,7 +260,7 @@ public class CodeWriter {
 
     public void writeFunction(String functionName, int numVars) {
         this.writeComment("// function " + functionName + " " + numVars);
-        this.write("(" + functionName + ")");
+        this.writeLabel(functionName);
         for(int i = 0; i < numVars; i++) {
             this.writePushPop("C_PUSH", "constant", 0);
         }
@@ -270,7 +270,7 @@ public class CodeWriter {
         this.writeComment("// call " + functionName + " " + numArgs);
 
         // push return-address (10 is placeholder)
-        this.write("@" + (this.lineNum + 10));
+        this.write("@" + (this.lineNum + 47));
         this.write("D=A");
         this.write("@SP");
         this.write("A=M");
@@ -314,7 +314,23 @@ public class CodeWriter {
         this.write("@SP");
         this.write("M=M+1");
 
+        // reposition argument to SP-n-5
+        this.write("@SP");
+        this.write("D=M");
+        this.write("@" + (numArgs + 5));
+        this.write("D=D-A");
+        this.write("@argument");
+        this.write("M=D");
 
+        // LCL = SP
+        this.write("@SP");
+        this.write("D=M");
+        this.write("@local");
+        this.write("M=D");
+
+        // transfer control
+        this.write("@" + functionName);
+        this.write("0;JMP");
     }
 
     public void writeReturn() {
@@ -387,8 +403,9 @@ public class CodeWriter {
         this.write("M=D");
 
         // goto return address
-        // this.write("@9");
-        // this.write("0;JMP");
+        this.write("@R14");
+        this.write("A=M");
+        this.write("0;JMP");
     }
 
     private void movePointer(int pos) {
@@ -407,7 +424,7 @@ public class CodeWriter {
     }
 
     private void writeInfLoop() {
-        this.write("(END)");
+        this.writeLabel("END");
         this.write("@END");
         this.write("0;JMP");
     }
