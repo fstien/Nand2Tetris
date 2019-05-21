@@ -1,10 +1,10 @@
 package VMTranslator;
 
-import java.awt.Point;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+
 
 public class CodeWriter {
 
@@ -28,15 +28,17 @@ public class CodeWriter {
     }
 
     public void writeInit() {
-        // Write the bootstrap code
 
-        /*
-        this.write("// INITIALISE");
+        // Write the bootstrap code
+        this.writeComment("// INITIALISE");
         this.write("@256");
         this.write("D=A");
         this.write("@0");
         this.write("M=D");
-        */
+
+        // call Sys.init
+        this.writeCall("Sys.init", 0);
+
 
         Pointers.put("SP", 0);
         Pointers.put("local", 1);
@@ -135,7 +137,6 @@ public class CodeWriter {
                 this.NegNotSetup();
                 this.write("M=!M");
                 break;
-
 
             case "and":
                 this.PCMin2Min1InD();

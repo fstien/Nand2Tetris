@@ -2,9 +2,12 @@ package VMTranslator;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FilenameFilter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import static java.lang.Math.*;
 
 public class Parser {
 
@@ -17,12 +20,34 @@ public class Parser {
     public String arg1;
     public Integer arg2;
 
-    public Parser(String fileName) {
+    public Parser(String addrName) {
         try {
             String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/bytecode/";
-            Scanner file = new Scanner(new File(baseDir + fileName));
-            this.PopulateList(file);
-            file.close();
+
+            String path = baseDir + addrName;
+
+            File f = new File(path + ".vm");
+            File d = new File(path);
+
+            if(f.isFile()) {
+                Scanner file = new Scanner(f);
+                this.PopulateList(file);
+                file.close();
+            }
+            else if(d.isDirectory()) {
+                File[] listOfFiles = d.listFiles((dir, name) -> name.toLowerCase().endsWith(".vm"));
+
+                for (File vmF : listOfFiles) {
+                    System.out.println("File " + vmF.getName());
+                    Scanner file = new Scanner(vmF);
+                    this.PopulateList(file);
+                    file.close();
+                }
+            }
+            else {
+                System.out.println("Code not found");
+            }
+
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         }
