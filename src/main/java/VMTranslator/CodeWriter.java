@@ -113,7 +113,7 @@ public class CodeWriter {
     }
 
     public void writeArithmetic(String arg1) {
-        this.write("// " + arg1);
+        this.writeComment("// " + arg1);
 
         switch (arg1) {
             case "add":

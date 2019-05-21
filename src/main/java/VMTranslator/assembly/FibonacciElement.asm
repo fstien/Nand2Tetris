@@ -94,7 +94,7 @@ M=M-1
 (DI0)
 @0
 M=M-1
-// if-goto IF_TRUE
+// if-goto IF_TRUE  (! WHERE THE ISSUE IS ON 3rd RECURSION)
 @0
 M=M-1
 A=M
@@ -218,7 +218,7 @@ M=M-D
 @0
 M=M-1
 // call Main.fibonacci 1
-@246
+@244
 D=A
 @0
 A=M
@@ -296,7 +296,7 @@ M=M-D
 @0
 M=M-1
 // call Main.fibonacci 1
-@321
+@318
 D=A
 @0
 A=M
@@ -433,7 +433,7 @@ M=D
 @0
 M=M+1
 // call Main.fibonacci 1
-@448
+@444
 D=A
 @0
 A=M

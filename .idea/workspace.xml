@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bca7c78a-4d04-4816-b757-cc53ea74ccec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/FibonacciElement.cmp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/FibonacciElement.out" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/FibonacciElement.tst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/FibonacciElementVME.tst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/Main.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/Sys.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/CodeWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/CodeWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/Translator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -34,8 +23,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="563">
-                  <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+                <state relative-caret-position="1149">
+                  <caret line="177" column="39" lean-forward="true" selection-start-line="177" selection-start-column="39" selection-end-line="177" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#1927#1928#0" expanded="true" />
@@ -79,10 +68,10 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="731">
+                <state relative-caret-position="697">
                   <caret line="40" selection-start-line="40" selection-end-line="40" />
                 </state>
               </provider>
@@ -101,11 +90,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="-102">
-                  <caret lean-forward="true" />
+                <state relative-caret-position="943">
+                  <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
                 </state>
               </provider>
             </entry>
@@ -141,8 +130,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>Jump</find>
-      <find>Segments</find>
       <find>lastPush</find>
       <find>pop that</find>
       <find>pop</find>
@@ -171,6 +158,8 @@
       <find>commandIndex</find>
       <find>f</find>
       <find>writeCall</find>
+      <find>//</find>
+      <find>IF_TRUE</find>
     </findStrings>
     <replaceStrings>
       <replace>@SP</replace>
@@ -201,6 +190,7 @@
         <option value="$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java" />
         <option value="$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java" />
         <option value="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm" />
       </list>
     </option>
   </component>
@@ -468,7 +458,7 @@
       <workItem from="1557999455503" duration="47536000" />
       <workItem from="1558360471093" duration="551000" />
       <workItem from="1558363721339" duration="4000" />
-      <workItem from="1558416127654" duration="7531000" />
+      <workItem from="1558416127654" duration="9860000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1557516691294</created>
@@ -534,7 +524,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="107134000" />
+    <option name="totallyTimeSpent" value="109463000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -558,7 +548,7 @@
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3286385" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.32472613" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.35289514" />
+      <window_info anchor="bottom" id="Terminal" order="4" weight="0.35289514" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32942098" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32785603" />
@@ -573,8 +563,8 @@
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="4" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
-      <window_info anchor="right" id="Debug" order="7" visible="true" weight="0.279646" />
-      <window_info anchor="right" id="Run" order="8" weight="0.16946903" />
+      <window_info anchor="right" id="Debug" order="7" weight="0.279646" />
+      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.16946903" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -876,13 +866,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement/Main.vm">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/NestedCall.vm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/NestedCall.asm">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="612">
@@ -897,13 +880,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
           <caret line="8" column="45" lean-forward="true" selection-start-line="8" selection-start-column="45" selection-end-line="8" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102">
-          <caret lean-forward="true" />
         </state>
       </provider>
     </entry>
@@ -934,20 +910,34 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
+        <state relative-caret-position="697">
           <caret line="40" selection-start-line="40" selection-end-line="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/bytecode/NestedCall.vm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="9" column="13" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="563">
-          <caret line="51" column="46" lean-forward="true" selection-start-line="51" selection-start-column="46" selection-end-line="51" selection-end-column="46" />
+        <state relative-caret-position="1149">
+          <caret line="177" column="39" lean-forward="true" selection-start-line="177" selection-start-column="39" selection-end-line="177" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1927#1928#0" expanded="true" />
             <element signature="e#1969#1970#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/assembly/FibonacciElement.asm">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="943">
+          <caret line="96" column="59" selection-start-line="96" selection-start-column="59" selection-end-line="96" selection-end-column="59" />
         </state>
       </provider>
     </entry>
