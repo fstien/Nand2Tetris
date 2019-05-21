@@ -1,5 +1,6 @@
 package VMTranslator;
 
+import java.awt.Point;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
@@ -43,6 +44,7 @@ public class CodeWriter {
         Pointers.put("pointer", 3);
         Pointers.put("this", 3);
         Pointers.put("that", 4);
+        Pointers.put("temp", 5);
     }
 
     private String repVariables(String line) {
@@ -212,7 +214,7 @@ public class CodeWriter {
 
             // Get the address in which to pop
             this.write("@" + Pointers.get(arg1));
-            if(arg1.equals("pointer")) {
+            if(arg1.equals("pointer") || arg1.equals("temp")) {
                 this.write("D=A");
             }
             else {

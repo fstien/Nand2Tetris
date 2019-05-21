@@ -107,8 +107,8 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@5
+D=A
 @1
 D=D+A
 @R15
@@ -357,8 +357,8 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@5
+D=A
 @0
 D=D+A
 @R15
