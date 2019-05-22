@@ -1,4 +1,3 @@
-// INITIALISE
 // push constant 0
 @0
 D=A
@@ -25,7 +24,6 @@ D=M
 @R15
 A=M
 M=D
-// label LOOP_START
 (LOOP_START)
 // push argument 0
 @2
@@ -145,7 +143,7 @@ M=M-1
 A=M
 D=M
 @LOOP_START
-D;JGT
+D;JNE
 // push local 0
 @1
 D=M

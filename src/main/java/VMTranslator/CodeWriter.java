@@ -258,7 +258,7 @@ public class CodeWriter {
         this.write("A=M");
         this.write("D=M");
         this.write("@" + label);
-        this.write("D;JGT");
+        this.write("D;JNE");
     }
 
     public void writeFunction(String functionName, int numVars) {

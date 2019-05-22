@@ -94,13 +94,13 @@ M=M-1
 (DI0)
 @0
 M=M-1
-// if-goto IF_TRUE  (! WHERE THE ISSUE IS ON 3rd RECURSION)
+// if-goto IF_TRUE
 @0
 M=M-1
 A=M
 D=M
 @IF_TRUE
-D;JGT
+D;JNE
 // goto IF_FALSE
 @IF_FALSE
 0;JMP
