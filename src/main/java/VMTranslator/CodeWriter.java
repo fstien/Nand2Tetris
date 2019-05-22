@@ -428,8 +428,7 @@ public class CodeWriter {
 
     private void writeInfLoop() {
         this.writeLabel("END");
-        this.write("@END");
-        this.write("0;JMP");
+        this.writeGoto("END");
     }
 
     public void closeFile() {
