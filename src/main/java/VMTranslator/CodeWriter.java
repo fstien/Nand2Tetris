@@ -3,6 +3,7 @@ package VMTranslator;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 
 
@@ -13,6 +14,8 @@ public class CodeWriter {
     private int jumpCounter = 0;
     private Map<String, Integer> Pointers = new HashMap<>();
     private int lineNum = 0;
+
+    private Map<String, Integer> StaticOffset = new LinkedHashMap<>();
 
     public CodeWriter(String fileName) {
         String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/projects/VMTranslator/src/main/java/VMTranslator/assembly/";
@@ -28,6 +31,13 @@ public class CodeWriter {
     }
 
     public void writeInit() {
+        Pointers.put("SP", 0);
+        Pointers.put("local", 1);
+        Pointers.put("argument", 2);
+        Pointers.put("pointer", 3);
+        Pointers.put("this", 3);
+        Pointers.put("that", 4);
+        Pointers.put("temp", 5);
 
         // Write the bootstrap code
         this.writeComment("// INITIALISE");
@@ -38,15 +48,6 @@ public class CodeWriter {
 
         // call Sys.init
         this.writeCall("Sys.init", 0);
-
-
-        Pointers.put("SP", 0);
-        Pointers.put("local", 1);
-        Pointers.put("argument", 2);
-        Pointers.put("pointer", 3);
-        Pointers.put("this", 3);
-        Pointers.put("that", 4);
-        Pointers.put("temp", 5);
     }
 
     private String repVariables(String line) {
@@ -169,7 +170,8 @@ public class CodeWriter {
         this.jumpCounter++;
     }
 
-    public void writePushPop(String commandType, String arg1, int arg2) {
+
+    public void writePushPop(String commandType, String arg1, int arg2, String className) {
 
         if(commandType.equals("C_PUSH")) {
             this.writeComment("// push " + arg1 + " " + arg2);
@@ -180,13 +182,34 @@ public class CodeWriter {
                 this.write("D=A");
             }
             else {
-                this.write("@" + Pointers.get(arg1));
-                if(arg1.equals("pointer")) {
+
+                if(arg1.equals("static")) {
+                    this.write("@" + className);
                     this.write("D=A");
+
+                    Integer shiftStatics = 0;
+                    Boolean stop = false;
+                    for(String currentKey : this.StaticOffset.keySet()){
+                        if(!currentKey.equals(className) || stop) {
+                            shiftStatics += this.StaticOffset.get(currentKey) - 1;
+                            stop = true;
+                        }
+                    }
+
+                    if(shiftStatics > 0) {
+                        this.write("@" + (shiftStatics-1));
+                        this.write("D=D+A");
+                    }
                 }
                 else {
-                    this.write("D=M");
+                    this.write("@" + Pointers.get(arg1));
+                    if (arg1.equals("pointer")) {
+                        this.write("D=A");
+                    } else {
+                        this.write("D=M");
+                    }
                 }
+
                 this.write("@" + arg2);
                 this.write("D=D+A");
                 this.write("A=D");
@@ -203,6 +226,15 @@ public class CodeWriter {
         else if(commandType.equals("C_POP")) {
             this.writeComment("// pop " + arg1 + " " + arg2);
 
+            if(arg1.equals("static")) {
+                if(this.StaticOffset.containsKey(className)) {
+                    this.StaticOffset.put(className, this.StaticOffset.get(className) + 1);
+                }
+                else {
+                    this.StaticOffset.put(className, 1);
+                }
+            }
+
             // Pop the value from the stack
             this.write("@SP");
             this.write("M=M-1");
@@ -214,12 +246,29 @@ public class CodeWriter {
             this.write("M=D");
 
             // Get the address in which to pop
-            this.write("@" + Pointers.get(arg1));
-            if(arg1.equals("pointer") || arg1.equals("temp")) {
+            if(arg1.equals("static")) {
+                this.write("@" + className);
                 this.write("D=A");
+
+                Integer addedStatics = 0;
+                for(String currentKey : this.StaticOffset.keySet()){
+                    if(!currentKey.equals(className)) {
+                        addedStatics += this.StaticOffset.get(currentKey);
+                    }
+                }
+                if(addedStatics > 0) {
+                    this.write("@" + (addedStatics - 1));
+                    this.write("D=D+A");
+                }
             }
             else {
-                this.write("D=M");
+                this.write("@" + Pointers.get(arg1));
+                if(arg1.equals("pointer") || arg1.equals("temp")) {
+                    this.write("D=A");
+                }
+                else {
+                    this.write("D=M");
+                }
             }
             this.write("@" + arg2);
             this.write("D=D+A");
@@ -263,16 +312,17 @@ public class CodeWriter {
 
     public void writeFunction(String functionName, int numVars) {
         this.writeComment("// function " + functionName + " " + numVars);
+
         this.writeLabel(functionName);
         for(int i = 0; i < numVars; i++) {
-            this.writePushPop("C_PUSH", "constant", 0);
+            this.writePushPop("C_PUSH", "constant", 0, "");
         }
     }
 
     public void writeCall(String functionName, int numArgs) {
         this.writeComment("// call " + functionName + " " + numArgs);
 
-        // push return-address (10 is placeholder)
+        // push return-address
         this.write("@" + (this.lineNum + 47));
         this.write("D=A");
         this.write("@SP");

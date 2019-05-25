@@ -6,48 +6,48 @@ M=D
 // call Sys.init 0
 @51
 D=A
-@SP
+@0
 A=M
 M=D
-@SP
+@0
 M=M+1
-@local
+@1
 D=M
-@SP
+@0
 A=M
 M=D
-@SP
+@0
 M=M+1
-@argument
+@2
 D=M
-@SP
+@0
 A=M
 M=D
-@SP
+@0
 M=M+1
-@this
+@3
 D=M
-@SP
+@0
 A=M
 M=D
-@SP
+@0
 M=M+1
-@that
+@4
 D=M
-@SP
+@0
 A=M
 M=D
-@SP
+@0
 M=M+1
-@SP
+@0
 D=M
 @5
 D=D-A
-@argument
+@2
 M=D
-@SP
+@0
 D=M
-@local
+@1
 M=D
 @Sys.init
 0;JMP
@@ -72,8 +72,8 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@Class1
+D=A
 @0
 D=D+A
 @R15
@@ -102,8 +102,8 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@Class1
+D=A
 @1
 D=D+A
 @R15
@@ -193,8 +193,8 @@ A=M
 // function Class1.get 0
 (Class1.get)
 // push static 0
-@null
-D=M
+@Class1
+D=A
 @0
 D=D+A
 A=D
@@ -205,8 +205,8 @@ M=D
 @0
 M=M+1
 // push static 1
-@null
-D=M
+@Class1
+D=A
 @1
 D=D+A
 A=D
@@ -582,8 +582,10 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@Class2
+D=A
+@1
+D=D+A
 @0
 D=D+A
 @R15
@@ -612,8 +614,10 @@ A=M
 D=M
 @R14
 M=D
-@null
-D=M
+@Class2
+D=A
+@1
+D=D+A
 @1
 D=D+A
 @R15
@@ -703,8 +707,10 @@ A=M
 // function Class2.get 0
 (Class2.get)
 // push static 0
-@null
-D=M
+@Class2
+D=A
+@1
+D=D+A
 @0
 D=D+A
 A=D
@@ -715,8 +721,10 @@ M=D
 @0
 M=M+1
 // push static 1
-@null
-D=M
+@Class2
+D=A
+@1
+D=D+A
 @1
 D=D+A
 A=D

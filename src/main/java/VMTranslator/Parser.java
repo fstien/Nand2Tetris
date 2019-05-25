@@ -12,6 +12,7 @@ import static java.lang.Math.*;
 public class Parser {
 
     private List<String> commands = new ArrayList<>();
+    private List<String> classNames = new ArrayList<>();
 
     private int commandIndex = 0;
 
@@ -19,6 +20,8 @@ public class Parser {
     public String commandType;
     public String arg1;
     public Integer arg2;
+    public String className;
+
 
     public Parser(String addrName) {
         try {
@@ -31,7 +34,7 @@ public class Parser {
 
             if(f.isFile()) {
                 Scanner file = new Scanner(f);
-                this.PopulateList(file);
+                this.PopulateList(file, f.getName());
                 file.close();
             }
             else if(d.isDirectory()) {
@@ -40,7 +43,7 @@ public class Parser {
                 for (File vmF : listOfFiles) {
                     System.out.println("File " + vmF.getName());
                     Scanner file = new Scanner(vmF);
-                    this.PopulateList(file);
+                    this.PopulateList(file, vmF.getName());
                     file.close();
                 }
             }
@@ -84,13 +87,14 @@ public class Parser {
         return substring;
     }
 
-    private void PopulateList(Scanner file)
+    private void PopulateList(Scanner file, String fileName)
     {
         String currentLine;
         while (file.hasNextLine()) {
             currentLine = file.nextLine();
             if (this.lineIncludesCommand(currentLine)) {
                 commands.add(cleanCommand(currentLine));
+                classNames.add(fileName.substring(0, fileName.lastIndexOf('.')));
             }
         }
 
@@ -114,6 +118,8 @@ public class Parser {
     }
 
     private void parseCommand() {
+        this.className = this.classNames.get(commandIndex);
+
         String command = this.commands.get(commandIndex);
 
         String[] cSplit = command.split(" ");

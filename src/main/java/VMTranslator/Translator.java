@@ -35,7 +35,7 @@ public class Translator {
             cw.writeIf(p.arg1);
         }
         else if(p.commandType.equals("C_PUSH") || p.commandType.equals("C_POP")) {
-            cw.writePushPop(p.commandType, p.arg1, p.arg2);
+            cw.writePushPop(p.commandType, p.arg1, p.arg2, p.className);
         }
         else if(p.commandType.equals("C_FUNCTION")) {
             cw.writeFunction(p.arg1, p.arg2);
