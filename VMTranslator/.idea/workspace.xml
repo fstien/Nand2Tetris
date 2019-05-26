@@ -1,16 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="bca7c78a-4d04-4816-b757-cc53ea74ccec" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/Parser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/Translator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/StaticsTest.asm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/VMTranslator/assembly/StaticsTest.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/CodeWriter.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/CodeWriter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/Parser.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/Parser.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/VMTranslator/Translator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/VMTranslator/Translator.class" afterDir="false" />
-    </list>
+    <list default="true" id="bca7c78a-4d04-4816-b757-cc53ea74ccec" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -29,8 +20,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="200">
-                  <caret line="185" selection-start-line="185" selection-end-line="185" />
+                <state relative-caret-position="608">
+                  <caret line="209" column="21" lean-forward="true" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -444,7 +435,7 @@
       <workItem from="1558542826233" duration="8823000" />
       <workItem from="1558709163038" duration="57000" />
       <workItem from="1558728049695" duration="5000" />
-      <workItem from="1558728074481" duration="13226000" />
+      <workItem from="1558728074481" duration="13948000" />
     </task>
     <task id="LOCAL-00001" summary="second">
       <created>1557516691294</created>
@@ -510,7 +501,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="131829000" />
+    <option name="totallyTimeSpent" value="132551000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -534,7 +525,7 @@
       <window_info anchor="bottom" id="Database Changes" order="1" />
       <window_info anchor="bottom" id="Version Control" order="2" weight="0.3286385" />
       <window_info anchor="bottom" id="Messages" order="3" weight="0.32447225" />
-      <window_info anchor="bottom" id="Terminal" order="4" weight="0.21422987" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="4" visible="true" weight="0.21422987" />
       <window_info anchor="bottom" id="Event Log" order="5" side_tool="true" weight="0.32942098" />
       <window_info anchor="bottom" id="Message" order="6" />
       <window_info anchor="bottom" id="Find" order="7" weight="0.32785603" />
@@ -550,7 +541,7 @@
       <window_info anchor="right" id="Ant Build" order="5" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="6" weight="0.25" />
       <window_info anchor="right" id="Debug" order="7" weight="0.27948165" />
-      <window_info active="true" anchor="right" id="Run" order="8" visible="true" weight="0.19049676" />
+      <window_info anchor="right" id="Run" order="8" weight="0.19049676" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -902,8 +893,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/VMTranslator/CodeWriter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="185" selection-start-line="185" selection-end-line="185" />
+        <state relative-caret-position="608">
+          <caret line="209" column="21" lean-forward="true" selection-start-line="209" selection-start-column="21" selection-end-line="209" selection-end-column="21" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
