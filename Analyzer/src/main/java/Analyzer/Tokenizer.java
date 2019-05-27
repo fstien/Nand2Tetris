@@ -41,7 +41,6 @@ public class Tokenizer {
         }
 
 
-
         try {
             this.FW = new FileWriter(baseDir  + "/Out/" + fileName + ".xml");
             this.writeXml();
@@ -88,13 +87,6 @@ public class Tokenizer {
         return line.trim();
     }
 
-    private void parseTokensFromLine(String line) {
-        String[] spaceSplit = line.split(" ");
-        for(String tokStr : spaceSplit) {
-            this.parseTokensFromString(tokStr);
-        }
-    }
-
     private void splitLine(String line) {
         String[] spaceSplit = line.split(" ");
 
@@ -124,6 +116,12 @@ public class Tokenizer {
         }
 
     }
+
+    private void parseTokens() {
+        // populate the list of tokens
+    }
+
+
 
     private void parseTokensFromString(String tokString) {
 
