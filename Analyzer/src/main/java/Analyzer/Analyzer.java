@@ -9,10 +9,12 @@ public class Analyzer {
     public static void main(String[] args) throws FileNotFoundException {
         // arg[1] is either a filename or a directory
 
+
+        Tokenizer tk = new Tokenizer(args[0]);
+
         // if arg[1] is a filename
         System.out.println(args[0]);
 
-        Tokenizer tk = new Tokenizer(args[0] + ".jack");
 
         // foreach file
             // create tokenizer
