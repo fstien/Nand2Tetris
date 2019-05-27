@@ -8,4 +8,8 @@ public class Token<T> {
         this.Type = type;
         this.Value = value;
     }
+
+    public String toString() {
+        return "<" + this.Type.toString() + "> " + this.Value.toString() + " </" + this.Type.toString() + ">";
+    }
 }

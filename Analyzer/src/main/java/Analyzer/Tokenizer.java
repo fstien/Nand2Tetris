@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Scanner;
 import java.util.regex.Pattern;
 
+@SuppressWarnings("unchecked")
 public class Tokenizer {
 
     private String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
@@ -17,13 +18,15 @@ public class Tokenizer {
     private List<String> lines = new ArrayList<>();
     private List<Token> tokens = new ArrayList<Token>();
 
+    private List<String> splitList = new ArrayList<>();
+
     private List<String> keywords = Arrays.asList("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
 
-    private List<String> symbols = Arrays.asList("{", "}", "(", ")", "[", "]", ".", "," , ";" , "+" , "-" , "*" , "/" , "&" , ", " , "<" , ">" , "=" , "~");
+    private List<Character> symbols = Arrays.asList('{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', ',', '<', '>', '=', '~');
 
     private FileWriter FW;
 
-    public Tokenizer(String fileName) throws FileNotFoundException {
+    public Tokenizer(String fileName) {
         try {
             File f = new File(baseDir + "/Jack/" + fileName + ".jack");
             Scanner file = new Scanner(f);
@@ -34,8 +37,10 @@ public class Tokenizer {
         }
 
         for(String line : this.lines) {
-            this.parseTokensFromLine(line);
+            this.splitLine(line);
         }
+
+
 
         try {
             this.FW = new FileWriter(baseDir  + "/Out/" + fileName + ".xml");
@@ -90,6 +95,36 @@ public class Tokenizer {
         }
     }
 
+    private void splitLine(String line) {
+        String[] spaceSplit = line.split(" ");
+
+        for(String spaceStr : spaceSplit) {
+            String strAdd = "";
+
+            for (int i = 0; i < spaceStr.length(); i++){
+                char c = spaceStr.charAt(i);
+
+                if(this.symbols.contains(c)) {
+
+                    if(strAdd.length() > 0) {
+                        this.splitList.add(strAdd);
+                        strAdd = "";
+                    }
+
+                    this.splitList.add("" + c);
+                    continue;
+                }
+
+                strAdd += c;
+            }
+
+            if(strAdd.length() > 0) {
+                this.splitList.add(strAdd);
+            }
+        }
+
+    }
+
     private void parseTokensFromString(String tokString) {
 
         if(Character.isDigit(tokString.charAt(0))) {
@@ -128,6 +163,9 @@ public class Tokenizer {
     private void writeXml() {
         this.appendToFile("<tokens>");
 
+        for(Token t : tokens) {
+            this.appendToFile(t.toString());
+        }
 
         this.appendToFile("</tokens>");
     }
