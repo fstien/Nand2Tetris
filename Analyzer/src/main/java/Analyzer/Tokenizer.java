@@ -16,8 +16,6 @@ import java.util.regex.Pattern;
 @SuppressWarnings("unchecked")
 public class Tokenizer {
 
-    private String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
-
     private List<String> lines = new ArrayList<>();
     private List<Token> tokens = new ArrayList<Token>();
 
@@ -29,7 +27,10 @@ public class Tokenizer {
 
     private FileWriter FW;
 
+    private boolean currentComment = false;
+
     public Tokenizer(String fileName) {
+        String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
         try {
             File f = new File(baseDir + "/Jack/" + fileName + ".jack");
             Scanner file = new Scanner(f);
@@ -46,7 +47,7 @@ public class Tokenizer {
         this.parseTokens();
 
         try {
-            this.FW = new FileWriter(baseDir  + "/Out/" + fileName + ".xml");
+            this.FW = new FileWriter(baseDir + "/Out/" + fileName + ".xml");
             this.writeXml();
             this.FW.close();
         } catch (IOException e) {
@@ -65,6 +66,14 @@ public class Tokenizer {
     }
 
     private boolean includesTokens(String line) {
+
+        if(line.contains("*/")) {
+            this.currentComment = false;
+            return false;
+        }
+
+        if(this.currentComment) return false;
+
         if (line.length() > 0) {
             if (line.contains("//")) {
                 if(line.equals("//")) return false;
@@ -73,6 +82,8 @@ public class Tokenizer {
                 return split[0].length() > 0;
             }
             else if(line.contains("/**")) {
+                this.currentComment = true;
+
                 if(line.equals("/**")) return false;
                 String[] split = line.split(Pattern.quote("/**"));
                 if(split[0].trim().length() == 0) return false;
@@ -131,7 +142,6 @@ public class Tokenizer {
     }
 
     private void parseTokens() {
-        // populate the list of tokens
         for(String tokStr : this.splitList) {
             this.tokens.add(this.TokenParse(tokStr));
         }
@@ -141,7 +151,6 @@ public class Tokenizer {
 
         if(keywords.stream().anyMatch(str -> str.equals(tokStr)))
             return new Token(TokenType.keyword, tokStr);
-
 
         if(tokStr.length() == 1 && symbols.contains(tokStr.charAt(0)))
             return new Token(TokenType.symbol, tokStr.charAt(0));
