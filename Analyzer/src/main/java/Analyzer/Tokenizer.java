@@ -1,5 +1,7 @@
 package Analyzer;
 
+import com.sun.corba.se.impl.oa.toa.TOA;
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -8,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("unchecked")
@@ -22,7 +25,7 @@ public class Tokenizer {
 
     private List<String> keywords = Arrays.asList("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
 
-    private List<Character> symbols = Arrays.asList('{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', ',', '<', '>', '=', '~');
+    private List<Character> symbols = Arrays.asList('{', '}', '(', ')', '[', ']', '.', ',', ';', '+', '-', '*', '/', '&', '|', ',', '<', '>', '=', '~');
 
     private FileWriter FW;
 
@@ -40,6 +43,7 @@ public class Tokenizer {
             this.splitLine(line);
         }
 
+        this.parseTokens();
 
         try {
             this.FW = new FileWriter(baseDir  + "/Out/" + fileName + ".xml");
@@ -88,7 +92,7 @@ public class Tokenizer {
     }
 
     private void splitLine(String line) {
-        String[] spaceSplit = line.split(" ");
+        List<String> spaceSplit = this.lineSplit(line);
 
         for(String spaceStr : spaceSplit) {
             String strAdd = "";
@@ -117,46 +121,41 @@ public class Tokenizer {
 
     }
 
+    private List<String> lineSplit(String line) {
+        List<String> list = new ArrayList<String>();
+        Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(line);
+        while (m.find())
+            list.add(m.group(1));
+
+        return list;
+    }
+
     private void parseTokens() {
         // populate the list of tokens
-    }
-
-
-
-    private void parseTokensFromString(String tokString) {
-
-        if(Character.isDigit(tokString.charAt(0))) {
-            this.tokens.add(new Token(TokenType.intConstant, Integer.parseInt(tokString)));
-            return;
-        }
-
-        if(tokString.charAt(0) == '"') {
-            this.tokens.add(new Token(TokenType.stringConstant, tokString));
-            return;
-        }
-
-        String currentString = "";
-        for (int i = 0; i < tokString.length(); i++) {
-            char c = tokString.charAt(i);
-            currentString += c;
-
-            String finalCurrentString = currentString;
-            if(keywords.stream().anyMatch(str -> str.equals(finalCurrentString))) {
-                this.tokens.add(new Token(TokenType.keyword, finalCurrentString));
-                currentString = "";
-            }
-            else if(symbols.contains(c)) {
-                this.tokens.add(new Token(TokenType.symbol, c));
-                currentString = "";
-            }
-
-        }
-        // push the currentString as an identifier if length > 0
-        if (currentString.length() > 0) {
-            this.tokens.add(new Token(TokenType.identifier, currentString));
+        for(String tokStr : this.splitList) {
+            this.tokens.add(this.TokenParse(tokStr));
         }
     }
 
+    private Token TokenParse(String tokStr) {
+
+        if(keywords.stream().anyMatch(str -> str.equals(tokStr)))
+            return new Token(TokenType.keyword, tokStr);
+
+
+        if(tokStr.length() == 1 && symbols.contains(tokStr.charAt(0)))
+            return new Token(TokenType.symbol, tokStr.charAt(0));
+
+
+        if(Character.isDigit(tokStr.charAt(0)))
+            return new Token(TokenType.integerConstant, Integer.parseInt(tokStr));
+
+        if(tokStr.charAt(0) == '"')
+            return new Token(TokenType.stringConstant, tokStr.replace("\"", ""));
+
+        return new Token(TokenType.identifier, tokStr);
+
+    }
 
     private void writeXml() {
         this.appendToFile("<tokens>");

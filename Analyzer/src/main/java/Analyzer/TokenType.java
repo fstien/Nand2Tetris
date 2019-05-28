@@ -4,6 +4,6 @@ enum TokenType {
     keyword,
     symbol,
     identifier,
-    intConstant,
+    integerConstant,
     stringConstant
 }
