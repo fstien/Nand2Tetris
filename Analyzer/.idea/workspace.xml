@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a8cce80-5f48-4350-9ff5-0c4b1deac703" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -48,19 +45,18 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.5551537">
+    <splitter split-orientation="horizontal" split-proportion="0.5979452">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="374">
-                  <caret line="22" selection-start-line="22" selection-end-line="22" />
+                <state relative-caret-position="408">
+                  <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#268#298#0" expanded="true" />
-                    <element signature="e#289#296#0" expanded="true" />
-                    <element signature="e#3883#3891#0" expanded="true" />
+                    <element signature="e#342#372#0" expanded="true" />
+                    <element signature="e#677#684#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -78,8 +74,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="945">
-                  <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
+                <state relative-caret-position="34">
+                  <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
                 </state>
               </provider>
             </entry>
@@ -88,10 +84,10 @@
       </split-first>
       <split-second>
         <leaf>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="221">
+                <state relative-caret-position="238">
                   <caret line="15" selection-start-line="15" selection-end-line="15" />
                 </state>
               </provider>
@@ -112,17 +108,17 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1394">
+                <state relative-caret-position="1310">
                   <caret line="82" column="16" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="16" />
                 </state>
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
+                <state relative-caret-position="646">
+                  <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
                 </state>
               </provider>
             </entry>
@@ -145,6 +141,9 @@
       <find>replace</find>
       <find>*</find>
       <find>&amp;</find>
+      <find>parseTokens</find>
+      <find>stringSplit</find>
+      <find>splitLine</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -170,10 +169,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="165" />
+    <option name="x" value="266" />
     <option name="y" value="23" />
-    <option name="width" value="2395" />
-    <option name="height" value="1371" />
+    <option name="width" value="2294" />
+    <option name="height" value="1370" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -351,18 +350,18 @@
       <option name="presentableId" value="Default" />
       <updated>1558899501742</updated>
       <workItem from="1558899504817" duration="226000" />
-      <workItem from="1558900003078" duration="29059000" />
+      <workItem from="1558900003078" duration="34418000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29285000" />
+    <option name="totallyTimeSpent" value="34644000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="165" y="23" width="2395" height="1371" extended-state="0" />
+    <frame x="266" y="23" width="2294" height="1370" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11262219" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11767318" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -377,7 +376,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.21501173" />
+      <window_info anchor="bottom" id="Terminal" order="10" weight="0.21517996" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="12" weight="0.32994527" />
       <window_info anchor="right" id="Coverage" sideWeight="0.500996" side_tool="true" weight="0.19422014" />
@@ -391,7 +390,7 @@
       <window_info anchor="right" id="sbt" order="7" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" id="Run" order="9" sideWeight="0.49900398" weight="0.1402465" />
-      <window_info active="true" anchor="right" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.19422014" />
+      <window_info active="true" anchor="right" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.23401421" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -405,12 +404,6 @@
           <line>15</line>
           <properties />
           <option name="timeStamp" value="12" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java</url>
-          <line>105</line>
-          <properties />
-          <option name="timeStamp" value="22" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -519,6 +512,27 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" lean-forward="true" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="646">
+          <caret line="38" lean-forward="true" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1310">
+          <caret line="82" column="16" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Token.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="425">
@@ -529,43 +543,21 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="945">
-          <caret line="91" column="20" lean-forward="true" selection-start-line="91" selection-start-column="20" selection-end-line="91" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1394">
-          <caret line="82" column="16" selection-start-line="82" selection-start-column="1" selection-end-line="82" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
+        <state relative-caret-position="238">
           <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" column="22" lean-forward="true" selection-start-line="20" selection-start-column="22" selection-end-line="20" selection-end-column="22" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="22" selection-start-line="22" selection-end-line="22" />
+        <state relative-caret-position="408">
+          <caret line="24" lean-forward="true" selection-start-line="24" selection-end-line="24" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#268#298#0" expanded="true" />
-            <element signature="e#289#296#0" expanded="true" />
-            <element signature="e#3883#3891#0" expanded="true" />
+            <element signature="e#342#372#0" expanded="true" />
+            <element signature="e#677#684#0" expanded="true" />
           </folding>
         </state>
       </provider>

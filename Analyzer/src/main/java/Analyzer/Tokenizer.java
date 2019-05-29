@@ -17,9 +17,11 @@ import java.util.regex.Pattern;
 public class Tokenizer {
 
     private List<String> lines = new ArrayList<>();
-    private List<Token> tokens = new ArrayList<Token>();
+    private List<String> stringSplit = new ArrayList<>();
+    private List<String> spaceSplit = new ArrayList<>();
+    private List<String> charSplit = new ArrayList<>();
 
-    private List<String> splitList = new ArrayList<>();
+    private List<Token> tokens = new ArrayList<Token>();
 
     private List<String> keywords = Arrays.asList("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
 
@@ -40,9 +42,11 @@ public class Tokenizer {
             e.printStackTrace();
         }
 
-        for(String line : this.lines) {
-            this.splitLine(line);
-        }
+        this.parseStringSplit();
+
+        this.parseSpaceSplit();
+
+        this.parseCharSplit();
 
         this.parseTokens();
 
@@ -66,6 +70,8 @@ public class Tokenizer {
     }
 
     private boolean includesTokens(String line) {
+
+        if(line.equals("\t")) return false;
 
         if(line.contains("*/")) {
             this.currentComment = false;
@@ -102,47 +108,76 @@ public class Tokenizer {
         return line.trim();
     }
 
-    private void splitLine(String line) {
-        List<String> spaceSplit = this.lineSplit(line);
+    private void parseStringSplit() {
+        for(String line : this.lines) {
+            this.stringSplitLine(line);
+        }
+    }
 
-        for(String spaceStr : spaceSplit) {
-            String strAdd = "";
+    private void stringSplitLine(String line) {
+        if(line.contains("\"")) {
+            String[] quoteSplit = line.split("((?<=\")|(?=\"))");
 
-            for (int i = 0; i < spaceStr.length(); i++){
-                char c = spaceStr.charAt(i);
+            boolean isString = quoteSplit.equals("\"");
 
-                if(this.symbols.contains(c)) {
-
-                    if(strAdd.length() > 0) {
-                        this.splitList.add(strAdd);
-                        strAdd = "";
-                    }
-
-                    this.splitList.add("" + c);
+            for(String str : quoteSplit) {
+                if(str.equals("\"")) {
+                    isString = !isString;
                     continue;
                 }
 
-                strAdd += c;
+                if(isString) this.stringSplit.add("\"" + str + "\"");
+                else this.stringSplit.add(str);
+            }
+        }
+        else {
+            this.stringSplit.add(line);
+        }
+    }
+
+    private void parseSpaceSplit() {
+        for(String lineOrString : stringSplit) {
+            if(lineOrString.charAt(0) == '"') this.spaceSplit.add(lineOrString);
+            else this.spaceSplit.addAll(Arrays.asList(lineOrString.split(" ")));
+        }
+    }
+
+
+    private void parseCharSplit() {
+        for(String line : this.spaceSplit) {
+            this.splitLine(line);
+        }
+    }
+
+    private void splitLine(String line) {
+
+        String strAdd = "";
+
+        for (int i = 0; i < line.length(); i++){
+            char c = line.charAt(i);
+
+            if(this.symbols.contains(c)) {
+
+                if(strAdd.length() > 0) {
+                    this.charSplit.add(strAdd);
+                    strAdd = "";
+                }
+
+                this.charSplit.add("" + c);
+                continue;
             }
 
-            if(strAdd.length() > 0) {
-                this.splitList.add(strAdd);
-            }
+            strAdd += c;
+        }
+
+        if(strAdd.length() > 0) {
+            this.charSplit.add(strAdd);
         }
 
     }
 
-    private List<String> lineSplit(String line) {
-        List<String> list = new ArrayList<String>();
-        Matcher m = Pattern.compile("([^\"]\\S*|\".+?\")\\s*").matcher(line);
-        while (m.find())
-            list.add(m.group(1));
-
-        return list;
-    }
-
     private void parseTokens() {
-        for(String tokStr : this.splitList) {
+        for(String tokStr : this.charSplit) {
             this.tokens.add(this.TokenParse(tokStr));
         }
     }
