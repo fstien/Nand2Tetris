@@ -1,7 +1,5 @@
 package Analyzer;
 
-import com.sun.corba.se.impl.oa.toa.TOA;
-
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,7 +8,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 @SuppressWarnings("unchecked")
@@ -22,6 +19,9 @@ public class Tokenizer {
     private List<String> charSplit = new ArrayList<>();
 
     private List<Token> tokens = new ArrayList<Token>();
+    private Token[] tokenArray;
+
+    private int index = 0;
 
     private List<String> keywords = Arrays.asList("class", "constructor", "function", "method", "field", "static", "var", "int", "char", "boolean", "void", "true", "false", "null", "this", "let", "do", "if", "else", "while", "return");
 
@@ -49,6 +49,9 @@ public class Tokenizer {
         this.parseCharSplit();
 
         this.parseTokens();
+
+        this.tokenArray = new Token[tokens.size()];
+        this.tokenArray = tokens.toArray(tokenArray);
 
         try {
             this.FW = new FileWriter(baseDir + "/Out/" + fileName + ".xml");
@@ -219,38 +222,61 @@ public class Tokenizer {
         }
     }
 
-    /*
     public boolean hasMoreTokens() {
-        return false;
+        return this.index + 1 < this.tokenArray.length;
     }
 
     public void advance() {
-
+        this.index++;
     }
 
-    public String tokenType() {
-
+    public TokenType tokenType() {
+        return this.tokenArray[index].Type;
     }
 
-    public String keyWord() {
-
+    public String keyWord() throws Exception {
+        if(this.tokenArray[index].Type == TokenType.keyword) {
+            return (String) this.tokenArray[index].Value;
+        }
+        else {
+            throw new Exception("Not a keyword");
+        }
     }
 
-    public char symbol() {
-
+    public char symbol() throws Exception {
+        if(this.tokenArray[index].Type == TokenType.symbol) {
+            return (char) this.tokenArray[index].Value;
+        }
+        else {
+            throw new Exception("Not a symbol");
+        }
     }
 
-    public String identifier() {
-
+    public String identifier() throws Exception {
+        if(this.tokenArray[index].Type == TokenType.identifier) {
+            return (String) this.tokenArray[index].Value;
+        }
+        else {
+            throw new Exception("Not an identifier");
+        }
     }
 
-    public Integer intVal() {
-
+    public Integer intVal() throws Exception {
+        if(this.tokenArray[index].Type == TokenType.integerConstant) {
+            return (Integer) this.tokenArray[index].Value;
+        }
+        else {
+            throw new Exception("Not an integerConstant");
+        }
     }
 
-    public String stringVal() {
-
+    public String stringVal() throws Exception {
+        if(this.tokenArray[index].Type == TokenType.stringConstant) {
+            return (String) this.tokenArray[index].Value;
+        }
+        else {
+            throw new Exception("Not an stringConstant");
+        }
     }
-    */
 
 }
