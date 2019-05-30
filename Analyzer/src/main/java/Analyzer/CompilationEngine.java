@@ -58,22 +58,72 @@ public class CompilationEngine {
 
         this.tk.advance();
 
-        /* Do some logic to determine whether to call CompileClassVarDec or CompileSubroutine
-        this.CompileClassVarDec();
-        this.CompileSubroutine();
-        */
+        while(this.VarDecOrSubroutine() != "}") {
+            if(this.VarDecOrSubroutine().equals("VarDec")) {
+                this.CompileClassVarDec();
+            }
+            else if(this.VarDecOrSubroutine().equals("Subroutine")) {
+                this.CompileSubroutine();
+            }
+        }
+
+        this.appendToFile("}");
 
         this.writeCloseNonTerm("class");
     }
 
-    private void CompileClassVarDec() {
-        // Compiles a static declaration or a field declaration.
+    private String VarDecOrSubroutine() throws Exception {
 
+        if(this.tk.tokenType() == TokenType.symbol && this.tk.symbol() == '}') {
+            return "}";
+        }
+
+        if(this.tk.keyword().equals("static") || this.tk.keyword().equals("field")) {
+            return "VarDec";
+        }
+        else if(this.tk.keyword().equals("constructor") || this.tk.keyword().equals("function") || this.tk.keyword().equals("method")) {
+            return "Subroutine";
+        }
+        else {
+            throw new Exception("Expecting a var dec or a subroutine.");
+        }
+    }
+
+    private void CompileClassVarDec() throws Exception {
+        // Compiles a static declaration or a field declaration.
+        this.writeOpenNonTerm("classVarDec");
+
+        this.writeTerm(this.tk.getToken());
+
+        this.tk.advance();
+        this.writeTerm(this.tk.getToken());
+
+        this.tk.advance();
+        this.writeTerm(this.tk.getToken());
+
+        this.tk.advance();
+
+        while(this.tk.symbol() == ',') {
+             this.writeTerm(this.tk.getToken());
+
+             this.tk.advance();
+             this.writeTerm(this.tk.getToken());
+
+             this.tk.advance();
+        }
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeCloseNonTerm("classVarDec");
     }
 
     private void CompileSubroutine() {
         // Compiles a complete method, function, or constructor.
+        this.writeOpenNonTerm("subroutineDec");
 
+
+        this.writeCloseNonTerm("subroutineDec");
     }
 
     private void compileParameterList() {
