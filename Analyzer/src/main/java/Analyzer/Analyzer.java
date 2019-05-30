@@ -3,16 +3,14 @@
  */
 package Analyzer;
 
-import java.io.FileNotFoundException;
+import java.io.IOException;
 
 public class Analyzer {
-    public static void main(String[] args) throws FileNotFoundException {
+    public static void main(String[] args) throws Exception {
         // arg[1] is either a filename or a directory
 
+        CompilationEngine ce = new CompilationEngine(args[0], args[0]);
 
-        Tokenizer tk = new Tokenizer(args[0]);
-
-        // if arg[1] is a filename
         System.out.println(args[0]);
 
 

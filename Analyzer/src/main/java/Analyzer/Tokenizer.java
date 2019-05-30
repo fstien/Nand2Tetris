@@ -54,7 +54,7 @@ public class Tokenizer {
         this.tokenArray = tokens.toArray(tokenArray);
 
         try {
-            this.FW = new FileWriter(baseDir + "/Out/" + fileName + ".xml");
+            this.FW = new FileWriter(baseDir + "/Out/" + fileName + "Tokens.xml");
             this.writeXml();
             this.FW.close();
         } catch (IOException e) {
@@ -230,11 +230,15 @@ public class Tokenizer {
         this.index++;
     }
 
+    public Token getToken() {
+        return this.tokenArray[index];
+    }
+
     public TokenType tokenType() {
         return this.tokenArray[index].Type;
     }
 
-    public String keyWord() throws Exception {
+    public String keyword() throws Exception {
         if(this.tokenArray[index].Type == TokenType.keyword) {
             return (String) this.tokenArray[index].Value;
         }
