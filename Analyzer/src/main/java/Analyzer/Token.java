@@ -28,4 +28,8 @@ public class Token<T> {
 
         return "<" + this.Type.toString() + "> " + value + " </" + this.Type.toString() + ">";
     }
+
+    public String StringValue() {
+        return this.Value.toString();
+    }
 }

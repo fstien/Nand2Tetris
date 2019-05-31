@@ -3,7 +3,6 @@
  */
 package Analyzer;
 
-import java.io.IOException;
 
 public class Analyzer {
     public static void main(String[] args) throws Exception {

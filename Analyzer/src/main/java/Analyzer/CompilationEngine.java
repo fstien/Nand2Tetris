@@ -103,7 +103,7 @@ public class CompilationEngine {
 
         this.tk.advance();
 
-        while(this.tk.symbol() == ',') {
+        while(this.tk.getToken().StringValue().equals(",")) {
              this.writeTerm(this.tk.getToken());
 
              this.tk.advance();
@@ -118,27 +118,80 @@ public class CompilationEngine {
         this.writeCloseNonTerm("classVarDec");
     }
 
-    private void CompileSubroutine() {
+    private void CompileSubroutine() throws Exception {
         // Compiles a complete method, function, or constructor.
         this.writeOpenNonTerm("subroutineDec");
 
+        switch (this.tk.keyword()) {
+            case "constructor":
+
+
+                break;
+            case "function":
+                this.writeTerm(this.tk.getToken());
+
+                this.tk.advance();
+                this.writeTerm(this.tk.getToken());
+
+                this.tk.advance();
+                this.writeTerm(this.tk.getToken());
+
+                this.tk.advance();
+                this.writeTerm(this.tk.getToken());
+
+                this.tk.advance();
+
+                this.compileParameterList();
+
+                this.writeTerm(this.tk.getToken());
+
+                this.tk.advance();
+                this.writeTerm(this.tk.getToken());
+
+                this.compileVarDec();
+
+                this.compileStatements();
+
+                this.writeTerm(this.tk.getToken());
+                break;
+
+            case "method":
+
+                break;
+            default:
+                throw new Exception("Subroutine not found.");
+        }
 
         this.writeCloseNonTerm("subroutineDec");
     }
 
     private void compileParameterList() {
         // Compiles a (possibly empty) parameter list, not including the enclosing ‘‘()’’.
+        this.writeOpenNonTerm("parameterList");
 
+        this.writeCloseNonTerm("parameterList");
     }
 
     private void compileVarDec() {
         // Compiles a var declaration.
+        this.writeOpenNonTerm("varDec");
 
+        while(this.tk.getToken().StringValue().equals("var")) {
+
+        }
+
+        this.writeCloseNonTerm("varDec");
     }
 
     private void compileStatements() {
         // Compiles a sequence of state- ments, not including the enclosing ‘‘{}’’.
+        this.writeOpenNonTerm("statements");
 
+        while(!this.tk.getToken().StringValue().equals("return")) {
+
+        }
+
+        this.writeCloseNonTerm("statements");
     }
 
     private void compileDo() {
