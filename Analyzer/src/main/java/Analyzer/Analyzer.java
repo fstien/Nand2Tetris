@@ -8,7 +8,7 @@ public class Analyzer {
     public static void main(String[] args) throws Exception {
         // arg[1] is either a filename or a directory
 
-        CompilationEngine ce = new CompilationEngine(args[0], args[0]);
+        CompilationEngine ce = new CompilationEngine(args[0]);
 
         System.out.println(args[0]);
 
