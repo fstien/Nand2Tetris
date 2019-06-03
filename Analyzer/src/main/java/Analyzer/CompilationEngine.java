@@ -117,9 +117,10 @@ public class CompilationEngine {
 
             this.compileStatements();
 
-            this.writeCloseNonTerm("subroutineBody");
-
             this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeCloseNonTerm("subroutineBody");
         }
         else {
             throw new Exception("Subroutine not found.");
@@ -181,10 +182,14 @@ public class CompilationEngine {
                 case "do":
                     this.compileDo();
                     break;
+                case "return":
+                    this.compileReturn();
                 default:
                     throw new Exception("Statement not found.");
             }
         }
+
+        if(this.tk.getToken().StringValue().equals("return")) this.compileReturn();
 
         this.writeCloseNonTerm("statements");
     }
@@ -192,6 +197,20 @@ public class CompilationEngine {
     private void compileDo() {
         // Compiles a do statement.
         this.writeOpenNonTerm("doStatement");
+
+        this.writeTerm(this.tk.getToken());
+
+        this.writeTokens(4);
+
+        this.tk.advance();
+
+        this.CompileExpressionList();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
 
         this.writeCloseNonTerm("doStatement");
     }
@@ -211,11 +230,6 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        this.compileExpression();
-
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
-
         this.writeCloseNonTerm("letStatement");
     }
 
@@ -228,26 +242,94 @@ public class CompilationEngine {
 
     private void compileReturn() {
         // Compiles a return statement.
+
+        this.writeOpenNonTerm("returnStatement");
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeCloseNonTerm("returnStatement");
     }
 
-    private void compileIf() {
+    private void compileIf() throws Exception {
         // Compiles an if statement, pos- sibly with a trailing else clause.
         this.writeOpenNonTerm("ifStatement");
+
+        this.writeTerm(this.tk.getToken());
+
+        this.tk.advance();
+        this.writeTerm(this.tk.getToken());
+
+        this.tk.advance();
+
+        this.compileExpression();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.compileStatements();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+
+        if(this.tk.getToken().StringValue().equals("else")) {
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+
+            this.tk.advance();
+
+            this.compileStatements();
+        }
 
         this.writeCloseNonTerm("ifStatement");
     }
 
     private void compileExpression() {
         // Compiles an expression.
+
+        this.writeOpenNonTerm("expression");
+
+        this.compileTerm();
+
+        while(this.tk.getToken().Type != TokenType.symbol
+            && !this.tk.getToken().StringValue().equals(";")) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+
+        this.writeCloseNonTerm("expression");
     }
 
     private void compileTerm() {
         // Compiles a term. This routine is faced with a slight difficulty when trying to decide between some of the alternative parsing rules. Specifically, if the current token is an identifier, the routine must distinguish between a variable, an array entry, and a subroutine call. A single look- ahead token, which may be one of ‘‘[’’, ‘‘(’’, or ‘‘.’’ suffices to dis- tinguish between the three possi- bilities. Any other token is not part of this term and should not be advanced over.
+        this.writeOpenNonTerm("term");
 
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeCloseNonTerm("term");
     }
 
     private void CompileExpressionList() {
         // Compiles a ( possibly empty) comma-separated list of expressions.
+        this.writeOpenNonTerm("expressionList");
+
+        while(!this.tk.getToken().StringValue().equals(")")) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+
+        this.writeCloseNonTerm("expressionList");
     }
 
     private void writeOpenNonTerm(String identifier) {
@@ -271,27 +353,9 @@ public class CompilationEngine {
         this.appendToFile(token.toString());
     }
 
-    /*
-        try {
-            this.FW = new FileWriter(baseDir + "/Out/" + outputFile + "Comp.xml");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-     */
-
     private void appendToFile(String line) {
-        /*
-        try {
-            FileWriter FW = new FileWriter(baseDir + "/Out/" + fileName + "Comp.xml");
-            FW.write(String.join("", Collections.nCopies(indentation, " ")) + line + "\n");
-            FW.close();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        */
-
         String fileN = baseDir + "/Out/" + fileName + "Comp.xml";
-        String toWrite = String.join("", Collections.nCopies(indentation, " ")) + line + "\n";
+        String toWrite = String.join("", Collections.nCopies(indentation, "  ")) + line + "\n";
 
         try {
             Files.write(Paths.get(fileN), toWrite.getBytes(), StandardOpenOption.APPEND);

@@ -3,12 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9a8cce80-5f48-4350-9ff5-0c4b1deac703" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/Analyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/Analyzer.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/Token.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/Token.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -50,13 +50,13 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.53968257">
+    <splitter split-orientation="horizontal" split-proportion="0.42979243">
       <split-first>
-        <leaf>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="127">
+                <state relative-caret-position="237">
                   <caret line="233" selection-start-line="233" selection-end-line="233" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -69,7 +69,7 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Token.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="480">
+                <state relative-caret-position="510">
                   <caret line="32" selection-start-line="32" selection-end-line="32" />
                   <folding>
                     <element signature="imports" expanded="true" />
@@ -82,12 +82,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="661">
-                  <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
+                <state relative-caret-position="414">
+                  <caret line="275" column="26" lean-forward="true" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#7102#7103#0" expanded="true" />
-                    <element signature="e#7153#7154#0" expanded="true" />
+                    <element signature="e#9690#9691#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -96,8 +95,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="15">
-                  <caret line="4" column="8" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="8" />
+                <state relative-caret-position="60">
+                  <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
                 </state>
               </provider>
             </entry>
@@ -107,12 +106,12 @@
       <split-second>
         <splitter split-orientation="horizontal" split-proportion="0.5">
           <split-first>
-            <leaf>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="315">
-                      <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                    <state relative-caret-position="150">
+                      <caret line="10" selection-start-line="10" selection-end-line="10" />
                     </state>
                   </provider>
                 </entry>
@@ -120,8 +119,8 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="345">
-                      <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+                    <state relative-caret-position="450">
+                      <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
                     </state>
                   </provider>
                 </entry>
@@ -129,8 +128,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="390">
-                      <caret line="26" column="12" selection-start-line="26" selection-end-line="27" />
+                    <state relative-caret-position="881">
+                      <caret line="98" column="24" lean-forward="true" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
                     </state>
                   </provider>
                 </entry>
@@ -138,7 +137,7 @@
             </leaf>
           </split-first>
           <split-second>
-            <leaf>
+            <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml">
                   <provider selected="true" editor-type-id="text-editor" />
@@ -171,7 +170,6 @@
       <find />
       <find>ter</find>
       <find>string</find>
-      <find>subroutine</find>
       <find>subroutineDec</find>
       <find>writeTerm</find>
       <find>var</find>
@@ -180,6 +178,8 @@
       <find>Subroutine</find>
       <find>w</find>
       <find>compileVarDec</find>
+      <find>subroutine</find>
+      <find>return</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -195,11 +195,11 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/App.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/TokenType.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareT.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" />
       </list>
@@ -214,65 +214,7 @@
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
     </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Analyzer" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="Jack" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="Analyzer" type="b2602c69:ProjectViewProjectNode" />
-              <item name="Analyzer" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="Analyzer" type="462c0819:PsiDirectoryNode" />
-              <item name="Out" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="PackagesPane" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
@@ -388,12 +330,13 @@
       <updated>1558899501742</updated>
       <workItem from="1558899504817" duration="226000" />
       <workItem from="1558900003078" duration="45532000" />
-      <workItem from="1559242707704" duration="13968000" />
+      <workItem from="1559242707704" duration="17023000" />
+      <workItem from="1559542368711" duration="4605000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="59726000" />
+    <option name="totallyTimeSpent" value="67386000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
@@ -404,7 +347,7 @@
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.2156682" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.21477163" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -471,9 +414,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java</url>
-          <line>115</line>
+          <line>258</line>
           <properties />
-          <option name="timeStamp" value="39" />
+          <option name="timeStamp" value="54" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -572,21 +515,28 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.jackTokens.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="4" column="8" selection-start-line="4" selection-start-column="1" selection-end-line="4" selection-end-column="8" />
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="150">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/src.zip!/java/util/Collections.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="4989" column="7" lean-forward="true" selection-start-line="4989" selection-start-column="7" selection-end-line="4989" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
+        <state relative-caret-position="237">
           <caret line="233" selection-start-line="233" selection-end-line="233" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -597,7 +547,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Token.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
+        <state relative-caret-position="510">
           <caret line="32" selection-start-line="32" selection-end-line="32" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -608,26 +558,25 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="345">
-          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+        <state relative-caret-position="450">
+          <caret line="27" column="9" lean-forward="true" selection-start-line="27" selection-start-column="9" selection-end-line="27" selection-end-column="9" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="26" column="12" selection-start-line="26" selection-end-line="27" />
+        <state relative-caret-position="881">
+          <caret line="98" column="24" lean-forward="true" selection-start-line="98" selection-start-column="24" selection-end-line="98" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="661">
-          <caret line="231" lean-forward="true" selection-start-line="231" selection-end-line="231" />
+        <state relative-caret-position="414">
+          <caret line="275" column="26" lean-forward="true" selection-start-line="275" selection-start-column="26" selection-end-line="275" selection-end-column="26" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#7102#7103#0" expanded="true" />
-            <element signature="e#7153#7154#0" expanded="true" />
+            <element signature="e#9690#9691#0" expanded="true" />
           </folding>
         </state>
       </provider>
