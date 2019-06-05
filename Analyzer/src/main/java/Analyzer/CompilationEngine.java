@@ -225,7 +225,22 @@ public class CompilationEngine {
 
         this.tk.advance();
 
-        this.compileExpression();
+        if(this.tk.getToken().StringValue().equals("[")){
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.compileExpression();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.compileExpression();
+        }
+        else {
+            this.compileExpression();
+        }
+
+        // this.compileExpression();
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -266,6 +281,9 @@ public class CompilationEngine {
         this.tk.advance();
 
         this.compileExpression();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
