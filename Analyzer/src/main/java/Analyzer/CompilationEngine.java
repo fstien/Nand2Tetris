@@ -168,7 +168,7 @@ public class CompilationEngine {
         // Compiles a sequence of state- ments, not including the enclosing ‘‘{}’’.
         this.writeOpenNonTerm("statements");
 
-        while(!this.tk.getToken().StringValue().equals("return")) {
+        while(!this.tk.getToken().StringValue().equals("return") && !this.tk.getToken().StringValue().equals("}")) {
             switch (this.tk.getToken().StringValue()) {
                 case "if":
                     this.compileIf();
@@ -184,6 +184,7 @@ public class CompilationEngine {
                     break;
                 case "return":
                     this.compileReturn();
+                    break;
                 default:
                     throw new Exception("Statement not found.");
             }
@@ -221,8 +222,7 @@ public class CompilationEngine {
 
         this.writeTerm(this.tk.getToken());
 
-        this.writeTokens(2);
-
+        this.writeTokens(1);
         this.tk.advance();
 
         if(this.tk.getToken().StringValue().equals("[")){
@@ -234,9 +234,14 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
             this.compileExpression();
         }
         else {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
             this.compileExpression();
         }
 
@@ -293,15 +298,17 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-
         if(this.tk.getToken().StringValue().equals("else")) {
-            this.tk.advance();
             this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
+            this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
             this.compileStatements();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
         }
 
         this.writeCloseNonTerm("ifStatement");
