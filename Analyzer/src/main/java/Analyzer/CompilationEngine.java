@@ -42,7 +42,7 @@ public class CompilationEngine {
             }
         }
 
-        this.appendToFile("}");
+        this.writeTerm(this.tk.getToken());
 
         this.writeCloseNonTerm("class");
     }
