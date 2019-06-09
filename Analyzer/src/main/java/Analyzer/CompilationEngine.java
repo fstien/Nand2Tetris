@@ -245,8 +245,6 @@ public class CompilationEngine {
             this.compileExpression();
         }
 
-        // this.compileExpression();
-
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
@@ -321,12 +319,12 @@ public class CompilationEngine {
 
         this.compileTerm();
 
-        while(this.tk.getToken().Type != TokenType.symbol
-            && !this.tk.getToken().StringValue().equals(";")) {
+        while("+-*/&|<>=".contains(this.tk.getToken().StringValue())) {
+
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
+
+            this.compileTerm();
         }
 
         this.writeCloseNonTerm("expression");
@@ -336,8 +334,77 @@ public class CompilationEngine {
         // Compiles a term. This routine is faced with a slight difficulty when trying to decide between some of the alternative parsing rules. Specifically, if the current token is an identifier, the routine must distinguish between a variable, an array entry, and a subroutine call. A single look- ahead token, which may be one of ‘‘[’’, ‘‘(’’, or ‘‘.’’ suffices to dis- tinguish between the three possi- bilities. Any other token is not part of this term and should not be advanced over.
         this.writeOpenNonTerm("term");
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+        if(this.tk.getToken().Type == TokenType.integerConstant
+        || this.tk.getToken().Type == TokenType.stringConstant
+        || this.tk.getToken().Type == TokenType.keyword) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+        else {
+            Token first = this.tk.getToken();
+            this.tk.advance();
+            Token second = this.tk.getToken();
+            this.tk.goBack();
+
+            if(second.StringValue().equals("[")) {
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.compileExpression();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
+            else if(first.StringValue().equals("(")) {
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.compileExpression();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
+            else if(second.StringValue().equals(".")) {
+                // subroutine call
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.CompileExpressionList();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+
+                this.CompileExpressionList();
+
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
+            else if(first.StringValue().equals("-") || first.StringValue().equals("~")) {
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+                this.compileTerm();
+            }
+            else {
+                // varName
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
+        }
 
         this.writeCloseNonTerm("term");
     }

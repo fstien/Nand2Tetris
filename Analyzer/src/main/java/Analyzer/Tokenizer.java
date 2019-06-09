@@ -230,6 +230,8 @@ public class Tokenizer {
         this.index++;
     }
 
+    public void goBack() { this.index--; }
+
     public Token getToken() {
         return this.tokenArray[index];
     }
