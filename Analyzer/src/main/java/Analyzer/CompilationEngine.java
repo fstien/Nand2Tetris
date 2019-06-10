@@ -1,5 +1,6 @@
 package Analyzer;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -18,6 +19,10 @@ public class CompilationEngine {
         this.fileName = inputFile;
 
         tk = new Tokenizer(inputFile);
+
+        String fileN = baseDir + "/Out/" + fileName + "Comp.xml";
+        File f = new File(fileN);
+        f.createNewFile();
 
         this.CompileClass();
     }
@@ -133,6 +138,22 @@ public class CompilationEngine {
         // Compiles a (possibly empty) parameter list, not including the enclosing ‘‘()’’.
         this.writeOpenNonTerm("parameterList");
 
+        while(true) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            if(this.tk.getToken().StringValue().equals(")")) {
+                break;
+            }
+            else {
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
+        }
+
         this.writeCloseNonTerm("parameterList");
     }
 
@@ -200,18 +221,9 @@ public class CompilationEngine {
         this.writeOpenNonTerm("doStatement");
 
         this.writeTerm(this.tk.getToken());
-
-        this.writeTokens(4);
-
         this.tk.advance();
 
-        this.CompileExpressionList();
-
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
-
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+        this.subroutineCall();
 
         this.writeCloseNonTerm("doStatement");
     }
@@ -368,31 +380,7 @@ public class CompilationEngine {
                 this.tk.advance();
             }
             else if(second.StringValue().equals(".")) {
-                // subroutine call
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.CompileExpressionList();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
-
-                this.CompileExpressionList();
-
-                this.writeTerm(this.tk.getToken());
-                this.tk.advance();
+                this.subroutineCall();
             }
             else if(first.StringValue().equals("-") || first.StringValue().equals("~")) {
                 this.writeTerm(this.tk.getToken());
@@ -407,6 +395,39 @@ public class CompilationEngine {
         }
 
         this.writeCloseNonTerm("term");
+    }
+
+    private void subroutineCall() {
+
+
+
+
+        /*
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.CompileExpressionList();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.CompileExpressionList();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+        */
     }
 
     private void CompileExpressionList() {

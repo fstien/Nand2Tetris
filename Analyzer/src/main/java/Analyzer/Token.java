@@ -26,7 +26,7 @@ public class Token<T> {
             value = specialChar.get(value.charAt(0));
         }
 
-        return "<" + this.Type.toString() + ">" + value + "</" + this.Type.toString() + ">";
+        return "<" + this.Type.toString() + "> " + value + " </" + this.Type.toString() + ">";
     }
 
     public String StringValue() {
