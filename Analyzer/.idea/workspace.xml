@@ -3,13 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="9a8cce80-5f48-4350-9ff5-0c4b1deac703" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/SquareGame.jack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -69,12 +65,11 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="1031">
-                  <caret line="429" column="10" selection-start-line="429" selection-start-column="10" selection-end-line="429" selection-end-column="10" />
+                <state relative-caret-position="800">
+                  <caret line="433" lean-forward="true" selection-start-line="433" selection-end-line="433" />
                   <folding>
                     <element signature="imports" expanded="true" />
-                    <element signature="e#12866#12867#0" expanded="true" />
-                    <element signature="e#12917#12918#0" expanded="true" />
+                    <element signature="e#14070#14071#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -89,8 +84,8 @@
               <file pinned="false" current-in-tab="false">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="799">
-                      <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
+                    <state relative-caret-position="374">
+                      <caret line="21" column="23" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="23" />
                     </state>
                   </provider>
                 </entry>
@@ -107,8 +102,8 @@
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Square.xml">
                   <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="549">
-                      <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+                    <state relative-caret-position="250">
+                      <caret line="106" column="21" selection-start-line="106" selection-end-line="107" />
                     </state>
                   </provider>
                 </entry>
@@ -133,11 +128,7 @@
               </file>
               <file pinned="false" current-in-tab="true">
                 <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml">
-                  <provider selected="true" editor-type-id="text-editor">
-                    <state relative-caret-position="760">
-                      <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
-                    </state>
-                  </provider>
+                  <provider selected="true" editor-type-id="text-editor" />
                 </entry>
               </file>
             </leaf>
@@ -155,10 +146,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>sym</find>
-      <find>lengt</find>
-      <find>replace</find>
-      <find>*</find>
       <find>&amp;</find>
       <find>parseTokens</find>
       <find>stringSplit</find>
@@ -182,7 +169,13 @@
       <find>subrout</find>
       <find>call</find>
       <find>expressionList</find>
+      <find>compileReturn</find>
+      <find>this.writeTerm(this.tk.getToken());</find>
+      <find>expressionLis</find>
+      <find>drawRectangle</find>
       <find>do</find>
+      <find>Memory</find>
+      <find>deAlloc</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -204,15 +197,15 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Token.java" />
-        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="621" />
+    <option name="x" value="174" />
     <option name="y" value="23" />
-    <option name="width" value="1939" />
+    <option name="width" value="2386" />
     <option name="height" value="1370" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -395,23 +388,23 @@
       <workItem from="1558899504817" duration="226000" />
       <workItem from="1558900003078" duration="45532000" />
       <workItem from="1559242707704" duration="17023000" />
-      <workItem from="1559542368711" duration="16591000" />
+      <workItem from="1559542368711" duration="19173000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="79372000" />
+    <option name="totallyTimeSpent" value="81954000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="621" y="23" width="1939" height="1370" extended-state="0" />
+    <frame x="174" y="23" width="2386" height="1370" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.08170796" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.06612628" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.21477163" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.21477015" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -434,7 +427,7 @@
       <window_info anchor="right" id="sbt" order="7" />
       <window_info anchor="right" id="Database" order="8" />
       <window_info anchor="right" x="143" y="45" width="731" height="810" id="Run" order="9" sideWeight="0.49900398" weight="0.1394671" />
-      <window_info anchor="right" x="840" y="435" width="840" height="959" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.20558777" />
+      <window_info active="true" anchor="right" x="840" y="435" width="840" height="959" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.16638225" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.500996" side_tool="true" weight="0.19422014" />
     </layout>
     <layout-to-restore>
@@ -478,9 +471,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java</url>
-          <line>220</line>
+          <line>98</line>
           <properties />
-          <option name="timeStamp" value="68" />
+          <option name="timeStamp" value="75" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -654,36 +647,31 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="799">
-          <caret line="45" lean-forward="true" selection-start-line="45" selection-end-line="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="760">
-          <caret line="62" column="30" lean-forward="true" selection-start-line="62" selection-start-column="30" selection-end-line="62" selection-end-column="30" />
+        <state relative-caret-position="374">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Square.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="549">
-          <caret line="56" column="23" lean-forward="true" selection-start-line="56" selection-start-column="23" selection-end-line="56" selection-end-column="23" />
+        <state relative-caret-position="250">
+          <caret line="106" column="21" selection-start-line="106" selection-end-line="107" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1031">
-          <caret line="429" column="10" selection-start-line="429" selection-start-column="10" selection-end-line="429" selection-end-column="10" />
+        <state relative-caret-position="800">
+          <caret line="433" lean-forward="true" selection-start-line="433" selection-end-line="433" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#12866#12867#0" expanded="true" />
-            <element signature="e#12917#12918#0" expanded="true" />
+            <element signature="e#14070#14071#0" expanded="true" />
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">

@@ -138,7 +138,7 @@ public class CompilationEngine {
         // Compiles a (possibly empty) parameter list, not including the enclosing ‘‘()’’.
         this.writeOpenNonTerm("parameterList");
 
-        while(true) {
+        while(!this.tk.getToken().StringValue().equals(")")) {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
@@ -225,6 +225,9 @@ public class CompilationEngine {
 
         this.subroutineCall();
 
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
         this.writeCloseNonTerm("doStatement");
     }
 
@@ -278,8 +281,16 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+        if(this.tk.getToken().StringValue().equals(";")) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+        else {
+            this.compileExpression();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
 
         this.writeCloseNonTerm("returnStatement");
     }
@@ -398,36 +409,57 @@ public class CompilationEngine {
     }
 
     private void subroutineCall() {
-
-
-
-
-        /*
-        this.writeTerm(this.tk.getToken());
         this.tk.advance();
+        String second = this.tk.getToken().StringValue();
+        this.tk.goBack();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+        if(second.equals("(")) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.CompileExpressionList();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+            this.CompileExpressionList();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+        else if(second.equals(".")) {
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.CompileExpressionList();
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
 
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
-        */
+            this.CompileExpressionList();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+
+            this.CompileExpressionList();
+
+            this.writeTerm(this.tk.getToken());
+            this.tk.advance();
+        }
+        else {
+            this.writeOpenNonTerm("ERROR");
+        }
     }
 
     private void CompileExpressionList() {
@@ -435,11 +467,15 @@ public class CompilationEngine {
         this.writeOpenNonTerm("expressionList");
 
         while(!this.tk.getToken().StringValue().equals(")")) {
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
+            this.compileExpression();
 
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
+            if(this.tk.getToken().StringValue().equals(")")) {
+                break;
+            }
+            else {
+                this.writeTerm(this.tk.getToken());
+                this.tk.advance();
+            }
         }
 
         this.writeCloseNonTerm("expressionList");
