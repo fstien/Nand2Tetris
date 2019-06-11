@@ -16,11 +16,11 @@ public class CompilationEngine {
 
 
     public CompilationEngine(String inputFile) throws Exception {
-        this.fileName = inputFile;
+        this.fileName = inputFile.split("\\.")[0];
 
-        tk = new Tokenizer(inputFile);
+        tk = new Tokenizer(this.fileName);
 
-        String fileN = baseDir + "/Out/" + fileName + "Comp.xml";
+        String fileN = baseDir + "/Out/" + fileName + ".xml";
         File f = new File(fileN);
         f.createNewFile();
 
@@ -513,7 +513,7 @@ public class CompilationEngine {
     }
 
     private void appendToFile(String line) {
-        String fileN = baseDir + "/Out/" + fileName + "Comp.xml";
+        String fileN = baseDir + "/Out/" + fileName + ".xml";
         String toWrite = String.join("", Collections.nCopies(indentation, "  ")) + line + "\n";
 
         try {

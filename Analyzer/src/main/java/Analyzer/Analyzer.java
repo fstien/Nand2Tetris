@@ -4,14 +4,32 @@
 package Analyzer;
 
 
+import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Analyzer {
+
+    private static List<String> textFiles(String directory) {
+        List<String> textFiles = new ArrayList<String>();
+        File dir = new File(directory);
+        for (File file : dir.listFiles()) {
+            if (file.getName().endsWith((".jack"))) {
+                textFiles.add(file.getName());
+            }
+        }
+        return textFiles;
+    }
+
     public static void main(String[] args) throws Exception {
         // arg[1] is either a filename or a directory
 
-        CompilationEngine ce = new CompilationEngine(args[0]);
+        List<String> jackFiles = textFiles("/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer/Jack/");
 
-        System.out.println(args[0]);
-
+        for(String fileName : jackFiles) {
+            System.out.println(fileName);
+            new CompilationEngine(fileName);
+        }
 
         // foreach file
             // create tokenizer
