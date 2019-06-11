@@ -442,20 +442,6 @@ public class CompilationEngine {
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
-
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
-
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
-
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
-
-            this.CompileExpressionList();
-
-            this.writeTerm(this.tk.getToken());
-            this.tk.advance();
         }
         else {
             this.writeOpenNonTerm("ERROR");
