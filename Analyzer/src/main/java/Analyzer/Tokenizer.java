@@ -75,6 +75,7 @@ public class Tokenizer {
     private boolean includesTokens(String line) {
 
         if(line.equals("\t")) return false;
+        if(line.trim().length() == 0) return false;
 
         if(line.contains("*/")) {
             this.currentComment = false;
@@ -144,7 +145,6 @@ public class Tokenizer {
             else this.spaceSplit.addAll(Arrays.asList(lineOrString.split(" ")));
         }
     }
-
 
     private void parseCharSplit() {
         for(String line : this.spaceSplit) {

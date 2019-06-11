@@ -266,9 +266,28 @@ public class CompilationEngine {
         this.writeCloseNonTerm("letStatement");
     }
 
-    private void compileWhile() {
+    private void compileWhile() throws Exception {
         // Compiles a while statement.
         this.writeOpenNonTerm("whileStatement");
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.compileExpression();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
+
+        this.compileStatements();
+
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
 
         this.writeCloseNonTerm("whileStatement");
     }
@@ -465,6 +484,11 @@ public class CompilationEngine {
         }
 
         this.writeCloseNonTerm("expressionList");
+    }
+
+    private void writeAndAdvance() {
+        this.writeTerm(this.tk.getToken());
+        this.tk.advance();
     }
 
     private void writeOpenNonTerm(String identifier) {
