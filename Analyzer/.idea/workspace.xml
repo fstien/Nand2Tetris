@@ -3,15 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="9a8cce80-5f48-4350-9ff5-0c4b1deac703" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/Analyzer.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/Analyzer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainT.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Square.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGame.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameTokens.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareTokens.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -80,13 +77,20 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="340">
-                  <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+                <state relative-caret-position="297">
+                  <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#14285#14286#0" expanded="true" />
                   </folding>
                 </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Comp/SquareGame.xml">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-10288" />
               </provider>
             </entry>
           </file>
@@ -187,14 +191,15 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGame.xml" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-69" />
-    <option name="y" value="-1177" />
-    <option name="width" value="1680" />
-    <option name="height" value="985" />
+  <component name="ProjectFrameBounds">
+    <option name="x" value="155" />
+    <option name="y" value="23" />
+    <option name="width" value="2405" />
+    <option name="height" value="1370" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -394,13 +399,12 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87511000" />
+    <option name="totallyTimeSpent" value="87980000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-240" y="-1177" width="1920" height="1177" extended-state="6" />
-    <editor active="true" />
+    <frame x="155" y="23" width="2405" height="1370" extended-state="0" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.14217253" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.11299196" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
@@ -417,7 +421,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32994527" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3015873" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.2577242" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -427,8 +431,8 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="sbt" order="7" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" x="143" y="45" width="731" height="810" id="Run" order="9" sideWeight="0.49900398" weight="0.2028754" />
-      <window_info active="true" anchor="right" x="840" y="435" width="840" height="959" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.22044729" />
+      <window_info anchor="right" x="143" y="45" width="731" height="810" id="Run" order="9" sideWeight="0.49900398" visible="true" weight="0.16123572" />
+      <window_info anchor="right" x="840" y="435" width="840" height="959" id="Debug" order="10" sideWeight="0.49900398" weight="0.22044729" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.500996" side_tool="true" weight="0.19422014" />
     </layout>
     <layout-to-restore>
@@ -595,13 +599,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="21" column="24" lean-forward="true" selection-start-line="21" selection-start-column="24" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareT.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Square.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-13102">
@@ -609,13 +607,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1128">
-          <caret line="952" column="17" selection-start-line="952" selection-start-column="17" selection-end-line="952" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Square.jack">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="344">
@@ -639,11 +631,7 @@
         <state relative-caret-position="-3378" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameT.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3378" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameT.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/SquareGame.jack">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="408">
@@ -651,25 +639,8 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGame.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-6166">
-          <caret line="112" selection-start-line="112" selection-end-line="112" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-3346" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameComp.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-9534">
-          <caret line="34" column="19" selection-start-line="34" selection-start-column="19" selection-end-line="34" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/MainComp.xml" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameComp.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="578">
@@ -687,11 +658,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.jack.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-155" />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.jack.xml" />
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="572">
@@ -713,10 +680,18 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGame.xml">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Comp/SquareGame.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-10288" />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="18" column="46" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="46" />
+        <state relative-caret-position="297">
+          <caret line="173" lean-forward="true" selection-start-line="173" selection-end-line="173" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#14285#14286#0" expanded="true" />
