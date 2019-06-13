@@ -20,13 +20,16 @@ public class Token<T> {
     }
 
     public String toString() {
-
         String value = this.Value.toString();
         if(specialChar.containsKey(value.charAt(0))) {
             value = specialChar.get(value.charAt(0));
         }
 
         return "<" + this.Type.toString() + "> " + value + " </" + this.Type.toString() + ">";
+    }
+
+    public String IdentifyerToString(String category, int runnningIndex, String definedOrUsed) {
+        return this.toString() + " is a " + category + " at index " + runnningIndex + " which is  " + definedOrUsed;
     }
 
     public String StringValue() {
