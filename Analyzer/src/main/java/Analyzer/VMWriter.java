@@ -1,5 +1,6 @@
 package Analyzer;
 
+
 public class VMWriter {
 
     public VMWriter(String fileName) {}

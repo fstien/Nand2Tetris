@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.util.Collections;
 
+@SuppressWarnings("Duplicates")
 public class CompilationEngine {
     private String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
     private String fileName;
@@ -14,6 +15,8 @@ public class CompilationEngine {
     private Tokenizer tk;
     private int indentation = 0;
 
+    private SymbolTable symbolTable;
+    private SymbolBuilder symbolBuilder;
 
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
@@ -23,6 +26,9 @@ public class CompilationEngine {
         String fileN = baseDir + "/Out/" + fileName + ".xml";
         File f = new File(fileN);
         f.createNewFile();
+
+        symbolTable = new SymbolTable();
+        symbolBuilder = new SymbolBuilder();
 
         this.CompileClass();
     }
@@ -157,22 +163,36 @@ public class CompilationEngine {
         this.writeCloseNonTerm("parameterList");
     }
 
-    private void compileVarDec() {
+    private void compileVarDec() throws Exception {
         // Compiles a var declaration.
 
-        while(this.tk.getToken().StringValue().equals("var")) {
+        while(this.tk.getToken().StringValue().equals("var")) //noinspection Duplicates
+        {
             this.writeOpenNonTerm("varDec");
 
             this.writeTerm(this.tk.getToken());
 
-            this.writeTokens(2);
+            this.symbolBuilder.ofKind(this.tk.getToken().StringValue());
+
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+
+            this.symbolBuilder.ofType(this.tk.getToken().StringValue());
+
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+
+            this.symbolBuilder.ofName(this.tk.getToken().StringValue());
+            this.symbolTable.define(this.symbolBuilder);
+            this.symbolBuilder.clear();
 
             this.tk.advance();
 
             while(!this.tk.getToken().StringValue().equals(";")) {
                 this.writeTerm(this.tk.getToken());
 
-                this.writeTokens(1);
+                this.tk.advance();
+                this.writeTerm(this.tk.getToken());
 
                 this.tk.advance();
             }
@@ -484,11 +504,6 @@ public class CompilationEngine {
         }
 
         this.writeCloseNonTerm("expressionList");
-    }
-
-    private void writeAndAdvance() {
-        this.writeTerm(this.tk.getToken());
-        this.tk.advance();
     }
 
     private void writeOpenNonTerm(String identifier) {

@@ -14,7 +14,7 @@ public class SymbolTable {
 
     public SymbolTable() {}
 
-    public void define(String name, String type, VarKind kind) {
+    public void define(VarKind kind, String type, String name) {
         if(kind == VarKind.STATIC) {
             this.classScope.put(name, new Symbol(type, kind, this.StaticCounter));
             this.StaticCounter++;
@@ -33,35 +33,36 @@ public class SymbolTable {
         }
     }
 
-    private Symbol getSymbol(String name) throws Exception {
+    public void define(SymbolBuilder builder) {
+        this.define(builder.kind, builder.type, builder.name);
+    }
+
+    private SymbolLookupResult getSymbol(String name) {
         Symbol retSym = subroutineScore.get(name);
         if(retSym != null) {
-            return retSym;
+            return new SymbolLookupResult(true, retSym);
         }
         else {
             retSym = classScope.get(name);
             if(retSym != null) {
-                return retSym;
+                return new SymbolLookupResult(true, retSym);
             }
             else {
-                throw new Exception("Symbol not found!");
+                return new SymbolLookupResult(false, null);
             }
         }
     }
 
-    public VarKind KindOf(String name) throws Exception {
-        Symbol sym = this.getSymbol(name);
-        return sym.Kind;
+    public VarKind KindOf(String name) {
+        return this.getSymbol(name).Symbol.Kind;
     }
 
-    public String TypeOf(String name) throws Exception {
-        Symbol sym = this.getSymbol(name);
-        return sym.Type;
+    public String TypeOf(String name) {
+        return this.getSymbol(name).Symbol.Type;
     }
 
-    public int IndexOf(String name) throws Exception {
-        Symbol sym = this.getSymbol(name);
-        return sym.Index;
+    public int IndexOf(String name) {
+        return this.getSymbol(name).Symbol.Index;
     }
 
 }
