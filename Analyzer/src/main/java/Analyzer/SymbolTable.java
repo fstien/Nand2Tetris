@@ -1,11 +1,12 @@
 package Analyzer;
 
 import java.util.Hashtable;
+import java.util.Set;
 
 public class SymbolTable {
 
     private Hashtable<String, Symbol> classScope = new Hashtable();
-    private Hashtable<String, Symbol> subroutineScore = new Hashtable();
+    private Hashtable<String, Symbol> subroutineScope = new Hashtable();
 
     private int StaticCounter = 0;
     private int FieldCounter = 0;
@@ -24,11 +25,11 @@ public class SymbolTable {
             this.FieldCounter++;
         }
         else if(kind == VarKind.ARG) {
-            this.subroutineScore.put(name, new Symbol(type, kind, this.ArgumentCounter));
+            this.subroutineScope.put(name, new Symbol(type, kind, this.ArgumentCounter));
             this.ArgumentCounter++;
         }
         else if(kind == VarKind.VAR) {
-            this.subroutineScore.put(name, new Symbol(type, kind, this.VarCounter));
+            this.subroutineScope.put(name, new Symbol(type, kind, this.VarCounter));
             this.VarCounter++;
         }
     }
@@ -37,8 +38,8 @@ public class SymbolTable {
         this.define(builder.kind, builder.type, builder.name);
     }
 
-    private SymbolLookupResult getSymbol(String name) {
-        Symbol retSym = subroutineScore.get(name);
+    public SymbolLookupResult getSymbol(String name) {
+        Symbol retSym = subroutineScope.get(name);
         if(retSym != null) {
             return new SymbolLookupResult(true, retSym);
         }
@@ -53,6 +54,12 @@ public class SymbolTable {
         }
     }
 
+    public void clearSubroutineScope() {
+        this.subroutineScope.clear();
+        this.VarCounter = 0;
+        this.ArgumentCounter = 0;
+    }
+
     public VarKind KindOf(String name) {
         return this.getSymbol(name).Symbol.Kind;
     }
@@ -65,4 +72,25 @@ public class SymbolTable {
         return this.getSymbol(name).Symbol.Index;
     }
 
+    public String toString() {
+        String printString = "";
+
+        printString += "classScope\n";
+
+        Set<String> classSymbols = this.classScope.keySet();
+
+        for(String symbol: classSymbols) {
+            printString += symbol + " " + classScope.get(symbol) + "\n";
+        }
+
+        printString += "\nsubroutineScore\n";
+
+        Set<String> subSymbols = this.subroutineScope.keySet();
+
+        for(String symbol: subSymbols) {
+            printString += symbol + " " + subroutineScope.get(symbol) + "\n";
+        }
+
+        return  printString;
+    }
 }

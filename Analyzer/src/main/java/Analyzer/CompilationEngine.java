@@ -15,6 +15,9 @@ public class CompilationEngine {
     private Tokenizer tk;
     private int indentation = 0;
 
+    private boolean matchIdentifiers = false;
+    private boolean varDec = false;
+
     private SymbolTable symbolTable;
     private SymbolBuilder symbolBuilder;
 
@@ -31,6 +34,8 @@ public class CompilationEngine {
         symbolBuilder = new SymbolBuilder();
 
         this.CompileClass();
+
+        //System.out.println(this.symbolTable);
     }
 
     private void CompileClass() throws Exception {
@@ -50,6 +55,7 @@ public class CompilationEngine {
             }
             else if(this.VarDecOrSubroutine().equals("Subroutine")) {
                 this.CompileSubroutine();
+                this.symbolTable.clearSubroutineScope();
             }
         }
 
@@ -75,20 +81,40 @@ public class CompilationEngine {
         }
     }
 
-    private void CompileClassVarDec() {
+    private void CompileClassVarDec() throws Exception {
         // Compiles a static declaration or a field declaration.
         this.writeOpenNonTerm("classVarDec");
+        this.matchIdentifiers = true;
+        this.varDec = true;
 
         this.writeTerm(this.tk.getToken());
 
-        this.writeTokens(2);
+        this.symbolBuilder.clear();
+        this.symbolBuilder.ofKind(this.tk.getToken().StringValue());
+
+        this.tk.advance();
+        this.writeTerm(this.tk.getToken());
+
+        this.symbolBuilder.ofType(this.tk.getToken().StringValue());
+
+        this.tk.advance();
+
+        this.symbolBuilder.ofName(this.tk.getToken().StringValue());
+        this.symbolTable.define(this.symbolBuilder);
+
+        this.writeTerm(this.tk.getToken());
 
         this.tk.advance();
 
         while(this.tk.getToken().StringValue().equals(",")) {
              this.writeTerm(this.tk.getToken());
 
-             this.writeTokens(1);
+             this.tk.advance();
+
+             this.symbolBuilder.ofName(this.tk.getToken().StringValue());
+             this.symbolTable.define(this.symbolBuilder);
+
+             this.writeTerm(this.tk.getToken());
 
              this.tk.advance();
         }
@@ -96,6 +122,8 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
+        this.varDec = false;
+        this.matchIdentifiers = false;
         this.writeCloseNonTerm("classVarDec");
     }
 
@@ -119,6 +147,7 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
 
             this.writeOpenNonTerm("subroutineBody");
+            this.matchIdentifiers = true;
 
             this.writeTokens(1);
 
@@ -131,6 +160,7 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
+            this.matchIdentifiers = false;
             this.writeCloseNonTerm("subroutineBody");
         }
         else {
@@ -140,13 +170,24 @@ public class CompilationEngine {
         this.writeCloseNonTerm("subroutineDec");
     }
 
-    private void compileParameterList() {
+    private void compileParameterList() throws Exception {
         // Compiles a (possibly empty) parameter list, not including the enclosing ‘‘()’’.
         this.writeOpenNonTerm("parameterList");
+        this.matchIdentifiers = true;
+        this.varDec = true;
 
         while(!this.tk.getToken().StringValue().equals(")")) {
+
+            this.symbolBuilder.clear();
+            this.symbolBuilder.ofKind("arg");
+
+            this.symbolBuilder.ofType(this.tk.getToken().StringValue());
+
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
+
+            this.symbolBuilder.ofName(this.tk.getToken().StringValue());
+            this.symbolTable.define(this.symbolBuilder);
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
@@ -160,18 +201,21 @@ public class CompilationEngine {
             }
         }
 
+        this.matchIdentifiers = false;
+        this.varDec = false;
         this.writeCloseNonTerm("parameterList");
     }
 
     private void compileVarDec() throws Exception {
         // Compiles a var declaration.
-
+        this.varDec = true;
         while(this.tk.getToken().StringValue().equals("var")) //noinspection Duplicates
         {
             this.writeOpenNonTerm("varDec");
 
             this.writeTerm(this.tk.getToken());
 
+            this.symbolBuilder.clear();
             this.symbolBuilder.ofKind(this.tk.getToken().StringValue());
 
             this.tk.advance();
@@ -180,11 +224,11 @@ public class CompilationEngine {
             this.symbolBuilder.ofType(this.tk.getToken().StringValue());
 
             this.tk.advance();
-            this.writeTerm(this.tk.getToken());
 
             this.symbolBuilder.ofName(this.tk.getToken().StringValue());
             this.symbolTable.define(this.symbolBuilder);
-            this.symbolBuilder.clear();
+
+            this.writeTerm(this.tk.getToken());
 
             this.tk.advance();
 
@@ -192,6 +236,10 @@ public class CompilationEngine {
                 this.writeTerm(this.tk.getToken());
 
                 this.tk.advance();
+
+                this.symbolBuilder.ofName(this.tk.getToken().StringValue());
+                this.symbolTable.define(this.symbolBuilder);
+
                 this.writeTerm(this.tk.getToken());
 
                 this.tk.advance();
@@ -203,6 +251,7 @@ public class CompilationEngine {
 
             this.tk.advance();
         }
+        this.varDec = false;
     }
 
     private void compileStatements() throws Exception {
@@ -524,7 +573,17 @@ public class CompilationEngine {
     }
 
     private void writeTerm(Token token) {
-        this.appendToFile(token.toString());
+        if(token.Type == TokenType.identifier
+           && this.symbolTable.getSymbol(token.StringValue()).Found
+           && matchIdentifiers) {
+            String definedOrUsed = this.varDec ? "defined" : "used";
+            this.appendToFile(token.toString() + " "
+                    + this.symbolTable.getSymbol(token.StringValue()).Symbol.toString() + " "
+                    + definedOrUsed );
+        }
+        else {
+            this.appendToFile(token.toString());
+        }
     }
 
     private void appendToFile(String line) {
