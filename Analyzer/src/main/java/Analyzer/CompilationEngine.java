@@ -30,12 +30,16 @@ public class CompilationEngine {
         File f = new File(fileN);
         f.createNewFile();
 
+        String vmFileN = baseDir + "/Comp/" + fileName + ".vm";
+        File vmF = new File(vmFileN);
+        vmF.createNewFile();
+
         symbolTable = new SymbolTable();
         symbolBuilder = new SymbolBuilder();
 
         this.CompileClass();
 
-        //System.out.println(this.symbolTable);
+        // System.out.println(this.symbolTable);
     }
 
     private void CompileClass() throws Exception {
@@ -138,7 +142,15 @@ public class CompilationEngine {
 
             this.writeTerm(this.tk.getToken());
 
-            this.writeTokens(3);
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
+            this.appendToVmFile("function " + fileName + "." + this.tk.getToken().StringValue() + " 0");
+
+            this.tk.advance();
+            this.writeTerm(this.tk.getToken());
 
             this.tk.advance();
 
@@ -430,25 +442,43 @@ public class CompilationEngine {
 
         this.compileTerm();
 
+        String operator = null;
+
         while("+-*/&|<>=".contains(this.tk.getToken().StringValue())) {
 
             this.writeTerm(this.tk.getToken());
+            operator = this.tk.getToken().StringValue();
             this.tk.advance();
 
             this.compileTerm();
+        }
+
+        switch (operator) {
+            case "+":
+                this.appendToVmFile("add");
+                break;
+            case "*":
+                this.appendToVmFile("call Math.multiply 2");
+                break;
+            default:
+                System.out.println("Operator not found.");
         }
 
         this.writeCloseNonTerm("expression");
     }
 
     private void compileTerm() {
-        // Compiles a term. This routine is faced with a slight difficulty when trying to decide between some of the alternative parsing rules. Specifically, if the current token is an identifier, the routine must distinguish between a variable, an array entry, and a subroutine call. A single look- ahead token, which may be one of ‘‘[’’, ‘‘(’’, or ‘‘.’’ suffices to dis- tinguish between the three possi- bilities. Any other token is not part of this term and should not be advanced over.
         this.writeOpenNonTerm("term");
 
         if(this.tk.getToken().Type == TokenType.integerConstant
         || this.tk.getToken().Type == TokenType.stringConstant
         || this.tk.getToken().Type == TokenType.keyword) {
             this.writeTerm(this.tk.getToken());
+
+            if(this.tk.getToken().Type == TokenType.integerConstant) {
+                this.appendToVmFile("push constant " + this.tk.getToken().StringValue());
+            }
+
             this.tk.advance();
         }
         else {
@@ -556,13 +586,13 @@ public class CompilationEngine {
     }
 
     private void writeOpenNonTerm(String identifier) {
-        this.appendToFile("<" + identifier + ">");
+        this.appendToXmlFile("<" + identifier + ">");
         this.indentation++;
     }
 
     private void writeCloseNonTerm(String identifier) {
         this.indentation--;
-        this.appendToFile("</" + identifier + ">");
+        this.appendToXmlFile("</" + identifier + ">");
     }
 
     public void writeTokens(int numberOfTokens) {
@@ -577,16 +607,16 @@ public class CompilationEngine {
            && this.symbolTable.getSymbol(token.StringValue()).Found
            && matchIdentifiers) {
             String definedOrUsed = this.varDec ? "defined" : "used";
-            this.appendToFile(token.toString() + " "
+            this.appendToXmlFile(token.toString() + " "
                     + this.symbolTable.getSymbol(token.StringValue()).Symbol.toString() + " "
                     + definedOrUsed );
         }
         else {
-            this.appendToFile(token.toString());
+            this.appendToXmlFile(token.toString());
         }
     }
 
-    private void appendToFile(String line) {
+    private void appendToXmlFile(String line) {
         String fileN = baseDir + "/Out/" + fileName + ".xml";
         String toWrite = String.join("", Collections.nCopies(indentation, "  ")) + line + "\n";
 
@@ -594,7 +624,17 @@ public class CompilationEngine {
             Files.write(Paths.get(fileN), toWrite.getBytes(), StandardOpenOption.APPEND);
         } catch (IOException e) {
             //exception handling left as an exercise for the reader
-            System.out.println("File not found.");
+            System.out.println("File not found: " + fileN);
+        }
+    }
+
+    private void appendToVmFile(String line) {
+        String fileN = baseDir + "/Comp/" + fileName + ".vm";
+
+        try {
+            Files.write(Paths.get(fileN), (line + "\n").getBytes(), StandardOpenOption.APPEND);
+        } catch (IOException e) {
+            System.out.println("File not found: " + fileN);
         }
 
     }
