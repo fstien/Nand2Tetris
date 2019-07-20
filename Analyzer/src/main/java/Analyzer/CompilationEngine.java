@@ -147,7 +147,7 @@ public class CompilationEngine {
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
-            this.appendToVmFile("function " + fileName + "." + this.tk.getToken().StringValue() + " 0");
+            this.appendToVmFile("function " + fileName + "." + this.tk.getToken().StringValue() + " 1");
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
@@ -304,10 +304,13 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        this.subroutineCall();
+        String[] subClassName = this.subroutineCall();
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
+
+        this.appendToVmFile("call " + subClassName[0] + "." + subClassName[1] + " " + subClassName[2]);
+        this.appendToVmFile("pop temp 0");
 
         this.writeCloseNonTerm("doStatement");
     }
@@ -317,8 +320,17 @@ public class CompilationEngine {
         this.writeOpenNonTerm("letStatement");
 
         this.writeTerm(this.tk.getToken());
+        this.tk.advance();
 
-        this.writeTokens(1);
+        this.writeTerm(this.tk.getToken());
+
+        Token assigned = this.tk.getToken();
+        SymbolLookupResult symbol = this.symbolTable.getSymbol(assigned.StringValue());
+
+        if(!symbol.Found) {
+            System.out.println("Symbol not found: " + assigned.StringValue());
+        }
+
         this.tk.advance();
 
         if(this.tk.getToken().StringValue().equals("[")){
@@ -392,6 +404,9 @@ public class CompilationEngine {
             this.tk.advance();
         }
 
+        this.appendToVmFile("push constant 0");
+        this.appendToVmFile("return");
+
         this.writeCloseNonTerm("returnStatement");
     }
 
@@ -451,17 +466,17 @@ public class CompilationEngine {
             this.tk.advance();
 
             this.compileTerm();
-        }
 
-        switch (operator) {
-            case "+":
-                this.appendToVmFile("add");
-                break;
-            case "*":
-                this.appendToVmFile("call Math.multiply 2");
-                break;
-            default:
-                System.out.println("Operator not found.");
+            switch (operator) {
+                case "+":
+                    this.appendToVmFile("add");
+                    break;
+                case "*":
+                    this.appendToVmFile("call Math.multiply 2");
+                    break;
+                default:
+                    System.out.println("Operator not found.");
+            }
         }
 
         this.writeCloseNonTerm("expression");
@@ -515,6 +530,8 @@ public class CompilationEngine {
                 this.writeTerm(this.tk.getToken());
                 this.tk.advance();
                 this.compileTerm();
+
+                this.appendToVmFile("neg");
             }
             else {
                 // varName
@@ -526,37 +543,44 @@ public class CompilationEngine {
         this.writeCloseNonTerm("term");
     }
 
-    private void subroutineCall() {
+    private String[] subroutineCall() {
+        String className = "";
+        String subroutineName = "";
+        int expressionCount = 0;
+
         this.tk.advance();
         String second = this.tk.getToken().StringValue();
         this.tk.goBack();
 
         if(second.equals("(")) {
             this.writeTerm(this.tk.getToken());
+            subroutineName = this.tk.getToken().StringValue();
             this.tk.advance();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
-            this.CompileExpressionList();
+            expressionCount = this.CompileExpressionList();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
         }
         else if(second.equals(".")) {
             this.writeTerm(this.tk.getToken());
+            className = this.tk.getToken().StringValue();
             this.tk.advance();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
             this.writeTerm(this.tk.getToken());
+            subroutineName = this.tk.getToken().StringValue();
             this.tk.advance();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
-            this.CompileExpressionList();
+            expressionCount = this.CompileExpressionList();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
@@ -564,13 +588,18 @@ public class CompilationEngine {
         else {
             this.writeOpenNonTerm("ERROR");
         }
+        return new String[] {className, subroutineName, String.valueOf(expressionCount)};
     }
 
-    private void CompileExpressionList() {
+    private int CompileExpressionList() {
         // Compiles a ( possibly empty) comma-separated list of expressions.
         this.writeOpenNonTerm("expressionList");
 
+        int expressionCount = 0;
+
         while(!this.tk.getToken().StringValue().equals(")")) {
+            expressionCount++;
+
             this.compileExpression();
 
             if(this.tk.getToken().StringValue().equals(")")) {
@@ -583,6 +612,8 @@ public class CompilationEngine {
         }
 
         this.writeCloseNonTerm("expressionList");
+
+        return expressionCount;
     }
 
     private void writeOpenNonTerm(String identifier) {
