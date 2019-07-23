@@ -340,7 +340,7 @@ public class CompilationEngine {
 
         this.tk.advance();
 
-        if(this.tk.getToken().StringValue().equals("[")){
+        if(this.tk.getToken().StringValue().equals("[")){ // If the value is an array
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
@@ -361,7 +361,6 @@ public class CompilationEngine {
         }
 
         this.appendToVmFile("pop local " + symbol.Symbol.Index);
-        this.appendToVmFile("push local " + symbol.Symbol.Index);
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -495,6 +494,7 @@ public class CompilationEngine {
     private void compileTerm() {
         this.writeOpenNonTerm("term");
 
+        /*
         if(this.tk.getToken().Type == TokenType.integerConstant
         || this.tk.getToken().Type == TokenType.stringConstant
         || this.tk.getToken().Type == TokenType.keyword) {
@@ -504,8 +504,44 @@ public class CompilationEngine {
                 this.appendToVmFile("push constant " + this.tk.getToken().StringValue());
             }
 
+            if(this.tk.getToken().Type == TokenType.keyword) {
+                if(this.tk.getToken().StringValue().equals("false")) {
+                    this.appendToVmFile("push constant 0");
+                }
+                if(this.tk.getToken().StringValue().equals("true")) {
+                    this.appendToVmFile("push constant 0");
+                    this.appendToVmFile("not");
+                }
+            }
+
             this.tk.advance();
         }
+        */
+
+
+        if(this.tk.getToken().Type == TokenType.integerConstant) {
+            this.writeTerm(this.tk.getToken());
+
+            this.appendToVmFile("push constant " + this.tk.getToken().StringValue());
+
+            this.tk.advance();
+        }
+
+
+        else if(this.tk.getToken().Type == TokenType.keyword) {
+            this.writeTerm(this.tk.getToken());
+
+            if(this.tk.getToken().StringValue().equals("false")) {
+                this.appendToVmFile("push constant 0");
+            }
+            if(this.tk.getToken().StringValue().equals("true")) {
+                this.appendToVmFile("push constant 0");
+                this.appendToVmFile("not");
+            }
+
+            this.tk.advance();
+        }
+
         else {
             Token first = this.tk.getToken();
             this.tk.advance();
@@ -546,6 +582,16 @@ public class CompilationEngine {
             else {
                 // varName
                 this.writeTerm(this.tk.getToken());
+
+                Token assigned = this.tk.getToken();
+                SymbolLookupResult symbol = this.symbolTable.getSymbol(assigned.StringValue());
+
+                if(!symbol.Found) {
+                    System.out.println("Symbol not found: " + this.tk.getToken().StringValue());
+                }
+
+                this.appendToVmFile("push local " + symbol.Symbol.Index);
+
                 this.tk.advance();
             }
         }
