@@ -147,7 +147,7 @@ public class CompilationEngine {
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
-            this.appendToVmFile("function " + fileName + "." + this.tk.getToken().StringValue() + " 1");
+            String funcName = this.tk.getToken().StringValue();
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
@@ -165,7 +165,8 @@ public class CompilationEngine {
 
             this.tk.advance();
 
-            this.compileVarDec();
+            int varCount = this.compileVarDec();
+            this.appendToVmFile("function " + fileName + "." + funcName + " " + varCount);
 
             this.compileStatements();
 
@@ -218,11 +219,15 @@ public class CompilationEngine {
         this.writeCloseNonTerm("parameterList");
     }
 
-    private void compileVarDec() throws Exception {
+    private int compileVarDec() throws Exception {
         // Compiles a var declaration.
+        int varCount = 0;
+
         this.varDec = true;
         while(this.tk.getToken().StringValue().equals("var")) //noinspection Duplicates
         {
+            varCount++;
+
             this.writeOpenNonTerm("varDec");
 
             this.writeTerm(this.tk.getToken());
@@ -245,6 +250,7 @@ public class CompilationEngine {
             this.tk.advance();
 
             while(!this.tk.getToken().StringValue().equals(";")) {
+                varCount++;
                 this.writeTerm(this.tk.getToken());
 
                 this.tk.advance();
@@ -264,6 +270,8 @@ public class CompilationEngine {
             this.tk.advance();
         }
         this.varDec = false;
+
+        return varCount;
     }
 
     private void compileStatements() throws Exception {
@@ -304,12 +312,11 @@ public class CompilationEngine {
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        String[] subClassName = this.subroutineCall();
+        this.subroutineCall();
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
-        this.appendToVmFile("call " + subClassName[0] + "." + subClassName[1] + " " + subClassName[2]);
         this.appendToVmFile("pop temp 0");
 
         this.writeCloseNonTerm("doStatement");
@@ -352,6 +359,9 @@ public class CompilationEngine {
             this.tk.advance();
             this.compileExpression();
         }
+
+        this.appendToVmFile("pop local " + symbol.Symbol.Index);
+        this.appendToVmFile("push local " + symbol.Symbol.Index);
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -543,7 +553,7 @@ public class CompilationEngine {
         this.writeCloseNonTerm("term");
     }
 
-    private String[] subroutineCall() {
+    private void subroutineCall() {
         String className = "";
         String subroutineName = "";
         int expressionCount = 0;
@@ -588,7 +598,13 @@ public class CompilationEngine {
         else {
             this.writeOpenNonTerm("ERROR");
         }
-        return new String[] {className, subroutineName, String.valueOf(expressionCount)};
+
+        if(className.equals("")) {
+            this.appendToVmFile("call " + subroutineName + " " + expressionCount);
+        }
+        else {
+            this.appendToVmFile("call " + className + "." + subroutineName + " " + expressionCount);
+        }
     }
 
     private int CompileExpressionList() {
