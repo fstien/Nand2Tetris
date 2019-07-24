@@ -372,6 +372,8 @@ public class CompilationEngine {
         // Compiles a while statement.
         this.writeOpenNonTerm("whileStatement");
 
+        this.appendToVmFile("label WHILE_EXP0");
+
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
@@ -380,6 +382,9 @@ public class CompilationEngine {
 
         this.compileExpression();
 
+        this.appendToVmFile("not");
+        this.appendToVmFile("if-goto WHILE_END0");
+
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
@@ -387,6 +392,9 @@ public class CompilationEngine {
         this.tk.advance();
 
         this.compileStatements();
+
+        this.appendToVmFile("goto WHILE_EXP0");
+        this.appendToVmFile("label WHILE_END0");
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
