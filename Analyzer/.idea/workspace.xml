@@ -63,8 +63,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="451">
-                  <caret line="429" column="26" selection-start-line="429" selection-start-column="17" selection-end-line="429" selection-end-column="26" />
+                <state relative-caret-position="597">
+                  <caret line="577" column="39" lean-forward="true" selection-start-line="577" selection-start-column="39" selection-end-line="577" selection-end-column="39" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -80,7 +80,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="136">
-                  <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+                  <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -88,11 +88,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="423">
-                  <caret line="213" column="32" selection-start-line="213" selection-start-column="31" selection-end-line="213" selection-end-column="32" />
+                <state relative-caret-position="673">
+                  <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
                   <folding>
                     <element signature="e#6244#6248#0" expanded="true" />
                     <element signature="e#7272#7277#0" expanded="true" />
@@ -112,6 +112,21 @@
                     <element signature="e#95296#95300#0" expanded="true" />
                     <element signature="e#96324#96329#0" expanded="true" />
                     <element signature="e#103316#103320#0" expanded="true" />
+                    <element signature="e#111973#111977#0" expanded="true" />
+                    <element signature="e#113001#113006#0" expanded="true" />
+                    <element signature="e#126196#126200#0" expanded="true" />
+                    <element signature="e#127224#127229#0" expanded="true" />
+                    <element signature="e#140175#140179#0" expanded="true" />
+                    <element signature="e#141203#141208#0" expanded="true" />
+                    <element signature="e#148195#148199#0" expanded="true" />
+                    <element signature="e#156852#156856#0" expanded="true" />
+                    <element signature="e#157880#157885#0" expanded="true" />
+                    <element signature="e#164872#164876#0" expanded="true" />
+                    <element signature="e#171278#171282#0" expanded="true" />
+                    <element signature="e#172306#172311#0" expanded="true" />
+                    <element signature="e#185396#185400#0" expanded="true" />
+                    <element signature="e#186424#186429#0" expanded="true" />
+                    <element signature="e#193416#193420#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -121,7 +136,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="1219">
-                  <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+                  <caret line="82" selection-start-line="82" selection-end-line="82" />
                 </state>
               </provider>
             </entry>
@@ -139,7 +154,7 @@
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Symbol.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="289">
-                  <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+                  <caret line="17" selection-start-line="17" selection-end-line="17" />
                   <folding>
                     <element signature="e#287#288#0" expanded="true" />
                     <element signature="e#363#364#0" expanded="true" />
@@ -148,11 +163,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="440">
-                  <caret line="238" column="14" lean-forward="true" selection-start-line="238" selection-start-column="14" selection-end-line="238" selection-end-column="14" />
+                <state relative-caret-position="406">
+                  <caret line="188" selection-start-line="188" selection-end-line="188" />
                   <folding>
                     <element signature="imports" expanded="true" />
                     <element signature="e#6680#6681#0" expanded="true" />
@@ -184,11 +199,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>test</find>
-      <find>vardec</find>
-      <find>y</find>
-      <find>Ay</find>
-      <find>erase</find>
       <find>Comp</find>
       <find>expression</find>
       <find>doStatement</find>
@@ -214,6 +224,11 @@
       <find>compileWh</find>
       <find>~</find>
       <find>compileIf</find>
+      <find>op</find>
+      <find>compileTer</find>
+      <find>keywords</find>
+      <find>position</find>
+      <find>&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -233,7 +248,6 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareComp.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Jack/SquareGame.jack" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGameComp.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/SquareGame.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/VarKind.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Segment.java" />
@@ -248,6 +262,7 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" />
       </list>
     </option>
@@ -450,12 +465,12 @@
       <workItem from="1561493991761" duration="19787000" />
       <workItem from="1563109388245" duration="55000" />
       <workItem from="1563480249779" duration="5260000" />
-      <workItem from="1563631529216" duration="21563000" />
+      <workItem from="1563631529216" duration="25450000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="144224000" />
+    <option name="totallyTimeSpent" value="148111000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-481" y="-1417" width="2560" height="1417" extended-state="6" />
@@ -466,7 +481,7 @@
       <window_info id="Designer" order="2" />
       <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
-      <window_info anchor="bottom" id="Messages" order="0" weight="0.21423437" />
+      <window_info anchor="bottom" id="Messages" order="0" weight="0.21396731" />
       <window_info anchor="bottom" id="Message" order="1" />
       <window_info anchor="bottom" id="Find" order="2" weight="0.32994062" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -529,6 +544,16 @@
     <option name="version" value="1" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java</url>
+          <line>435</line>
+          <properties />
+          <option name="timeStamp" value="112" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
         <watch expression="((Analyzer.Tokenizer)this).lines.get(23)" custom="Analyzer.Tokenizer" />
@@ -546,43 +571,55 @@
     </expressions>
     <expressions id="evaluateExpression">
       <expression>
+        <expression-string>second.Value</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>second</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>op.contains(second.Value)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>second.Type == TokenType.symbol</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>second.Type == TokenType.symbol &amp;&amp; op.contains(second.Value)</expression-string>
+        <language-id>JAVA</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
         <expression-string>this.tk.getToken()</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>this.tk.getToken().StringValue()</expression-string>
+        <expression-string>this.op.contains(second.Value)</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>inputFile.split(&quot;\\.&quot;)</expression-string>
+        <expression-string>secl d</expression-string>
         <language-id>JAVA</language-id>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>inputFile.split(&quot;.&quot;)</expression-string>
+        <expression-string>second.Value</expression-string>
         <language-id>JAVA</language-id>
+        <custom-info>java.awt.SecondaryLoop</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
       <expression>
-        <expression-string>this.tk.keyWord()</expression-string>
+        <expression-string>second</expression-string>
         <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this.tk.tokenType()</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this.tk</expression-string>
-        <language-id>JAVA</language-id>
-        <evaluation-mode>EXPRESSION</evaluation-mode>
-      </expression>
-      <expression>
-        <expression-string>this.tk.symbol()</expression-string>
-        <language-id>JAVA</language-id>
+        <custom-info>java.awt.SecondaryLoop</custom-info>
         <evaluation-mode>EXPRESSION</evaluation-mode>
       </expression>
     </expressions>
@@ -721,7 +758,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
-          <caret line="10" column="23" lean-forward="true" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -731,22 +768,10 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Symbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="17" lean-forward="true" selection-start-line="17" selection-end-line="17" />
+          <caret line="17" selection-start-line="17" selection-end-line="17" />
           <folding>
             <element signature="e#287#288#0" expanded="true" />
             <element signature="e#363#364#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="238" column="14" lean-forward="true" selection-start-line="238" selection-start-column="14" selection-end-line="238" selection-end-column="14" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6680#6681#0" expanded="true" />
-            <element signature="e#6730#6731#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -773,14 +798,14 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1219">
-          <caret line="82" lean-forward="true" selection-start-line="82" selection-end-line="82" />
+          <caret line="82" selection-start-line="82" selection-end-line="82" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="213" column="32" selection-start-line="213" selection-start-column="31" selection-end-line="213" selection-end-column="32" />
+        <state relative-caret-position="673">
+          <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
           <folding>
             <element signature="e#6244#6248#0" expanded="true" />
             <element signature="e#7272#7277#0" expanded="true" />
@@ -800,14 +825,41 @@
             <element signature="e#95296#95300#0" expanded="true" />
             <element signature="e#96324#96329#0" expanded="true" />
             <element signature="e#103316#103320#0" expanded="true" />
+            <element signature="e#111973#111977#0" expanded="true" />
+            <element signature="e#113001#113006#0" expanded="true" />
+            <element signature="e#126196#126200#0" expanded="true" />
+            <element signature="e#127224#127229#0" expanded="true" />
+            <element signature="e#140175#140179#0" expanded="true" />
+            <element signature="e#141203#141208#0" expanded="true" />
+            <element signature="e#148195#148199#0" expanded="true" />
+            <element signature="e#156852#156856#0" expanded="true" />
+            <element signature="e#157880#157885#0" expanded="true" />
+            <element signature="e#164872#164876#0" expanded="true" />
+            <element signature="e#171278#171282#0" expanded="true" />
+            <element signature="e#172306#172311#0" expanded="true" />
+            <element signature="e#185396#185400#0" expanded="true" />
+            <element signature="e#186424#186429#0" expanded="true" />
+            <element signature="e#193416#193420#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="188" selection-start-line="188" selection-end-line="188" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6680#6681#0" expanded="true" />
+            <element signature="e#6730#6731#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="451">
-          <caret line="429" column="26" selection-start-line="429" selection-start-column="17" selection-end-line="429" selection-end-column="26" />
+        <state relative-caret-position="597">
+          <caret line="577" column="39" lean-forward="true" selection-start-line="577" selection-start-column="39" selection-end-line="577" selection-end-column="39" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

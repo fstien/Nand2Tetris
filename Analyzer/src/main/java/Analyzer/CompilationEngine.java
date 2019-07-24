@@ -5,7 +5,9 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public class CompilationEngine {
@@ -20,6 +22,8 @@ public class CompilationEngine {
 
     private SymbolTable symbolTable;
     private SymbolBuilder symbolBuilder;
+
+    private List<Character> op = Arrays.asList('+', '-', '*', '/', '&', '|', '<', '>', '=');
 
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
@@ -440,6 +444,11 @@ public class CompilationEngine {
 
         this.compileExpression();
 
+        this.appendToVmFile("not");
+        this.appendToVmFile("if-goto IF_TRUE0");
+        this.appendToVmFile("goto IF_FALSE0");
+        this.appendToVmFile("label IF_TRUE0");
+
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
 
@@ -502,30 +511,6 @@ public class CompilationEngine {
     private void compileTerm() {
         this.writeOpenNonTerm("term");
 
-        /*
-        if(this.tk.getToken().Type == TokenType.integerConstant
-        || this.tk.getToken().Type == TokenType.stringConstant
-        || this.tk.getToken().Type == TokenType.keyword) {
-            this.writeTerm(this.tk.getToken());
-
-            if(this.tk.getToken().Type == TokenType.integerConstant) {
-                this.appendToVmFile("push constant " + this.tk.getToken().StringValue());
-            }
-
-            if(this.tk.getToken().Type == TokenType.keyword) {
-                if(this.tk.getToken().StringValue().equals("false")) {
-                    this.appendToVmFile("push constant 0");
-                }
-                if(this.tk.getToken().StringValue().equals("true")) {
-                    this.appendToVmFile("push constant 0");
-                    this.appendToVmFile("not");
-                }
-            }
-
-            this.tk.advance();
-        }
-        */
-
 
         if(this.tk.getToken().Type == TokenType.integerConstant) {
             this.writeTerm(this.tk.getToken());
@@ -583,9 +568,36 @@ public class CompilationEngine {
             else if(first.StringValue().equals("-") || first.StringValue().equals("~")) {
                 this.writeTerm(this.tk.getToken());
                 this.tk.advance();
+
                 this.compileTerm();
 
                 this.appendToVmFile("neg");
+            }
+            else if(second.Type == TokenType.symbol) {
+                if(op.contains(second.Value)) {
+                    this.compileTerm();
+
+                    this.tk.advance();
+
+                    String opForVm = "";
+                    switch (this.tk.getToken().StringValue()) {
+                        case ">":
+                            opForVm = "gt";
+                            break;
+                        case "<":
+                            opForVm = "lt";
+                            break;
+                        case "=":
+                            opForVm = "eq";
+                        default:
+                            System.out.println("Did not find op.");
+                            break;
+                    }
+
+                    this.compileTerm();
+
+                    this.appendToVmFile(opForVm);
+                }
             }
             else {
                 // varName
