@@ -23,7 +23,7 @@ public class CompilationEngine {
     private SymbolTable symbolTable;
     private SymbolBuilder symbolBuilder;
 
-    private List<Character> op = Arrays.asList('+', '-', '*', '/', '&', '|', '<', '>', '=');
+    private List<String> op = Arrays.asList("+", "-", "*", "/", "&", "|", "<", ">", "=");
 
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
@@ -573,31 +573,29 @@ public class CompilationEngine {
 
                 this.appendToVmFile("neg");
             }
-            else if(second.Type == TokenType.symbol) {
-                if(op.contains(second.Value)) {
-                    this.compileTerm();
+            else if(second.Type == TokenType.symbol && this.isOp(second.StringValue())) {
+                this.compileTerm();
 
-                    this.tk.advance();
+                this.tk.advance();
 
-                    String opForVm = "";
-                    switch (this.tk.getToken().StringValue()) {
-                        case ">":
-                            opForVm = "gt";
-                            break;
-                        case "<":
-                            opForVm = "lt";
-                            break;
-                        case "=":
-                            opForVm = "eq";
-                        default:
-                            System.out.println("Did not find op.");
-                            break;
-                    }
-
-                    this.compileTerm();
-
-                    this.appendToVmFile(opForVm);
+                String opForVm = "";
+                switch (this.tk.getToken().StringValue()) {
+                    case ">":
+                        opForVm = "gt";
+                        break;
+                    case "<":
+                        opForVm = "lt";
+                        break;
+                    case "=":
+                        opForVm = "eq";
+                    default:
+                        System.out.println("Did not find op.");
+                        break;
                 }
+
+                this.compileTerm();
+
+                this.appendToVmFile(opForVm);
             }
             else {
                 // varName
@@ -617,6 +615,15 @@ public class CompilationEngine {
         }
 
         this.writeCloseNonTerm("term");
+    }
+
+    private boolean isOp(String str) {
+        for(String opStr : op) {
+            if(opStr.equals(str)) {
+                return true;
+            }
+        }
+        return false;
     }
 
     private void subroutineCall() {

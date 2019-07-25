@@ -63,8 +63,8 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="597">
-                  <caret line="577" column="39" lean-forward="true" selection-start-line="577" selection-start-column="39" selection-end-line="577" selection-end-column="39" />
+                <state relative-caret-position="4636">
+                  <caret line="389" column="36" selection-start-line="389" selection-start-column="29" selection-end-line="389" selection-end-column="36" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -76,11 +76,11 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="136">
-                  <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+                <state relative-caret-position="510">
+                  <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -163,7 +163,7 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="406">
@@ -226,9 +226,9 @@
       <find>compileIf</find>
       <find>op</find>
       <find>compileTer</find>
-      <find>keywords</find>
       <find>position</find>
       <find>&quot;</find>
+      <find>keywords</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -269,9 +269,9 @@
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-481" />
-    <option name="y" value="-1417" />
-    <option name="width" value="1680" />
-    <option name="height" value="988" />
+    <option name="y" value="-1275" />
+    <option name="width" value="1200" />
+    <option name="height" value="987" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -465,12 +465,12 @@
       <workItem from="1561493991761" duration="19787000" />
       <workItem from="1563109388245" duration="55000" />
       <workItem from="1563480249779" duration="5260000" />
-      <workItem from="1563631529216" duration="25450000" />
+      <workItem from="1563631529216" duration="26869000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="148111000" />
+    <option name="totallyTimeSpent" value="149530000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-481" y="-1417" width="2560" height="1417" extended-state="6" />
@@ -503,8 +503,8 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="sbt" order="7" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info anchor="right" x="184" y="204" width="792" height="598" id="Run" order="9" sideWeight="0.49900398" weight="0.13780779" />
-      <window_info active="true" anchor="right" x="656" y="236" width="1024" height="766" id="Debug" order="10" sideWeight="0.49900398" visible="true" weight="0.29825258" />
+      <window_info active="true" anchor="right" x="184" y="204" width="792" height="598" id="Run" order="9" sideWeight="0.49900398" visible="true" weight="0.13780779" />
+      <window_info anchor="right" x="656" y="236" width="1024" height="766" id="Debug" order="10" sideWeight="0.49900398" weight="0.29825258" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.500996" side_tool="true" weight="0.19422014" />
     </layout>
     <layout-to-restore>
@@ -755,16 +755,6 @@
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Symbol.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
@@ -856,10 +846,27 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="31" column="9" selection-start-line="31" selection-start-column="9" selection-end-line="31" selection-end-column="9" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_211.jdk/Contents/Home/src.zip!/java/nio/charset/Charset.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="286" selection-start-line="286" selection-end-line="286" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="597">
-          <caret line="577" column="39" lean-forward="true" selection-start-line="577" selection-start-column="39" selection-end-line="577" selection-end-column="39" />
+        <state relative-caret-position="4636">
+          <caret line="389" column="36" selection-start-line="389" selection-start-column="29" selection-end-line="389" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
