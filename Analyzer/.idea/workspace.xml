@@ -2,10 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9a8cce80-5f48-4350-9ff5-0c4b1deac703" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -76,7 +72,7 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="510">
@@ -88,48 +84,9 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="673">
-                  <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
-                  <folding>
-                    <element signature="e#6244#6248#0" expanded="true" />
-                    <element signature="e#7272#7277#0" expanded="true" />
-                    <element signature="e#14264#14268#0" expanded="true" />
-                    <element signature="e#22921#22925#0" expanded="true" />
-                    <element signature="e#23949#23954#0" expanded="true" />
-                    <element signature="e#30941#30945#0" expanded="true" />
-                    <element signature="e#39598#39602#0" expanded="true" />
-                    <element signature="e#40626#40631#0" expanded="true" />
-                    <element signature="e#52349#52353#0" expanded="true" />
-                    <element signature="e#53377#53382#0" expanded="true" />
-                    <element signature="e#65784#65788#0" expanded="true" />
-                    <element signature="e#66812#66817#0" expanded="true" />
-                    <element signature="e#78619#78623#0" expanded="true" />
-                    <element signature="e#79647#79652#0" expanded="true" />
-                    <element signature="e#86639#86643#0" expanded="true" />
-                    <element signature="e#95296#95300#0" expanded="true" />
-                    <element signature="e#96324#96329#0" expanded="true" />
-                    <element signature="e#103316#103320#0" expanded="true" />
-                    <element signature="e#111973#111977#0" expanded="true" />
-                    <element signature="e#113001#113006#0" expanded="true" />
-                    <element signature="e#126196#126200#0" expanded="true" />
-                    <element signature="e#127224#127229#0" expanded="true" />
-                    <element signature="e#140175#140179#0" expanded="true" />
-                    <element signature="e#141203#141208#0" expanded="true" />
-                    <element signature="e#148195#148199#0" expanded="true" />
-                    <element signature="e#156852#156856#0" expanded="true" />
-                    <element signature="e#157880#157885#0" expanded="true" />
-                    <element signature="e#164872#164876#0" expanded="true" />
-                    <element signature="e#171278#171282#0" expanded="true" />
-                    <element signature="e#172306#172311#0" expanded="true" />
-                    <element signature="e#185396#185400#0" expanded="true" />
-                    <element signature="e#186424#186429#0" expanded="true" />
-                    <element signature="e#193416#193420#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
+              <provider selected="true" editor-type-id="text-editor" />
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
@@ -261,9 +218,9 @@
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" />
-        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java" />
         <option value="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" />
+        <option value="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" />
       </list>
     </option>
   </component>
@@ -465,12 +422,12 @@
       <workItem from="1561493991761" duration="19787000" />
       <workItem from="1563109388245" duration="55000" />
       <workItem from="1563480249779" duration="5260000" />
-      <workItem from="1563631529216" duration="26869000" />
+      <workItem from="1563631529216" duration="26926000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="149530000" />
+    <option name="totallyTimeSpent" value="149587000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-481" y="-1417" width="2560" height="1417" extended-state="6" />
@@ -493,7 +450,7 @@
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="11" weight="0.32994527" />
-      <window_info anchor="bottom" id="Terminal" order="12" weight="0.3536404" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="12" visible="true" weight="0.3536404" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -503,7 +460,7 @@
       <window_info anchor="right" id="Palette&#9;" order="6" />
       <window_info anchor="right" id="sbt" order="7" />
       <window_info anchor="right" id="Database" order="8" />
-      <window_info active="true" anchor="right" x="184" y="204" width="792" height="598" id="Run" order="9" sideWeight="0.49900398" visible="true" weight="0.13780779" />
+      <window_info anchor="right" x="184" y="204" width="792" height="598" id="Run" order="9" sideWeight="0.49900398" visible="true" weight="0.13780779" />
       <window_info anchor="right" x="656" y="236" width="1024" height="766" id="Debug" order="10" sideWeight="0.49900398" weight="0.29825258" />
       <window_info anchor="right" id="Coverage" order="11" sideWeight="0.500996" side_tool="true" weight="0.19422014" />
     </layout>
@@ -792,48 +749,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="673">
-          <caret line="192" column="32" selection-start-line="192" selection-start-column="32" selection-end-line="192" selection-end-column="32" />
-          <folding>
-            <element signature="e#6244#6248#0" expanded="true" />
-            <element signature="e#7272#7277#0" expanded="true" />
-            <element signature="e#14264#14268#0" expanded="true" />
-            <element signature="e#22921#22925#0" expanded="true" />
-            <element signature="e#23949#23954#0" expanded="true" />
-            <element signature="e#30941#30945#0" expanded="true" />
-            <element signature="e#39598#39602#0" expanded="true" />
-            <element signature="e#40626#40631#0" expanded="true" />
-            <element signature="e#52349#52353#0" expanded="true" />
-            <element signature="e#53377#53382#0" expanded="true" />
-            <element signature="e#65784#65788#0" expanded="true" />
-            <element signature="e#66812#66817#0" expanded="true" />
-            <element signature="e#78619#78623#0" expanded="true" />
-            <element signature="e#79647#79652#0" expanded="true" />
-            <element signature="e#86639#86643#0" expanded="true" />
-            <element signature="e#95296#95300#0" expanded="true" />
-            <element signature="e#96324#96329#0" expanded="true" />
-            <element signature="e#103316#103320#0" expanded="true" />
-            <element signature="e#111973#111977#0" expanded="true" />
-            <element signature="e#113001#113006#0" expanded="true" />
-            <element signature="e#126196#126200#0" expanded="true" />
-            <element signature="e#127224#127229#0" expanded="true" />
-            <element signature="e#140175#140179#0" expanded="true" />
-            <element signature="e#141203#141208#0" expanded="true" />
-            <element signature="e#148195#148199#0" expanded="true" />
-            <element signature="e#156852#156856#0" expanded="true" />
-            <element signature="e#157880#157885#0" expanded="true" />
-            <element signature="e#164872#164876#0" expanded="true" />
-            <element signature="e#171278#171282#0" expanded="true" />
-            <element signature="e#172306#172311#0" expanded="true" />
-            <element signature="e#185396#185400#0" expanded="true" />
-            <element signature="e#186424#186429#0" expanded="true" />
-            <element signature="e#193416#193420#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="406">
@@ -872,6 +787,9 @@
           </folding>
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
   <component name="masterDetails">
