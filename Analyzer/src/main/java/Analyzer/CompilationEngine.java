@@ -23,6 +23,9 @@ public class CompilationEngine {
     private SymbolTable symbolTable;
     private SymbolBuilder symbolBuilder;
 
+    private int ifCounter = 0;
+    private boolean returnValue = false;
+
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
 
@@ -138,6 +141,8 @@ public class CompilationEngine {
 
         this.writeOpenNonTerm("subroutineDec");
 
+        this.ifCounter = 0;
+
         if(this.tk.keyword().equals("constructor")
             || this.tk.keyword().equals("method")
             || this.tk.keyword().equals("function")) {
@@ -146,6 +151,8 @@ public class CompilationEngine {
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
+
+            this.returnValue = !this.tk.getToken().StringValue().equals("void");
 
             this.tk.advance();
             this.writeTerm(this.tk.getToken());
@@ -298,7 +305,7 @@ public class CompilationEngine {
                     this.compileReturn();
                     break;
                 default:
-                    throw new Exception("Statement not found.");
+                    System.out.println("Statement not found.");
             }
         }
 
@@ -423,7 +430,10 @@ public class CompilationEngine {
             this.tk.advance();
         }
 
-        this.appendToVmFile("push constant 0");
+        if(!this.returnValue) {
+            this.appendToVmFile("push constant 0");
+        }
+
         this.appendToVmFile("return");
 
         this.writeCloseNonTerm("returnStatement");
@@ -442,9 +452,13 @@ public class CompilationEngine {
 
         this.compileExpression();
 
-        this.appendToVmFile("if-goto IF_TRUE0");
-        this.appendToVmFile("goto IF_FALSE0");
-        this.appendToVmFile("label IF_TRUE0");
+        int ifValue = ifCounter;
+
+        this.appendToVmFile("if-goto IF_TRUE" + ifValue);
+        this.appendToVmFile("goto IF_FALSE" + ifValue);
+        this.appendToVmFile("label IF_TRUE" + ifValue);
+
+        this.ifCounter++;
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -464,7 +478,12 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
+            this.appendToVmFile("goto IF_END" + ifValue);
+            this.appendToVmFile("label IF_FALSE" + ifValue);
+
             this.compileStatements();
+
+            this.appendToVmFile("label IF_END" + ifValue);
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
