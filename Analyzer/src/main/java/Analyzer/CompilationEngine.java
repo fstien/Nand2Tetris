@@ -369,7 +369,21 @@ public class CompilationEngine {
             this.compileExpression();
         }
 
-        this.appendToVmFile("pop local " + symbol.Symbol.Index);
+        switch (symbol.Symbol.Kind) {
+            case STATIC:
+                this.appendToVmFile("pop static " + symbol.Symbol.Index);
+                break;
+            case FIELD:
+                this.appendToVmFile("pop field " + symbol.Symbol.Index);
+                break;
+            case ARG:
+                this.appendToVmFile("pop argument " + symbol.Symbol.Index);
+                break;
+            case VAR:
+                this.appendToVmFile("pop local " + symbol.Symbol.Index);
+                break;
+
+        }
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
