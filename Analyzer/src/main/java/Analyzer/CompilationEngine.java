@@ -25,6 +25,7 @@ public class CompilationEngine {
 
     private int ifCounter = 0;
     private boolean returnValue = false;
+    private boolean inConstructor = false;
 
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
@@ -147,6 +148,9 @@ public class CompilationEngine {
             || this.tk.keyword().equals("method")
             || this.tk.keyword().equals("function")) {
 
+            String subType = this.tk.keyword();
+            this.inConstructor = this.tk.keyword().equals("constructor");
+
             this.writeTerm(this.tk.getToken());
 
             this.tk.advance();
@@ -177,12 +181,24 @@ public class CompilationEngine {
             int varCount = this.compileVarDec();
             this.appendToVmFile("function " + fileName + "." + funcName + " " + varCount);
 
+            if(this.inConstructor) {
+                this.appendToVmFile("push constant " + this.symbolTable.FieldCounter);
+                this.appendToVmFile("call Memory.alloc 1");
+                this.appendToVmFile("pop pointer 0");
+            }
+
+            if(!fileName.equals("Main") && !this.inConstructor) {
+                this.appendToVmFile("push argument 0");
+                this.appendToVmFile("pop pointer 0");
+            }
+
             this.compileStatements();
 
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
             this.matchIdentifiers = false;
+            this.inConstructor = false;
             this.writeCloseNonTerm("subroutineBody");
         }
         else {
@@ -374,7 +390,12 @@ public class CompilationEngine {
                 this.appendToVmFile("pop static " + symbol.Symbol.Index);
                 break;
             case FIELD:
-                this.appendToVmFile("pop field " + symbol.Symbol.Index);
+                if(this.inConstructor) {
+                    this.appendToVmFile("pop this " + symbol.Symbol.Index);
+                }
+                else {
+                    this.appendToVmFile("pop field " + symbol.Symbol.Index);
+                }
                 break;
             case ARG:
                 this.appendToVmFile("pop argument " + symbol.Symbol.Index);
@@ -578,6 +599,11 @@ public class CompilationEngine {
                 this.appendToVmFile("not");
             }
 
+            if(this.tk.getToken().StringValue().equals("this")) {
+                this.appendToVmFile("push pointer 0");
+
+            }
+
             this.tk.advance();
         }
 
@@ -703,8 +729,30 @@ public class CompilationEngine {
             this.writeOpenNonTerm("ERROR");
         }
 
+        SymbolLookupResult result = this.symbolTable.getSymbol(className);
+
         if(className.equals("")) {
             this.appendToVmFile("call " + subroutineName + " " + expressionCount);
+        }
+        else if(result.Found) {
+
+            switch (result.Symbol.Kind) {
+                case VAR:
+                    this.appendToVmFile("push local " + result.Symbol.Index);
+                    break;
+                case ARG:
+
+                    break;
+                case FIELD:
+                    this.appendToVmFile("push this " + result.Symbol.Index);
+                    break;
+                case STATIC:
+
+                    break;
+            }
+
+            this.appendToVmFile("call " + result.Symbol.Type + "." + subroutineName + " 1");
+
         }
         else {
             this.appendToVmFile("call " + className + "." + subroutineName + " " + expressionCount);

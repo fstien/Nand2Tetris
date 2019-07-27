@@ -9,7 +9,7 @@ public class SymbolTable {
     private Hashtable<String, Symbol> subroutineScope = new Hashtable();
 
     private int StaticCounter = 0;
-    private int FieldCounter = 0;
+    public int FieldCounter = 0;
     private int ArgumentCounter = 0;
     private int VarCounter = 0;
 
