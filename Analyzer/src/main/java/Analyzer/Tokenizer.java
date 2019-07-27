@@ -32,7 +32,7 @@ public class Tokenizer {
     private boolean currentComment = false;
 
     public Tokenizer(String fileName) {
-        String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
+        String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris2/GitHub/Analyzer/src/main/java/Analyzer";
         try {
             File f = new File(baseDir + "/Jack/" + fileName + ".jack");
             Scanner file = new Scanner(f);

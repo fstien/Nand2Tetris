@@ -11,7 +11,7 @@ import java.util.List;
 
 @SuppressWarnings("Duplicates")
 public class CompilationEngine {
-    private String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer";
+    private String baseDir = "/Users/francois.stiennon/Desktop/nand2tetris2/GitHub/Analyzer/src/main/java/Analyzer";
     private String fileName;
 
     private Tokenizer tk;
@@ -22,8 +22,6 @@ public class CompilationEngine {
 
     private SymbolTable symbolTable;
     private SymbolBuilder symbolBuilder;
-
-    private List<String> op = Arrays.asList("+", "-", "*", "/", "&", "|", "<", ">", "=");
 
     public CompilationEngine(String inputFile) throws Exception {
         this.fileName = inputFile.split("\\.")[0];
@@ -444,7 +442,6 @@ public class CompilationEngine {
 
         this.compileExpression();
 
-        this.appendToVmFile("not");
         this.appendToVmFile("if-goto IF_TRUE0");
         this.appendToVmFile("goto IF_FALSE0");
         this.appendToVmFile("label IF_TRUE0");
@@ -500,8 +497,26 @@ public class CompilationEngine {
                 case "*":
                     this.appendToVmFile("call Math.multiply 2");
                     break;
+                case ">":
+                    this.appendToVmFile("gt");
+                    break;
+                case "<":
+                    this.appendToVmFile("lt");
+                    break;
+                case "-":
+                    this.appendToVmFile("sub");
+                    break;
+                case "/":
+                    this.appendToVmFile("call Math.divide 2");
+                    break;
+                case "=":
+                    this.appendToVmFile("eq");
+                    break;
+                case "&":
+                    this.appendToVmFile("and");
+                    break;
                 default:
-                    System.out.println("Operator not found.");
+                    System.out.println("Operator not found: " + operator);
             }
         }
 
@@ -511,7 +526,6 @@ public class CompilationEngine {
     private void compileTerm() {
         this.writeOpenNonTerm("term");
 
-
         if(this.tk.getToken().Type == TokenType.integerConstant) {
             this.writeTerm(this.tk.getToken());
 
@@ -519,7 +533,6 @@ public class CompilationEngine {
 
             this.tk.advance();
         }
-
 
         else if(this.tk.getToken().Type == TokenType.keyword) {
             this.writeTerm(this.tk.getToken());
@@ -571,31 +584,12 @@ public class CompilationEngine {
 
                 this.compileTerm();
 
-                this.appendToVmFile("neg");
-            }
-            else if(second.Type == TokenType.symbol && this.isOp(second.StringValue())) {
-                this.compileTerm();
-
-                this.tk.advance();
-
-                String opForVm = "";
-                switch (this.tk.getToken().StringValue()) {
-                    case ">":
-                        opForVm = "gt";
-                        break;
-                    case "<":
-                        opForVm = "lt";
-                        break;
-                    case "=":
-                        opForVm = "eq";
-                    default:
-                        System.out.println("Did not find op.");
-                        break;
+                if(first.StringValue().equals("-")) {
+                    this.appendToVmFile("neg");
                 }
-
-                this.compileTerm();
-
-                this.appendToVmFile(opForVm);
+                else if(first.StringValue().equals("~")) {
+                    this.appendToVmFile("not");
+                }
             }
             else {
                 // varName
@@ -608,22 +602,26 @@ public class CompilationEngine {
                     System.out.println("Symbol not found: " + this.tk.getToken().StringValue());
                 }
 
-                this.appendToVmFile("push local " + symbol.Symbol.Index);
+                switch (symbol.Symbol.Kind) {
+                    case VAR:
+                        this.appendToVmFile("push local " + symbol.Symbol.Index);
+                        break;
+                    case ARG:
+                        this.appendToVmFile("push argument " + symbol.Symbol.Index);
+                        break;
+                    case FIELD:
+                        this.appendToVmFile("push field " + symbol.Symbol.Index);
+                        break;
+                    case STATIC:
+                        this.appendToVmFile("push static " + symbol.Symbol.Index);
+                        break;
+                }
 
                 this.tk.advance();
             }
         }
 
         this.writeCloseNonTerm("term");
-    }
-
-    private boolean isOp(String str) {
-        for(String opStr : op) {
-            if(opStr.equals(str)) {
-                return true;
-            }
-        }
-        return false;
     }
 
     private void subroutineCall() {

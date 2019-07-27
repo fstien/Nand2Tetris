@@ -24,7 +24,7 @@ public class Analyzer {
     public static void main(String[] args) throws Exception {
         // arg[1] is either a filename or a directory
 
-        List<String> jackFiles = textFiles("/Users/francois.stiennon/Desktop/nand2tetris/GitHub/Analyzer/src/main/java/Analyzer/Jack/");
+        List<String> jackFiles = textFiles("/Users/francois.stiennon/Desktop/nand2tetris2/GitHub/Analyzer/src/main/java/Analyzer/Jack/");
 
         for(String fileName : jackFiles) {
             System.out.println(fileName);
