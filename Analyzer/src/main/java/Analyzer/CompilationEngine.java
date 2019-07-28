@@ -24,6 +24,8 @@ public class CompilationEngine {
     private SymbolBuilder symbolBuilder;
 
     private int ifCounter = 0;
+    private int whileCounter = 0;
+
     private boolean returnValue = false;
     private boolean inConstructor = false;
 
@@ -390,12 +392,7 @@ public class CompilationEngine {
                 this.appendToVmFile("pop static " + symbol.Symbol.Index);
                 break;
             case FIELD:
-                if(this.inConstructor) {
-                    this.appendToVmFile("pop this " + symbol.Symbol.Index);
-                }
-                else {
-                    this.appendToVmFile("pop field " + symbol.Symbol.Index);
-                }
+                this.appendToVmFile("pop this " + symbol.Symbol.Index);
                 break;
             case ARG:
                 this.appendToVmFile("pop argument " + symbol.Symbol.Index);
@@ -416,7 +413,10 @@ public class CompilationEngine {
         // Compiles a while statement.
         this.writeOpenNonTerm("whileStatement");
 
-        this.appendToVmFile("label WHILE_EXP0");
+        int whileValue = whileCounter;
+        this.whileCounter++;
+
+        this.appendToVmFile("label WHILE_EXP" + whileValue);
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -427,7 +427,7 @@ public class CompilationEngine {
         this.compileExpression();
 
         this.appendToVmFile("not");
-        this.appendToVmFile("if-goto WHILE_END0");
+        this.appendToVmFile("if-goto WHILE_END" + whileValue);
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -437,8 +437,10 @@ public class CompilationEngine {
 
         this.compileStatements();
 
-        this.appendToVmFile("goto WHILE_EXP0");
-        this.appendToVmFile("label WHILE_END0");
+
+        this.appendToVmFile("goto WHILE_EXP" + whileValue);
+        this.appendToVmFile("label WHILE_END" + whileValue);
+
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -488,12 +490,12 @@ public class CompilationEngine {
         this.compileExpression();
 
         int ifValue = ifCounter;
+        this.ifCounter++;
 
         this.appendToVmFile("if-goto IF_TRUE" + ifValue);
         this.appendToVmFile("goto IF_FALSE" + ifValue);
         this.appendToVmFile("label IF_TRUE" + ifValue);
 
-        this.ifCounter++;
 
         this.writeTerm(this.tk.getToken());
         this.tk.advance();
@@ -523,6 +525,10 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
         }
+        else {
+            this.appendToVmFile("label IF_FALSE" + ifValue);
+        }
+
 
         this.writeCloseNonTerm("ifStatement");
     }
@@ -669,7 +675,7 @@ public class CompilationEngine {
                         this.appendToVmFile("push argument " + symbol.Symbol.Index);
                         break;
                     case FIELD:
-                        this.appendToVmFile("push field " + symbol.Symbol.Index);
+                        this.appendToVmFile("push this " + symbol.Symbol.Index);
                         break;
                     case STATIC:
                         this.appendToVmFile("push static " + symbol.Symbol.Index);
@@ -732,7 +738,8 @@ public class CompilationEngine {
         SymbolLookupResult result = this.symbolTable.getSymbol(className);
 
         if(className.equals("")) {
-            this.appendToVmFile("call " + subroutineName + " " + expressionCount);
+            this.appendToVmFile("push pointer 0");
+            this.appendToVmFile("call " + fileName + "." + subroutineName + " " + (expressionCount + 1));
         }
         else if(result.Found) {
 
