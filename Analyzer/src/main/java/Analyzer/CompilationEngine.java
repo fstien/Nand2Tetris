@@ -373,6 +373,23 @@ public class CompilationEngine {
 
             this.compileExpression();
 
+            switch (symbol.Symbol.Kind) {
+                case STATIC:
+                    this.appendToVmFile("push static " + symbol.Symbol.Index);
+                    break;
+                case FIELD:
+                    this.appendToVmFile("push this " + symbol.Symbol.Index);
+                    break;
+                case ARG:
+                    this.appendToVmFile("push argument " + symbol.Symbol.Index);
+                    break;
+                case VAR:
+                    this.appendToVmFile("push local " + symbol.Symbol.Index);
+                    break;
+            }
+
+            this.appendToVmFile("add");
+
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
@@ -380,27 +397,31 @@ public class CompilationEngine {
             this.tk.advance();
 
             this.compileExpression();
+
+            this.appendToVmFile("pop temp 0");
+            this.appendToVmFile("pop pointer 1");
+            this.appendToVmFile("push temp 0");
+            this.appendToVmFile("pop that 0");
         }
         else {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
             this.compileExpression();
-        }
 
-        switch (symbol.Symbol.Kind) {
-            case STATIC:
-                this.appendToVmFile("pop static " + symbol.Symbol.Index);
-                break;
-            case FIELD:
-                this.appendToVmFile("pop this " + symbol.Symbol.Index);
-                break;
-            case ARG:
-                this.appendToVmFile("pop argument " + symbol.Symbol.Index);
-                break;
-            case VAR:
-                this.appendToVmFile("pop local " + symbol.Symbol.Index);
-                break;
-
+            switch (symbol.Symbol.Kind) {
+                case STATIC:
+                    this.appendToVmFile("pop static " + symbol.Symbol.Index);
+                    break;
+                case FIELD:
+                    this.appendToVmFile("pop this " + symbol.Symbol.Index);
+                    break;
+                case ARG:
+                    this.appendToVmFile("pop argument " + symbol.Symbol.Index);
+                    break;
+                case VAR:
+                    this.appendToVmFile("pop local " + symbol.Symbol.Index);
+                    break;
+            }
         }
 
         this.writeTerm(this.tk.getToken());
@@ -594,6 +615,19 @@ public class CompilationEngine {
             this.tk.advance();
         }
 
+        else if(this.tk.getToken().Type == TokenType.stringConstant) {
+
+            int strLen = this.tk.getToken().StringValue().length();
+
+            this.appendToVmFile("push constant " + strLen);
+            this.appendToVmFile("call String.new 1");
+
+            for(int i = 0; i < strLen; i++) {
+                this.appendToVmFile("push constant " + (int)this.tk.getToken().StringValue().charAt(i));
+                this.appendToVmFile("call String.appendChar 2");
+            }
+        }
+
         else if(this.tk.getToken().Type == TokenType.keyword) {
             this.writeTerm(this.tk.getToken());
 
@@ -620,13 +654,35 @@ public class CompilationEngine {
             this.tk.goBack();
 
             if(second.StringValue().equals("[")) {
+
                 this.writeTerm(this.tk.getToken());
+                Token assigned = this.tk.getToken();
+                SymbolLookupResult arraySymbol = this.symbolTable.getSymbol(assigned.StringValue());
                 this.tk.advance();
 
                 this.writeTerm(this.tk.getToken());
                 this.tk.advance();
 
                 this.compileExpression();
+
+                switch (arraySymbol.Symbol.Kind) {
+                    case VAR:
+                        this.appendToVmFile("push local " + arraySymbol.Symbol.Index);
+                        break;
+                    case ARG:
+                        this.appendToVmFile("push argument " + arraySymbol.Symbol.Index);
+                        break;
+                    case FIELD:
+                        this.appendToVmFile("push this " + arraySymbol.Symbol.Index);
+                        break;
+                    case STATIC:
+                        this.appendToVmFile("push static " + arraySymbol.Symbol.Index);
+                        break;
+                }
+
+                this.appendToVmFile("add");
+                this.appendToVmFile("pop pointer 1");
+                this.appendToVmFile("push that " + arraySymbol.Symbol.Index);
 
                 this.writeTerm(this.tk.getToken());
                 this.tk.advance();
