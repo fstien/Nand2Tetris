@@ -596,6 +596,9 @@ public class CompilationEngine {
                 case "&":
                     this.appendToVmFile("and");
                     break;
+                case "|":
+                    this.appendToVmFile("or");
+                    break;
                 default:
                     System.out.println("Operator not found: " + operator);
             }
@@ -728,7 +731,12 @@ public class CompilationEngine {
                         this.appendToVmFile("push local " + symbol.Symbol.Index);
                         break;
                     case ARG:
-                        this.appendToVmFile("push argument " + symbol.Symbol.Index);
+                        if(!fileName.equals("Main") && !this.inConstructor) {
+                            this.appendToVmFile("push argument " + (symbol.Symbol.Index + 1));
+                        }
+                        else {
+                            this.appendToVmFile("push argument " + symbol.Symbol.Index);
+                        }
                         break;
                     case FIELD:
                         this.appendToVmFile("push this " + symbol.Symbol.Index);
@@ -762,6 +770,8 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
+            this.appendToVmFile("push pointer 0");
+
             expressionCount = this.CompileExpressionList();
 
             this.writeTerm(this.tk.getToken());
@@ -794,7 +804,6 @@ public class CompilationEngine {
         SymbolLookupResult result = this.symbolTable.getSymbol(className);
 
         if(className.equals("")) {
-            this.appendToVmFile("push pointer 0");
             this.appendToVmFile("call " + fileName + "." + subroutineName + " " + (expressionCount + 1));
         }
         else if(result.Found) {
