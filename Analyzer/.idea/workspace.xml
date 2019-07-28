@@ -3,13 +3,13 @@
   <component name="ChangeListManager">
     <list default="true" id="6a7ebff9-17ca-43c7-807f-10840bf7b6af" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/classes/Analyzer/CompilationEngine.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Ball.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Ball.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Bat.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Bat.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/PongGame.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/PongGame.vm" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/Main.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Out/MainTokens.xml" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -30,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="269">
-              <caret line="792" column="30" lean-forward="true" selection-start-line="792" selection-start-column="30" selection-end-line="792" selection-end-column="30" />
+            <state relative-caret-position="863">
+              <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
             </state>
           </provider>
         </entry>
@@ -41,18 +41,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="459">
               <caret line="30" selection-start-line="30" selection-end-line="30" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="235" selection-start-line="235" selection-end-line="235" />
-              <folding>
-                <element signature="e#6645#6646#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -89,6 +77,7 @@
       <find>className</find>
       <find>compileDo</find>
       <find>push this 1</find>
+      <find>push argu</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -235,12 +224,12 @@
       <workItem from="1564093450649" duration="86000" />
       <workItem from="1564093657844" duration="8000" />
       <workItem from="1564215268235" duration="163000" />
-      <workItem from="1564215520152" duration="34338000" />
+      <workItem from="1564215520152" duration="36631000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="34595000" />
+    <option name="totallyTimeSpent" value="36888000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -294,9 +283,9 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java</url>
-          <line>780</line>
+          <line>193</line>
           <properties />
-          <option name="timeStamp" value="29" />
+          <option name="timeStamp" value="31" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -414,6 +403,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="40">
+          <caret line="212" lean-forward="true" selection-start-line="212" selection-end-line="212" />
+          <folding>
+            <element signature="e#6600#6601#0" expanded="true" />
+            <element signature="e#6645#6646#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Analyzer.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
@@ -421,20 +421,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/Tokenizer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="235" selection-start-line="235" selection-end-line="235" />
-          <folding>
-            <element signature="e#6645#6646#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="792" column="30" lean-forward="true" selection-start-line="792" selection-start-column="30" selection-end-line="792" selection-end-column="30" />
+        <state relative-caret-position="863">
+          <caret line="192" column="37" selection-start-line="192" selection-start-column="37" selection-end-line="192" selection-end-column="37" />
         </state>
       </provider>
     </entry>

@@ -189,7 +189,8 @@ public class CompilationEngine {
                 this.appendToVmFile("pop pointer 0");
             }
 
-            if(!fileName.equals("Main") && !this.inConstructor) {
+            // if(!fileName.equals("Main") && !this.inConstructor) {
+            if(subType.equals("method")) {
                 this.appendToVmFile("push argument 0");
                 this.appendToVmFile("pop pointer 0");
             }
@@ -756,6 +757,7 @@ public class CompilationEngine {
     private void subroutineCall() {
         String className = "";
         String subroutineName = "";
+        SymbolLookupResult result = this.symbolTable.getSymbol(className);;
         int expressionCount = 0;
 
         this.tk.advance();
@@ -792,6 +794,22 @@ public class CompilationEngine {
             this.writeTerm(this.tk.getToken());
             this.tk.advance();
 
+            result = this.symbolTable.getSymbol(className);
+            if(result.Found) {
+                switch (result.Symbol.Kind) {
+                    case VAR:
+                        this.appendToVmFile("push local " + result.Symbol.Index);
+                        break;
+                    case ARG:
+                        break;
+                    case FIELD:
+                        this.appendToVmFile("push this " + result.Symbol.Index);
+                        break;
+                    case STATIC:
+                        break;
+                }
+            }
+
             expressionCount = this.CompileExpressionList();
 
             this.writeTerm(this.tk.getToken());
@@ -801,30 +819,12 @@ public class CompilationEngine {
             this.writeOpenNonTerm("ERROR");
         }
 
-        SymbolLookupResult result = this.symbolTable.getSymbol(className);
 
         if(className.equals("")) {
             this.appendToVmFile("call " + fileName + "." + subroutineName + " " + (expressionCount + 1));
         }
         else if(result.Found) {
-
-            switch (result.Symbol.Kind) {
-                case VAR:
-                    this.appendToVmFile("push local " + result.Symbol.Index);
-                    break;
-                case ARG:
-
-                    break;
-                case FIELD:
-                    this.appendToVmFile("push this " + result.Symbol.Index);
-                    break;
-                case STATIC:
-
-                    break;
-            }
-
-            this.appendToVmFile("call " + result.Symbol.Type + "." + subroutineName + " 1");
-
+            this.appendToVmFile("call " + result.Symbol.Type + "." + subroutineName + " " + (expressionCount+1));
         }
         else {
             this.appendToVmFile("call " + className + "." + subroutineName + " " + expressionCount);
