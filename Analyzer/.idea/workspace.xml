@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="6a7ebff9-17ca-43c7-807f-10840bf7b6af" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Ball.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Bat.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/Main.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Comp/PongGame.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Ball.jack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Ball.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Bat.jack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Bat.vm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.jack" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.vm" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/Main.vm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/PongGame.jack" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/Analyzer/Jack/PongGame.vm" beforeDir="false" />
-    </list>
+    <list default="true" id="6a7ebff9-17ca-43c7-807f-10840bf7b6af" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -35,8 +21,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="585">
-              <caret line="688" selection-start-line="688" selection-end-line="688" />
+            <state relative-caret-position="182">
+              <caret line="655" column="30" lean-forward="true" selection-start-line="655" selection-start-column="30" selection-end-line="655" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -243,12 +229,12 @@
       <workItem from="1564093450649" duration="86000" />
       <workItem from="1564093657844" duration="8000" />
       <workItem from="1564215268235" duration="163000" />
-      <workItem from="1564215520152" duration="39633000" />
+      <workItem from="1564215520152" duration="39946000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39890000" />
+    <option name="totallyTimeSpent" value="40203000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -261,6 +247,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-481" y="-1417" width="1631" height="1417" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49914965" visible="true" weight="0.17558213" />
       <window_info id="Structure" order="1" sideWeight="0.5008503" side_tool="true" weight="0.2253635" />
@@ -269,7 +256,7 @@
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.2845468" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.2845468" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="4" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="5" weight="0.32986626" />
@@ -277,7 +264,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
-      <window_info anchor="bottom" id="Terminal" order="10" weight="0.32986626" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32986626" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
       <window_info anchor="bottom" id="Build" order="12" weight="0.32986626" />
       <window_info anchor="bottom" id="Messages" order="13" weight="0.32986626" />
@@ -290,7 +277,7 @@
       <window_info anchor="right" id="Database" order="6" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
       <window_info anchor="right" id="sbt" order="8" />
-      <window_info active="true" anchor="right" x="0" y="45" width="840" height="960" id="Debug" order="9" type="WINDOWED" visible="true" weight="0.36179507" />
+      <window_info anchor="right" x="0" y="45" width="840" height="960" id="Debug" order="9" type="WINDOWED" weight="0.36179507" />
     </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -462,8 +449,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/Analyzer/CompilationEngine.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="585">
-          <caret line="688" selection-start-line="688" selection-end-line="688" />
+        <state relative-caret-position="182">
+          <caret line="655" column="30" lean-forward="true" selection-start-line="655" selection-start-column="30" selection-end-line="655" selection-end-column="30" />
         </state>
       </provider>
     </entry>
